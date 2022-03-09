@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  no_hp: 1
+  tgl_lahir: 2022-03-10
+  alamat: MyText
+  follower: 1
+  hobi: 1
+
+two:
+  no_hp: 1
+  tgl_lahir: 2022-03-10
+  alamat: MyText
+  follower: 1
+  hobi: 1
