@@ -18,7 +18,7 @@ class Api::V1::IdentiesController < ApplicationController
     @identy = Identy.new(identy_params)
 
     if @identy.save
-      render json: @identy, status: :created, location: @identy
+      render json: [status: "berhasil", data: @identy], status: :ok # ,location: @identy
     else
       render json: @identy.errors, status: :unprocessable_entity
     end
