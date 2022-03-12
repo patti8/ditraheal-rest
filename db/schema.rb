@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_12_074244) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_12_122838) do
   create_table "action_text_rich_texts", charset: "latin1", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :medium
@@ -131,6 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_074244) do
     t.integer "hobi"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "references", charset: "latin1", force: :cascade do |t|

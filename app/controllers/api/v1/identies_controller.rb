@@ -46,6 +46,6 @@ class Api::V1::IdentiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def identy_params
-      params.require(:identy).permit(:no_hp, :tgl_lahir, :alamat, :follower, :hobi)
+      params.require(:identy).permit(:no_hp, :tgl_lahir, :alamat, :follower, :hobi, :name)
     end
 end
