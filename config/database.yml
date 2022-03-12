@@ -13,13 +13,14 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: qwe123
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: ditraheal_development
+  hostname: 109.106.253.146
+  database: u1525333_testing
+  username: u1525333_kewang
+  password: j4n6s00mb0ng4l3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,6 +51,8 @@ test:
 #
 production:
   <<: *default
-  database: ditraheal_production
-  username: ditraheal
-  password: <%= ENV["DITRAHEAL_DATABASE_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  hostname: 109.106.253.146
+  database: u1525333_testing
+  username: u1525333_kewang
+  password: j4n6s00mb0ng4l3
