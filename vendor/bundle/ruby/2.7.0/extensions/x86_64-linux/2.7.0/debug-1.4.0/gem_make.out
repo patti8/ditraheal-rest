@@ -1,0 +1,16 @@
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+/usr/local/rvm/rubies/ruby-2.7.1/bin/ruby -I /usr/local/rvm/rubies/ruby-2.7.1/lib/ruby/2.7.0 -r ./siteconf20220312-56561-7c9amp.rb extconf.rb
+creating Makefile
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR=" clean
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 debug.so ./.gem.20220312-56561-19fot3r/debug

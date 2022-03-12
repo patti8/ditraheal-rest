@@ -1,0 +1,29 @@
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/msgpack-1.4.5/ext/msgpack
+/usr/local/rvm/rubies/ruby-2.7.1/bin/ruby -I /usr/local/rvm/rubies/ruby-2.7.1/lib/ruby/2.7.0 -r ./siteconf20220312-56561-1e7fgvx.rb extconf.rb
+checking for ruby/st.h... yes
+checking for st.h... yes
+checking for rb_enc_interned_str() in ruby.h... no
+creating Makefile
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/msgpack-1.4.5/ext/msgpack
+make "DESTDIR=" clean
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/msgpack-1.4.5/ext/msgpack
+make "DESTDIR="
+compiling buffer.c
+compiling buffer_class.c
+compiling extension_value_class.c
+compiling factory_class.c
+compiling packer.c
+compiling packer_class.c
+compiling packer_ext_registry.c
+compiling rbinit.c
+compiling rmem.c
+compiling unpacker.c
+compiling unpacker_class.c
+compiling unpacker_ext_registry.c
+linking shared-object msgpack/msgpack.so
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/msgpack-1.4.5/ext/msgpack
+make "DESTDIR=" install
+/usr/bin/install -m 0755 msgpack.so ./.gem.20220312-56561-83kf4k/msgpack

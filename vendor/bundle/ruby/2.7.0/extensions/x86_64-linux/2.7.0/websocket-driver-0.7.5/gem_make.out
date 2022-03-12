@@ -1,0 +1,15 @@
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/usr/local/rvm/rubies/ruby-2.7.1/bin/ruby -I /usr/local/rvm/rubies/ruby-2.7.1/lib/ruby/2.7.0 -r ./siteconf20220312-56561-llhd9z.rb extconf.rb
+creating Makefile
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/patti8/DEVELOPER/PROJECT/ditraheal-rest/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20220312-56561-6viyy
