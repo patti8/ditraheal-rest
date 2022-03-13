@@ -10,7 +10,11 @@ class Api::V1::IdentiesController < ApplicationController
 
   # GET /identies/1
   def show
-    render json: @identy
+    if @identy.present?
+      render json: @identy
+    else
+      render json: "identy not found"
+    end
   end
 
   # POST /identies
@@ -18,7 +22,7 @@ class Api::V1::IdentiesController < ApplicationController
     @identy = Identy.new(identy_params)
 
     if @identy.save
-      render json: [status: "berhasil", data: @identy], status: :ok # ,location: @identy
+      render json: [status: "success", data: @identy], status: :ok # ,location: @identy
     else
       render json: @identy.errors, status: :unprocessable_entity
     end
@@ -33,9 +37,13 @@ class Api::V1::IdentiesController < ApplicationController
     end
   end
 
-  # DELETE /identies/1
+  # DELETE /identies/
   def destroy
-    @identy.destroy
+    if @identy.destroy
+      render json: "Identy deleted successfully."
+    else
+      render json: "Data is not found or deleted."
+    end
   end
 
   private
