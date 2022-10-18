@@ -49,7 +49,8 @@ https://dbdiagram.io/d/62879cbdf040f104c16797de
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@patti8](https://github.com/patti8) - Backend Developer
+- [@owenwattimena](https://github.com/owenwattimena) - Android Developer
 
 See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors)
 who participated in this project.
