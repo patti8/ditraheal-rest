@@ -1,0 +1,61 @@
+<div class="row">
+
+    <div class="col">
+
+        <div class="card shadow">
+            <div class="card-body">
+                
+                <%= form_with url: "", method: :get, data: { turbo_frame: "identities", turbo_action: "replace" } do |form| %>
+                    Show <%= form.select :count,  options_for_select([10, 25, 50, 100], selected: params[:count]), {}, { onchange: "this.form.requestSubmit()"} %>
+
+                    Search <%= form.search_field :query, value: params[:query], oninput: "this.form.requestSubmit()" %>
+                <% end %>
+
+                <%= turbo_frame_tag "identities" do %>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"><%= sort_link_to "Nama", :name %></th>
+                                <th scope="col"><%= sort_link_to "Tanggal Lahir", :tgl_lahir %></th>
+                                <th scope="col"><%= sort_link_to "Alamat", :alamat %></th>
+                                <th scope="col"><%= sort_link_to "Follower", :follower %></th>
+                                <th scope="col"><%= sort_link_to "Hobi", :hobi %></th>
+                                <th span="3">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% @identities.each_with_index do |identy, index |%>
+                            <tr>
+                                <th scope="row"><%= index +=1%></th>
+                                <td><%= identy.name %></td>
+                                <td><%= identy.tgl_lahir %></td>
+                                <td><%= identy.alamat %></td>
+                                <td><%= identy.follower %></td>
+
+                                <% @hoby = Reference.find_by(jenis: 1, id: identy.hobi)%>
+                                <td><%= @hoby.deskripsi %></td>
+                                
+                                <td>
+                                    <%= link_to "Show", "#", class: "btn-sm btn-primary", data: { 'bs-toggle' => "modal", 'bs-target' => "#showModal#{identy.id}" } %>
+                                    <% @identy = identy %>
+                                    <%= render "show", locals: { identy: @hoby, tes: @identy } %>
+                                    
+                                    <%= link_to "edit", edit_ditraheal_identity_path(identy.id), class: "btn-sm btn-success" %>
+                                    <%= link_to "delete", ditraheal_identity_path(identy.id), data: {turbo_method: :delete, turbo_confrim: "Apakah anda yakin?"}, class: "btn-sm btn-danger" %>
+                                </td>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                    </table>
+                    <%== pagy_nav @pagy %>
+                    
+                <% end %>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

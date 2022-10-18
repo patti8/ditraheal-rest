@@ -1,0 +1,60 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "admins/shared/links" %>
+
+
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <div class="website-logo-inside">
+                            <a href="index.html">
+                                <div class="logo">
+                                    <%# <img class="logo-size" src="images/logo-light.svg" alt=""> %>
+                                </div>
+                            </a>
+                        </div>
+                        <h3>Get more things done with Loggin platform.</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <div class="page-links">
+                            <a href="login10.html" class="active">Login</a><a href="register10.html">Register</a>
+                        </div>
+                        <form>
+                            <input class="form-control" type="text" name="username" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Login</button> <a href="forget10.html">Forget password?</a>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <span>Or login with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

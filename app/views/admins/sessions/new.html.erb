@@ -1,0 +1,34 @@
+<div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <div class="website-logo-inside">
+                            <a href="index.html">
+                                <div class="logo">
+                                    <%# <img class="logo-size" src="images/logo-light.svg" alt=""> %>
+                                </div>
+                            </a>
+                        </div>
+                        <h3>Ditraheal</h3>
+                        <p>Digital intervention for health.</p>
+                        <div class="page-links">
+                            <a href="login10.html" class="active">Login</a>
+                        </div>
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                            <%= f.email_field :email, class: "form-control", autofocus: true, placeholder: "E-mail Address", autocomplete: "email", require: true%>
+                            
+                            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", require: true %>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Login</button>
+                            </div>
+                        <% end %>
+                        <div class="other-links">
+                            <%= render "admins/shared/links" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

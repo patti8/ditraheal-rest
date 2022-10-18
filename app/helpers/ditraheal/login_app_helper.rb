@@ -1,0 +1,2 @@
+module Ditraheal::LoginAppHelper
+end

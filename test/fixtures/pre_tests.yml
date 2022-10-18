@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_skor_efikasi: 1
+  total_level_trauma_id: 1
+  periode_treatment_id: 1
+
+two:
+  total_skor_efikasi: 1
+  total_level_trauma_id: 1
+  periode_treatment_id: 1

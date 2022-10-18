@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  identitas_id: 1
+  status: 1
+  tanggal_awal: 2022-07-30
+  tanggal_akhir: 2022-07-30
+
+two:
+  identitas_id: 1
+  status: 1
+  tanggal_awal: 2022-07-30
+  tanggal_akhir: 2022-07-30

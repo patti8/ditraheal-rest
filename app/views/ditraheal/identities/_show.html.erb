@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal fade" id="showModal<%= @identy.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Pengguna</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-uppercase">
+
+                <ul class="list-group">
+                    <li class="list-group-item">Nama Lengkap : <b><%= @identy.name %></b></li>
+                    <li class="list-group-item">No. HP : <b><%= @identy.no_hp %></b></li>
+                    <li class="list-group-item">Tanggal Lahir : <b><%= @identy.tgl_lahir %></b></li>
+                    <li class="list-group-item">Alamat : <b><%= @identy.alamat %></b></li>
+                    <li class="list-group-item">Hobi : <b><%= @hoby.deskripsi %></b></li>
+                    <li class="list-group-item">Follower : <b><%= @identy.follower %></b></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>

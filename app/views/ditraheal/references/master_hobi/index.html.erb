@@ -1,0 +1,23 @@
+
+<%= turbo_frame_tag "second_frame" do %>
+    <div class="card shadow">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                 Referensi Hobi 
+                 <%= link_to "tambah", new_ditraheal_references_master_hobi_path, data: {turbo_frame: "second_frame"}%>
+            </div>
+           
+        </div>
+        <div class="card-body">
+
+            <ul class="list-group">
+                <% @hobi.each_with_index do |efikasi, index| %>
+                    <li class="list-group-item"><%= index +=1%>.<%= efikasi.deskripsi %></li>
+                <% end %>
+            </ul>
+        
+        </div>
+    </div>
+<% end %>
+
+

@@ -1,0 +1,2 @@
+class HistoryToken < ApplicationRecord
+end

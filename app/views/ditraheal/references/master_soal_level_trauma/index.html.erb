@@ -1,0 +1,16 @@
+ <turbo-frame id="second_frame">
+    <div class="card shadow">
+        <div class="card-header">
+            Referensi Soal Level Trauma
+        </div>
+        <div class="card-body">
+
+            <ul class="list-group">
+                <% @soal_level_trauma.each_with_index do |efikasi, index| %>
+                    <li class="list-group-item"><%= index +=1%>.<%= efikasi.deskripsi %></li>
+                <% end %>
+            </ul>
+        
+        </div>
+    </div>
+</turbo-frame>

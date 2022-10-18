@@ -1,0 +1,3 @@
+class QuestionsController < WsController
+
+end

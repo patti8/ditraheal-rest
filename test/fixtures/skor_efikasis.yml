@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  referensi_soal: 1
+  jawaban: 1
+  pre_test_id: 1
+  post_test_id: 1
+  jenis: 1
+
+two:
+  referensi_soal: 1
+  jawaban: 1
+  pre_test_id: 1
+  post_test_id: 1
+  jenis: 1

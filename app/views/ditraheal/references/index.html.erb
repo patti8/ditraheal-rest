@@ -1,0 +1,41 @@
+<div class="row">
+    
+    <div class="col col-md-3">
+    <%= turbo_frame_tag "referensi_turbo_frame" do %>
+        <ul class="list-group shadow">
+      
+                <li class="list-group-item">
+                    <%= link_to ditraheal_references_master_soal_efikasi_index_path, class: "text-dark", data: { turbo_frame: "second_frame" } do %>
+                        Soal Efikasi
+                    <% end %>
+                </li>
+
+                <li class="list-group-item">
+                    <%= link_to ditraheal_references_master_soal_level_trauma_index_path, class: "text-dark", data: { turbo_frame: "second_frame" } do %>
+                        Soal Level Trauma
+                    <% end %>
+                </li>
+
+                 <li class="list-group-item">
+                    <%= link_to ditraheal_references_master_hobi_index_path, class: "text-dark", data: { turbo_frame: "second_frame" } do %>
+                        Hobi
+                    <% end %>
+                </li>
+      
+            
+            
+        </ul>
+    <% end %>
+    </div>
+
+        <div class="col">
+            <turbo-frame id="second_frame">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h3>Master Referensi</h3>
+                    </div>
+                </div>
+            </turbo-frame>
+        </div>
+
+</div>
