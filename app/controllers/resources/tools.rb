@@ -220,7 +220,7 @@ class Resources::Tools
                 data = [
                     date, 
                     periode_treatment.id, 
-                    
+    
                     8, # JENIS
                     3 # REF CODE
                 ]

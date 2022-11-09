@@ -4,6 +4,7 @@ class WsController < ActionController::Base
     
     protect_from_forgery
     before_action :authorized
+    # before_action :set_csrf_cookie
     # before_action :ceklogin, except: %i[authorized, encode_token, auth_header, decoded_token, logged_in_user, create]
 
     # include SessionHelper
@@ -47,5 +48,11 @@ class WsController < ActionController::Base
     def authorized
         render :json => {"code": 203, status: :unauthorized , "message": "authentication failed !", data: nil } unless logged_in?
     end
+
+    private 
+
+        def set_csrf_cookie
+            cookies["CSRF-TOKEN"] = "form_authenticity_token"
+        end
 
 end

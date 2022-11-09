@@ -11668,3 +11668,1101 @@ Started GET "/ref/kelas" for 127.0.0.1 at 2022-10-17 08:42:50 +0900
   
 ActionController::RoutingError (No route matches [GET] "/ref/kelas"):
   
+Started GET "/api/v1/periode/treatment/2" for 127.0.0.1 at 2022-11-09 08:06:00 +0900
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"2", "treatment"=>{}}
+Filter chain halted as :authorized rendered or redirected
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 3302)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-11-09 08:06:04 +0900
+Processing by UsersController#login as */*
+  Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."no_hp" = ? AND "identies"."tanggal_lahir" = ? LIMIT ?[0m  [["no_hp", "08119235212"], ["tanggal_lahir", "1997-11-22"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `login'
+  [1m[36mHistoryToken Load (0.4ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."user" = ? LIMIT ?[0m  [["user", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `login'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mHistoryToken Update (1.3ms)[0m  [1m[33mUPDATE "history_tokens" SET "token" = ?, "updated_at" = ? WHERE "history_tokens"."id" = ?[0m  [["token", "[FILTERED]"], ["updated_at", "2022-11-08 23:06:05.072031"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mTRANSACTION (22.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+Completed 200 OK in 133ms (Views: 0.6ms | ActiveRecord: 27.6ms | Allocations: 16288)
+
+
+Started GET "/api/v1/periode/treatment/2" for 127.0.0.1 at 2022-11-09 08:06:29 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"2", "treatment"=>{}}
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 200 OK in 22ms (Views: 0.5ms | ActiveRecord: 1.9ms | Allocations: 2332)
+
+
+Started GET "/api/v1/periode/treatment/1" for 127.0.0.1 at 2022-11-09 08:06:35 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"1", "treatment"=>{}}
+  [1m[36mIdenty Load (0.1ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 939)
+
+
+Started GET "/api/v1/periode/treatment/75" for 127.0.0.1 at 2022-11-09 08:06:42 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"75", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 926)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 08:07:19 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 937)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mPeriodeTreatment Load (0.4ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ?[0m  [["identitas_id", 75]]
+Started GET "/api/v1/periode/treatment/identy?60" for 127.0.0.1 at 2022-11-09 08:08:51 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "60"=>nil, "id"=>"identy", "treatment"=>{}}
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 200 OK in 114ms (Views: 0.4ms | ActiveRecord: 2.7ms | Allocations: 13042)
+
+
+Started GET "/api/v1/periode/treatment?identy=60" for 127.0.0.1 at 2022-11-09 08:09:03 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/periode/treatment"):
+  
+Started GET "/api/v1/periode/treatment?identy=60" for 127.0.0.1 at 2022-11-09 08:09:22 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/periode/treatment"):
+  
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 08:09:33 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 401 Unauthorized in 53668ms (ActiveRecord: 2.5ms | Allocations: 150395)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 08:10:34 +0900
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.8ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPeriodeTreatment Load (0.3ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ?[0m  [["identitas_id", 60]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:29:in `show_periode'
+Completed 200 OK in 184ms (Views: 2.1ms | ActiveRecord: 19.4ms | Allocations: 17787)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 08:10:49 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPeriodeTreatment Load (0.3ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ?[0m  [["identitas_id", 60]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:29:in `show_periode'
+Completed 200 OK in 33ms (Views: 1.0ms | ActiveRecord: 4.9ms | Allocations: 7122)
+
+
+Started POST "/api/v1/periode/treatment" for 127.0.0.1 at 2022-11-09 08:11:37 +0900
+Processing by Api::V1::TreatmentController#periode as */*
+  Parameters: {"identitas_id"=>89, "status"=>1, "tanggal_awal"=>"2022-04-08", "treatment"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPeriodeTreatment Load (0.9ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ? AND "periode_treatments"."tanggal_akhir" IS NULL LIMIT ?[0m  [["identitas_id", 89], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:96:in `cek_periode_treatment_selesai'
+[31mUnpermitted parameter: :treatment. Context: { controller: Api::V1::TreatmentController, action: periode, request: #<ActionDispatch::Request:0x00007fa030040650>, params: {"identitas_id"=>89, "status"=>1, "tanggal_awal"=>"2022-04-08", "controller"=>"api/v1/treatment", "action"=>"periode", "treatment"=>{}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/treatment_controller.rb:14:in `periode'
+  [1m[36mPeriodeTreatment Create (0.9ms)[0m  [1m[32mINSERT INTO "periode_treatments" ("identitas_id", "status", "tanggal_awal", "tanggal_akhir", "created_at", "updated_at", "inferensi") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["identitas_id", 89], ["status", 1], ["tanggal_awal", "2022-04-08"], ["tanggal_akhir", nil], ["created_at", "2022-11-08 23:11:37.954806"], ["updated_at", "2022-11-08 23:11:37.954806"], ["inferensi", nil]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:14:in `periode'
+  [1m[36mTRANSACTION (27.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/treatment_controller.rb:14:in `periode'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/treatment_controller.rb:15:in `periode'
+  [1m[36mPreTest Create (0.6ms)[0m  [1m[32mINSERT INTO "pre_tests" ("total_skor_efikasi", "total_level_trauma_id", "periode_treatment_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["total_skor_efikasi", nil], ["total_level_trauma_id", nil], ["periode_treatment_id", 1024], ["created_at", "2022-11-08 23:11:38.004176"], ["updated_at", "2022-11-08 23:11:38.004176"]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:15:in `periode'
+  [1m[36mTRANSACTION (24.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/treatment_controller.rb:15:in `periode'
+Completed 200 OK in 101ms (Views: 1.4ms | ActiveRecord: 54.5ms | Allocations: 10637)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1025" for 127.0.0.1 at 2022-11-09 08:12:05 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>26, "jawaban"=>90, "periode_treatment_id"=>"1025", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1025], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1025], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+Completed 200 OK in 37ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 2460)
+
+
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:12:11 +0900
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>50, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (4.2ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:182:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x00007fa0383c89f0>, params: {"referensi_soal"=>50, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:108:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.2ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:113:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.4ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 50]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:124:in `level_trauma_pre_test'
+Completed 400 Bad Request in 86ms (Views: 0.9ms | ActiveRecord: 8.3ms | Allocations: 16254)
+
+
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:12:21 +0900
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.1ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (0.2ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:182:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x00007fa03c0256f0>, params: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mReference Load (0.2ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:108:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.3ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:113:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.2ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 27]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:124:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "level_traumas" WHERE "level_traumas"."referensi_soal" = ? AND "level_traumas"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 27], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Create (0.8ms)[0m  [1m[32mINSERT INTO "level_traumas" ("referensi_soal", "jawaban", "pre_test_id", "post_test_id", "jenis", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["referensi_soal", 27], ["jawaban", 80], ["pre_test_id", 28], ["post_test_id", nil], ["jenis", 1], ["created_at", "2022-11-08 23:12:21.244206"], ["updated_at", "2022-11-08 23:12:21.244206"]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (17.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+Completed 200 OK in 112ms (Views: 3.0ms | ActiveRecord: 20.4ms | Allocations: 7910)
+
+
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:12:29 +0900
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (0.9ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:182:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x00007fa0301b84b0>, params: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:108:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.3ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:113:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.2ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 27]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:124:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "level_traumas" WHERE "level_traumas"."referensi_soal" = ? AND "level_traumas"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 27], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+Completed 400 Bad Request in 428ms (Views: 0.4ms | ActiveRecord: 2.8ms | Allocations: 345221)
+
+
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:13:09 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (0.3ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:182:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x00007fa044ae1ac8>, params: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.1ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mReference Load (0.6ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:108:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:174:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.3ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:113:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.5ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 27]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:124:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "level_traumas" WHERE "level_traumas"."referensi_soal" = ? AND "level_traumas"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 27], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+Completed 400 Bad Request in 116ms (Views: 0.4ms | ActiveRecord: 10.4ms | Allocations: 19837)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mSkorEfikasi Load (0.3ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 24], ["pre_test_id", 22], ["LIMIT", 1]]
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:15:38 +0900
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (0.2ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:183:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x000055f2c90dc980>, params: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.4ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:109:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.3ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:114:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 27]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "level_traumas" WHERE "level_traumas"."referensi_soal" = ? AND "level_traumas"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 27], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+Completed 400 Bad Request in 500ms (Views: 0.4ms | ActiveRecord: 10.3ms | Allocations: 373880)
+
+
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:16:12 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (0.3ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:183:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x00007f5eb45d48b8>, params: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.7ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:109:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.3ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:114:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.4ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 27]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "level_traumas" WHERE "level_traumas"."referensi_soal" = ? AND "level_traumas"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 27], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+Completed 400 Bad Request in 106ms (Views: 1.0ms | ActiveRecord: 12.0ms | Allocations: 19841)
+
+
+Started POST "/api/v1/pre_test/level_trauma?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:16:18 +0900
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#level_trauma_pre_test as */*
+  Parameters: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.4ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mPeriodeTreatment Load (0.4ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."id" = ? LIMIT ?[0m  [["id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:183:in `cek_periode_treatment'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: level_trauma_pre_test, request: #<ActionDispatch::Request:0x00007f5ea8550cb8>, params: {"referensi_soal"=>27, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"level_trauma_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.5ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ?[0m  [["jenis", 3]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:109:in `level_trauma_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mLevelTrauma Load (0.4ms)[0m  [1m[34mSELECT "level_traumas".* FROM "level_traumas" WHERE (level_traumas.pre_test_id = 28 AND level_traumas.referensi_soal = 48)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:114:in `level_trauma_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 3], ["id", 27]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:125:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+  [1m[36mLevelTrauma Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "level_traumas" WHERE "level_traumas"."referensi_soal" = ? AND "level_traumas"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 27], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:126:in `level_trauma_pre_test'
+Completed 400 Bad Request in 102ms (Views: 0.3ms | ActiveRecord: 11.0ms | Allocations: 19776)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1025" for 127.0.0.1 at 2022-11-09 08:16:28 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>26, "jawaban"=>90, "periode_treatment_id"=>"1025", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.4ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1025], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1025], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+Completed 200 OK in 25ms (Views: 0.5ms | ActiveRecord: 3.4ms | Allocations: 5567)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1018" for 127.0.0.1 at 2022-11-09 08:16:58 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>26, "jawaban"=>90, "periode_treatment_id"=>"1018", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5eb0026c30>, params: {"referensi_soal"=>26, "jawaban"=>90, "periode_treatment_id"=>"1018", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.4ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.3ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 22 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mSkorEfikasi Average (0.3ms)[0m  [1m[34mSELECT AVG("skor_efikasis"."jawaban") FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 22)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:31:in `effication_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+Completed 200 OK in 71ms (Views: 0.6ms | ActiveRecord: 4.5ms | Allocations: 14073)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1018" for 127.0.0.1 at 2022-11-09 08:17:07 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>90, "periode_treatment_id"=>"1018", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.1ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5eb4735568>, params: {"referensi_soal"=>21, "jawaban"=>90, "periode_treatment_id"=>"1018", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.2ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.3ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 22 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mSkorEfikasi Average (0.4ms)[0m  [1m[34mSELECT AVG("skor_efikasis"."jawaban") FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 22)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:31:in `effication_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1018], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+Completed 200 OK in 37ms (Views: 0.7ms | ActiveRecord: 1.5ms | Allocations: 5794)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:17:26 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>90, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5ea86b4b18>, params: {"referensi_soal"=>21, "jawaban"=>90, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.2ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.4ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 28 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.4ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Create (1.8ms)[0m  [1m[32mINSERT INTO "skor_efikasis" ("referensi_soal", "jawaban", "pre_test_id", "post_test_id", "jenis", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["referensi_soal", 21], ["jawaban", 90], ["pre_test_id", 28], ["post_test_id", nil], ["jenis", 1], ["created_at", "2022-11-08 23:17:26.269607"], ["updated_at", "2022-11-08 23:17:26.269607"]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (20.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+Completed 200 OK in 155ms (Views: 0.7ms | ActiveRecord: 24.7ms | Allocations: 9844)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:17:33 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>80, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5eb8764b70>, params: {"referensi_soal"=>21, "jawaban"=>80, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:175:in `cek_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.4ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 28 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.2ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.2ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."id" != ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["id", 91], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Update (0.9ms)[0m  [1m[33mUPDATE "skor_efikasis" SET "jawaban" = ?, "updated_at" = ? WHERE "skor_efikasis"."id" = ?[0m  [["jawaban", 80], ["updated_at", "2022-11-08 23:17:33.784268"], ["id", 91]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mTRANSACTION (16.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+Completed 200 OK in 104ms (Views: 0.6ms | ActiveRecord: 20.7ms | Allocations: 9863)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:18:06 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>70, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5eb079f098>, params: {"referensi_soal"=>21, "jawaban"=>70, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mReference Load (1.0ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.2ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 28 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.3ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."id" != ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["id", 91], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Update (1.1ms)[0m  [1m[33mUPDATE "skor_efikasis" SET "jawaban" = ?, "updated_at" = ? WHERE "skor_efikasis"."id" = ?[0m  [["jawaban", 70], ["updated_at", "2022-11-08 23:18:06.731017"], ["id", 91]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mTRANSACTION (23.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+Completed 200 OK in 115ms (Views: 0.7ms | ActiveRecord: 34.5ms | Allocations: 20203)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:18:26 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>70, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5eb472ff00>, params: {"referensi_soal"=>21, "jawaban"=>70, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mReference Load (0.4ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.4ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 28 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.3ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."id" != ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["id", 91], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+Completed 200 OK in 94ms (Views: 0.6ms | ActiveRecord: 9.1ms | Allocations: 19535)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1024" for 127.0.0.1 at 2022-11-09 08:19:30 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1024", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.1ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5ea83302d0>, params: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1024", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1024], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.6ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 28 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.2ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."id" != ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["id", 91], ["pre_test_id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Update (4.0ms)[0m  [1m[33mUPDATE "skor_efikasis" SET "jawaban" = ?, "updated_at" = ? WHERE "skor_efikasis"."id" = ?[0m  [["jawaban", 60], ["updated_at", "2022-11-08 23:19:30.850838"], ["id", 91]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mTRANSACTION (19.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+Completed 200 OK in 115ms (Views: 0.6ms | ActiveRecord: 26.5ms | Allocations: 9763)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1021" for 127.0.0.1 at 2022-11-09 08:33:19 +0900
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1021", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5ea8452370>, params: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1021", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mReference Load (0.6ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.4ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 25 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.3ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.4ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Create (0.7ms)[0m  [1m[32mINSERT INTO "skor_efikasis" ("referensi_soal", "jawaban", "pre_test_id", "post_test_id", "jenis", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["referensi_soal", 21], ["jawaban", 60], ["pre_test_id", 25], ["post_test_id", nil], ["jenis", 1], ["created_at", "2022-11-08 23:33:19.876692"], ["updated_at", "2022-11-08 23:33:19.876692"]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (23.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+Completed 200 OK in 71ms (Views: 0.8ms | ActiveRecord: 28.0ms | Allocations: 7982)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1021" for 127.0.0.1 at 2022-11-09 08:37:07 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1021", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.3ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+[31mUnpermitted parameters: :periode_treatment_id, :pre_test. Context: { controller: Api::V1::PreTestController, action: effication_pre_test, request: #<ActionDispatch::Request:0x00007f5eb80a16d0>, params: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1021", "controller"=>"api/v1/pre_test", "action"=>"effication_pre_test", "pre_test"=>{}} }[0m
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? ORDER BY "references"."id" DESC LIMIT ?[0m  [["jenis", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:25:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.2ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE (skor_efikasis.pre_test_id = 25 AND skor_efikasis.referensi_soal = 26)[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:27:in `effication_pre_test'
+  [1m[36mSkorEfikasi Load (0.5ms)[0m  [1m[34mSELECT "skor_efikasis".* FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:37:in `effication_pre_test'
+  [1m[36mReference Load (0.3ms)[0m  [1m[34mSELECT "references".* FROM "references" WHERE "references"."jenis" = ? AND "references"."id" = ?[0m  [["jenis", 2], ["id", 21]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:39:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["pre_test_id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:40:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mSkorEfikasi Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "skor_efikasis" WHERE "skor_efikasis"."referensi_soal" = ? AND "skor_efikasis"."id" != ? AND "skor_efikasis"."pre_test_id" = ? LIMIT ?[0m  [["referensi_soal", 21], ["id", 92], ["pre_test_id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/pre_test_controller.rb:44:in `effication_pre_test'
+Completed 200 OK in 83ms (Views: 0.7ms | ActiveRecord: 8.5ms | Allocations: 19529)
+
+
+Started POST "/api/v1/pre_test/efikasi?periode_treatment_id=1021" for 127.0.0.1 at 2022-11-09 08:37:36 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::PreTestController#effication_pre_test as */*
+  Parameters: {"referensi_soal"=>21, "jawaban"=>60, "periode_treatment_id"=>"1021", "pre_test"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPreTest Load (0.2ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+  [1m[36mCACHE PreTest Load (0.0ms)[0m  [1m[34mSELECT "pre_tests".* FROM "pre_tests" WHERE "pre_tests"."periode_treatment_id" = ? LIMIT ?[0m  [["periode_treatment_id", 1021], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/pre_test_controller.rb:176:in `cek_pre_test'
+Completed 401 Unauthorized in 264633ms (ActiveRecord: 4.2ms | Allocations: 182596)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-11-09 08:42:13 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."no_hp" = ? AND "identies"."tanggal_lahir" = ? LIMIT ?[0m  [["no_hp", "08119235212"], ["tanggal_lahir", "1997-11-22"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `login'
+  [1m[36mHistoryToken Load (0.3ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."user" = ? LIMIT ?[0m  [["user", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `login'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mHistoryToken Update (0.6ms)[0m  [1m[33mUPDATE "history_tokens" SET "token" = ?, "updated_at" = ? WHERE "history_tokens"."id" = ?[0m  [["token", "[FILTERED]"], ["updated_at", "2022-11-08 23:42:13.848948"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mTRANSACTION (25.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+Completed 500 Internal Server Error in 233ms (ActiveRecord: 32.6ms | Allocations: 22343)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<UsersController:0x0000000002c5d8>
+Did you mean?  current_admin):
+  
+app/controllers/users_controller.rb:21:in `login'
+Started POST "/login" for 127.0.0.1 at 2022-11-09 08:42:47 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#login as */*
+  Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."no_hp" = ? AND "identies"."tanggal_lahir" = ? LIMIT ?[0m  [["no_hp", "08119235212"], ["tanggal_lahir", "1997-11-22"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `login'
+  [1m[36mHistoryToken Load (0.3ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."user" = ? LIMIT ?[0m  [["user", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `login'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mHistoryToken Update (0.5ms)[0m  [1m[33mUPDATE "history_tokens" SET "token" = ?, "updated_at" = ? WHERE "history_tokens"."id" = ?[0m  [["token", "[FILTERED]"], ["updated_at", "2022-11-08 23:42:47.600848"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mTRANSACTION (18.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+Completed 200 OK in 56ms (Views: 1.3ms | ActiveRecord: 22.9ms | Allocations: 8396)
+
+
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:02:47 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:02:48 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:04:34 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:04:34 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:05:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:05:04 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:05:34 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:05:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:06:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:06:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:06:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:06:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:07:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:07:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:07:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:07:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:08:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:08:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:08:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:08:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:09:05 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:09:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:09:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:09:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:10:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:10:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:10:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:10:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:11:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:11:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:11:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:11:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:12:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:12:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:12:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:12:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:26:51 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started GET "/rdash.json" for 127.0.0.1 at 2022-11-09 09:26:51 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/rdash.json"):
+  
+Started POST "/login" for 127.0.0.1 at 2022-11-09 19:56:17 +0900
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.6ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."no_hp" = ? AND "identies"."tanggal_lahir" = ? LIMIT ?[0m  [["no_hp", "08119235212"], ["tanggal_lahir", "1997-11-22"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `login'
+  [1m[36mHistoryToken Load (0.2ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."user" = ? LIMIT ?[0m  [["user", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `login'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mHistoryToken Update (0.4ms)[0m  [1m[33mUPDATE "history_tokens" SET "token" = ?, "updated_at" = ? WHERE "history_tokens"."id" = ?[0m  [["token", "[FILTERED]"], ["updated_at", "2022-11-09 10:56:18.203735"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mTRANSACTION (19.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+Completed 200 OK in 198ms (Views: 0.7ms | ActiveRecord: 22.9ms | Allocations: 18993)
+
+
+Started GET "//api/v1/identies" for 127.0.0.1 at 2022-11-09 19:56:53 +0900
+Processing by Api::V1::IdentiesController#index as */*
+  [1m[36mIdenty Load (0.8ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mIdenty Load (0.6ms)[0m  [1m[34mSELECT "identies".* FROM "identies"[0m
+  ↳ app/controllers/api/v1/identies_controller.rb:10:in `index'
+Completed 200 OK in 20ms (Views: 13.6ms | ActiveRecord: 1.3ms | Allocations: 7686)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 19:58:21 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPeriodeTreatment Load (0.3ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ?[0m  [["identitas_id", 60]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:31:in `show_periode'
+Completed 200 OK in 32ms (Views: 2.0ms | ActiveRecord: 2.7ms | Allocations: 6399)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 20:02:45 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPeriodeTreatment Load (0.2ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ?[0m  [["identitas_id", 60]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:31:in `show_periode'
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1543)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 20:03:43 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 401 Unauthorized in 158032ms (ActiveRecord: 2.6ms | Allocations: 144605)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 20:06:33 +0900
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mPeriodeTreatment Load (0.3ms)[0m  [1m[34mSELECT "periode_treatments".* FROM "periode_treatments" WHERE "periode_treatments"."identitas_id" = ?[0m  [["identitas_id", 60]]
+  ↳ app/controllers/api/v1/treatment_controller.rb:33:in `show_periode'
+Completed 200 OK in 21153ms (Views: 1.6ms | ActiveRecord: 3.8ms | Allocations: 140130)
+
+
+Started POST "/login" for 127.0.0.1 at 2022-11-09 20:07:06 +0900
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+Can't verify CSRF token authenticity.
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."no_hp" = ? AND "identies"."tanggal_lahir" = ? LIMIT ?[0m  [["no_hp", "08119235212"], ["tanggal_lahir", "1997-11-22"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `login'
+  [1m[36mHistoryToken Load (0.2ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."user" = ? LIMIT ?[0m  [["user", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13:in `login'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mHistoryToken Update (0.4ms)[0m  [1m[33mUPDATE "history_tokens" SET "token" = ?, "updated_at" = ? WHERE "history_tokens"."id" = ?[0m  [["token", "[FILTERED]"], ["updated_at", "2022-11-09 11:07:06.766102"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:16:in `login'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:16:in `login'
+Completed 200 OK in 170ms (Views: 0.8ms | ActiveRecord: 21.6ms | Allocations: 18993)
+
+
+Started GET "//whoami?by_token=[FILTERED]" for 127.0.0.1 at 2022-11-09 20:07:40 +0900
+Processing by UsersController#cek_token as */*
+  Parameters: {"by_token"=>"[FILTERED]"}
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mHistoryToken Load (0.2ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."token" = ? LIMIT ?[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `cek_token'
+  [1m[36mCACHE Identy Load (0.0ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `cek_token'
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 2579)
+
+
+Started GET "//whoami?by_token=[FILTERED]" for 127.0.0.1 at 2022-11-09 20:07:46 +0900
+Processing by UsersController#cek_token as */*
+  Parameters: {"by_token"=>"[FILTERED]"}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+  [1m[36mHistoryToken Load (0.1ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."token" = ? LIMIT ?[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `cek_token'
+  [1m[36mCACHE Identy Load (0.0ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `cek_token'
+Completed 200 OK in 11ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1834)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 20:08:13 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:39:in `logged_in_user'
+Completed 401 Unauthorized in 328344ms (ActiveRecord: 0.7ms | Allocations: 161835)
+
+
+Started GET "//whoami?by_token=[FILTERED]" for 127.0.0.1 at 2022-11-09 20:13:59 +0900
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#cek_token as */*
+  Parameters: {"by_token"=>"[FILTERED]"}
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:40:in `logged_in_user'
+  [1m[36mHistoryToken Load (0.3ms)[0m  [1m[34mSELECT "history_tokens".* FROM "history_tokens" WHERE "history_tokens"."token" = ? LIMIT ?[0m  [["token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37:in `cek_token'
+  [1m[36mCACHE Identy Load (0.0ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `cek_token'
+Completed 200 OK in 117ms (Views: 0.7ms | ActiveRecord: 2.6ms | Allocations: 17015)
+
+
+Started GET "//api/v1/identies" for 127.0.0.1 at 2022-11-09 20:14:13 +0900
+Processing by Api::V1::IdentiesController#index as */*
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:40:in `logged_in_user'
+  [1m[36mIdenty Load (0.4ms)[0m  [1m[34mSELECT "identies".* FROM "identies"[0m
+  ↳ app/controllers/api/v1/identies_controller.rb:10:in `index'
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 0.7ms | Allocations: 7154)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 20:14:34 +0900
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:40:in `logged_in_user'
+Completed 401 Unauthorized in 111738ms (ActiveRecord: 0.5ms | Allocations: 122851)
+
+
+Started GET "/api/v1/periode/treatment/60" for 127.0.0.1 at 2022-11-09 20:16:34 +0900
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TreatmentController#show_periode as */*
+  Parameters: {"identitas_id"=>60, "status"=>1, "tanggal_awal"=>"2022-08-03", "id"=>"60", "treatment"=>{}}
+  [1m[36mIdenty Load (0.3ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:40:in `logged_in_user'
+Completed 401 Unauthorized in 82349ms (ActiveRecord: 2.9ms | Allocations: 133895)
+
+
+Started GET "/api/v1/identies/84" for 127.0.0.1 at 2022-11-09 20:34:36 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::IdentiesController#show as */*
+  Parameters: {"id"=>"84"}
+  [1m[36mIdenty Load (0.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 84], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/identies_controller.rb:58:in `set_identy'
+  [1m[36mIdenty Load (15.2ms)[0m  [1m[34mSELECT "identies".* FROM "identies" WHERE "identies"."id" = ? LIMIT ?[0m  [["id", 75], ["LIMIT", 1]]
+  ↳ app/controllers/ws_controller.rb:40:in `logged_in_user'
+Completed 200 OK in 98ms (Views: 8.0ms | ActiveRecord: 16.6ms | Allocations: 13629)
+
+

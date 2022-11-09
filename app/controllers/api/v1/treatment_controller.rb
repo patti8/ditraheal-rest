@@ -4,12 +4,14 @@ class Api::V1::TreatmentController < WsController
     before_action :cek_periode_treatment_selesai, only: :periode
 
     def periode
-        
+  
         @periode = PeriodeTreatment.new(periode_params)
         @periode.tanggal_akhir = "0000-00-00"
         
         if @cek.present?
+
             render :json => {"code": 400, success: false, "message": "Anda memiliki treatment yang belum selesai.", data: nil}, status: 400  
+        
         else
             if @periode.save
                 PreTest.create!(periode_treatment_id: @periode.id)
@@ -23,12 +25,12 @@ class Api::V1::TreatmentController < WsController
     end
 
     def show_periode
-
-        @periode = PeriodeTreatment.where(identitas_id: params[:identy])
         
-        if params[:identy].present? && @periode.present?
+        @periode = PeriodeTreatment.where(identitas_id: params[:identitas_id])
+        
+        if params[:identitas_id].present? && @periode.present?
             
-            render :json => {"code": 200, success: true, "message": "authentication success.", data: @periode}  
+            render :json => {"code": 200, success: true, "message": "authentication success.", data: @periode.last}  
 
         else
             render :json => {"code": 204, success: false, "message": "Maaf, periode treatment tidak ditemukan.", data: nil}  
@@ -38,14 +40,11 @@ class Api::V1::TreatmentController < WsController
 
     def generate
         Resources::Tools.create_treatment_by(params[:periode_treatment])
-        # cek = Treatment.where()
     end
 
     def by_date
 
        @treatment = Treatment.where(periode_treatment_id: params[:periode_treatment], tanggal: Date.today)
-    
-       debugger
 
        if @treatment.present?
             

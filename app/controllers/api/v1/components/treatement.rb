@@ -1,5 +1,7 @@
-class Treatment
+# class Treatment
 
-    # def self.
-# Questions 
-end
+#     def self.
+
+#     # def self.
+# # Questions 
+# end

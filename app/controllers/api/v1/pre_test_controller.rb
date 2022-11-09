@@ -8,7 +8,7 @@ class Api::V1::PreTestController < WsController
 
     # post efficacious_test 
     def effication_pre_test
-
+        
         # jika belum ada pre test 
         if cek_pre_test.present?
 
@@ -17,6 +17,8 @@ class Api::V1::PreTestController < WsController
             @skor_efikasis = SkorEfikasi.new(test_params)
             @skor_efikasis.pre_test_id = cek_pre_test.id
             @skor_efikasis.jenis = 1
+            
+            
 
             @soal = Reference.where(jenis: 2)
 
@@ -32,10 +34,14 @@ class Api::V1::PreTestController < WsController
 
             else
                 # validasi soal 
+                @cek_pre_test_efikasi = SkorEfikasi.find_by(referensi_soal: @skor_efikasis.referensi_soal, pre_test_id: @skor_efikasis.pre_test_id)
 
-                efikasi/   if Resources::ReferensiSoal.efikasi_by(params[:referensi_soal]).present?
+                if Resources::ReferensiSoal.efikasi_by(params[:referensi_soal]).present?
                     if @skor_efikasis.save                        
                         @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil disimpan"
+                        @status = 200
+                    elsif @cek_pre_test_efikasi.present?
+                        @respon = @cek_pre_test_efikasi.update(jawaban: @skor_efikasis.jawaban)
                         @status = 200
                     else
                       @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@skor_efikasis.errors.full_messages}"
@@ -70,9 +76,6 @@ class Api::V1::PreTestController < WsController
        
         # render :json => {"code": 200, success: true, "message": "#{@respon}.", data: @skor_efikasis}  
         render :json => {success: if @status == 200 then true else false end, "message": "#{@respon}.", data: @skor_efikasis}, status: @status
-
-        
-        
         
     end
 
@@ -172,6 +175,10 @@ class Api::V1::PreTestController < WsController
         def cek_pre_test
           cek_pre_test = PreTest.find_by(periode_treatment_id: params[:periode_treatment_id])
         end
+
+        def batasi_per_user
+        end
+
 
         def test_params
             params.permit(:referensi_soal, :jawaban, :pre_test_id, :jenis)
