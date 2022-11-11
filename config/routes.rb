@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       post "/pre_test/level_trauma", to: "pre_test#level_trauma_pre_test"
 
       post '/periode/treatment', to: "treatment#periode"
-      get '/periode/treatment/:id', to: "treatment#show_periode"
+      get '/periode/treatment', to: "treatment#show_periode"
 
       post '/generate/treatment', to: "treatment#generate"
       get '/by_date/treatment', to: "treatment#by_date"
