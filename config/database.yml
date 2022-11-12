@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: ditraheal.sqlite3
+  database: ditraheal-development.sqlite3
   adapter: sqlite3
   # adapter: mysql2
   # hostname: localhost

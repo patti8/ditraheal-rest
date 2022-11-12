@@ -1,4 +1,0 @@
-USE layanan;
-
-ALTER TABLE `jasa_tuslah_farmasi`
-	CHANGE COLUMN `NOMOR` `ID` CHAR(11) NOT NULL DEFAULT '0' FIRST;

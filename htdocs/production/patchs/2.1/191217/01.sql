@@ -1,2 +1,0 @@
-USE aplikasi;
-REPLACE INTO `properti_config` (`ID`, `NAMA`, `VALUE`) VALUES (14, 'ATURAN_PERHITUNGAN_AKOMODASI', '1');

@@ -1,4 +1,0 @@
-USE layanan;
-
-ALTER TABLE `catatan_hasil_lab`
-	CHANGE COLUMN `CATATAN` `CATATAN` VARCHAR(10000) NOT NULL COMMENT 'Kesan / Saran' AFTER `TANGGAL`;

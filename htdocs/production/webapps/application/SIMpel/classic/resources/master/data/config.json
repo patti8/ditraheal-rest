@@ -1,6 +1,0 @@
-webservice = (function() {
-	var host = location.hostname;
-	return {
-		location: "http://"+host+"/webservice/"
-	};
-})();
