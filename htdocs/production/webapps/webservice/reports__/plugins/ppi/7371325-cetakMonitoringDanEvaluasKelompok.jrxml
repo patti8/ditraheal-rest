@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cetakMonitoringDanEvaluasKelompok" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91f196c9-3759-423a-a919-f4a34cb2fc2f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PJENIS" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[2]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[CALL ppi.cetakMonitoringDanEvaluasi($P{PID},$P{PJENIS})]]>
+	</queryString>
+	<field name="NAMAINSTANSI" class="java.lang.String"/>
+	<field name="JUDUL" class="java.lang.String"/>
+	<field name="RUANGAN" class="java.lang.String"/>
+	<field name="DESK_KELOMPOK" class="java.lang.String"/>
+	<field name="ID_KELOMPOK" class="java.lang.Integer"/>
+	<field name="TANGGAL_BUAT" class="java.lang.String"/>
+	<field name="NAMA_KEGIATAN" class="java.lang.String"/>
+	<field name="YA" class="java.lang.Long"/>
+	<field name="TIDAK" class="java.lang.Long"/>
+	<field name="JUMLAH_YA" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.lang.Long"/>
+	<field name="HASIL" class="java.math.BigDecimal"/>
+	<field name="KET" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RTL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="KELOMPOK">
+		<groupExpression><![CDATA[$F{ID_KELOMPOK}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="20" isRemoveLineWhenBlank="true" uuid="457a7334-cc87-4d3d-987a-5b7d6882b8b7"/>
+					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Top">
+						<font fontName="Times New Roman" size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DESK_KELOMPOK}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="40" width="555" height="20" uuid="1bae6396-8347-42ae-9895-74cc2419b8f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMAINSTANSI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="d22cd536-6731-4ae2-a064-9f22d7b60db9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[LEMBAR MONITORING DAN EVALUASI]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="555" height="20" uuid="38e3389e-47ef-4156-8331-4746edbf6ffe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{JUDUL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="15" width="555" height="20" uuid="159c804f-127e-440e-bc80-280974fc4fe8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Ruangan : '+$F{RUANGAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="308" y="0" width="135" height="20" uuid="4af2b097-1c34-4bb3-8b33-d9285874bf0c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEMUAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="443" y="0" width="112" height="20" uuid="6deb311d-1742-491b-817e-fb2f833fa42f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RTL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="233" height="20" uuid="afb8015e-a1d0-4b38-aa52-9d0566c701a5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUANG LINGKUP / SUPERVISI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="0" width="75" height="20" uuid="99a02b61-fd40-432b-885b-0eafe196f172"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ JAM & TGL ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="443" y="0" width="112" height="20" uuid="882b700e-6456-400a-b042-7c113b940a5e"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RTL}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="233" height="20" isRemoveLineWhenBlank="true" uuid="82656914-ebe5-4250-a1b2-5ea0e134808a"/>
+				<box topPadding="2" leftPadding="30" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMA_KEGIATAN}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="7" y="2" width="15" height="15" uuid="6dd75d23-69a3-4f62-856d-8f26c2a3f40d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="7" y="2" width="15" height="15" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="73b73ef2-1673-4ea1-a57b-9e1b6d5bfde6">
+					<printWhenExpression><![CDATA[$F{YA}.toString().trim().equals("1")]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA['√']]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="308" y="0" width="135" height="20" uuid="48ad50dd-d8df-4857-97b7-13f0fb12fe13"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KET}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="233" y="0" width="75" height="20" uuid="e54c9871-e95f-4fca-95e3-0b931a527dd9"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TANGGAL_BUAT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="12" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="168" splitType="Stretch">
+			<staticText>
+				<reportElement x="334" y="67" width="221" height="20" uuid="4e86add7-d368-4fb1-ae56-d31ea05dc9b3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[..................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="0" width="221" height="20" uuid="3bae9c35-30b1-46af-8b1c-5dc64cca606d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[IPCN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="221" height="20" uuid="eae53f22-bf9d-4260-9cec-53c8e6b92f00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Kepala Ruangan / Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="67" width="221" height="20" uuid="2e5cad80-7481-487b-8a7d-7e3749a9b0d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[..................................................................................]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,10 @@
+USE aplikasi;
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('9902', 'MUTU', 1, '', 1, NULL, NULL, 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('990201', 'PENGATURAN', 2, 'Pengaturan', 1, NULL, 'x-fa fa-cogs', 1);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('99020101', 'INDIKATOR', 3, 'Indikator Mutu', 1, 'mutu.indikator.Wokrspace', 'x-fa fa-book', 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('99020102', 'INDIKATOR RUANGAN', 3, 'Indikator Ruangan', 1, 'mutu.indikator.ruangan.Workspace', 'x-fa fa-th-list', 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('990202', 'INPUT DATA INDIKATOR', 2, 'Data Indikator', 1, 'mutu.indikator.data.Worksapce', 'x-fa fa-table', 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('990203', 'TINDAK LANJUT', 2, 'Tindak Lanjut', 1, 'mutu.indikator.tindaklanjut.Workspace', 'x-fa fa-archive', 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('99020301', 'ANALISA', 3, '', 1, NULL, NULL, 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('99020302', 'PDSA', 3, '', 1, NULL, NULL, 0);
+REPLACE INTO aplikasi.`modules` (`ID`, `NAMA`, `LEVEL`, `DESKRIPSI`, `STATUS`, `CLASS`, `ICON_CLS`, `HAVE_CHILD`) VALUES ('99020303', 'LAPORAN & BALASAN', 3, '', 1, NULL, NULL, 0);

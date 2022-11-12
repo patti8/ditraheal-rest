@@ -17,8 +17,6 @@ class Api::V1::PreTestController < WsController
             @skor_efikasis = SkorEfikasi.new(test_params)
             @skor_efikasis.pre_test_id = cek_pre_test.id
             @skor_efikasis.jenis = 1
-            
-            
 
             @soal = Reference.where(jenis: 2)
 
@@ -122,10 +120,15 @@ class Api::V1::PreTestController < WsController
                     @status = 200
                  
                 else 
+                    @cek_pre_test_level_trauma = LevelTrauma.find_by(referensi_soal: @level_trauma.referensi_soal, pre_test_id: @level_trauma.pre_test_id)
+
                     # cek soal 
                     if Resources::ReferensiSoal.level_trauma_by(params[:referensi_soal]).present?
                         if @level_trauma.save
                             @respon = "soal no. #{@level_trauma.referensi_soal} berhasil disimpan"
+                            @status = 200
+                        elsif  @cek_pre_test_level_trauma.present?
+                            @respon = @cek_pre_test_level_trauma.update(jawaban: @level_trauma.jawaban)
                             @status = 200
                         else
                             @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@level_trauma.errors.full_messages}"

@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rekapLaporanTotalPerJenisRuangan" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cc37be5-957d-4632-8ed3-3455859058ce">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="L-SIMPEL"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="TGLAWAL" class="java.lang.String"/>
+	<parameter name="TGLAKHIR" class="java.lang.String"/>
+	<parameter name="PJENIS" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[CALL ppi.`rekapLaporanTotalPerJenisRuangan`( $P{TGLAWAL} ,  $P{TGLAKHIR} ,  $P{PJENIS} )]]>
+	</queryString>
+	<field name="NAMA_INSTANSI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMA_INSTANSI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mp"/>
+	</field>
+	<field name="DESK_JKUNJUNGA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESK_JKUNJUNGA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="referensi"/>
+	</field>
+	<field name="P_AWAL" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="P_AWAL"/>
+	</field>
+	<field name="P_AKHIR" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="P_AKHIR"/>
+	</field>
+	<field name="ID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ruangan"/>
+	</field>
+	<field name="DESK_RUANGAN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESK_RUANGAN"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ruangan"/>
+	</field>
+	<field name="T_ALAT_ISK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_ALAT_ISK"/>
+	</field>
+	<field name="T_LAMA_ISK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_LAMA_ISK"/>
+	</field>
+	<field name="T_STATUS_ISK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_STATUS_ISK"/>
+	</field>
+	<field name="PERSEN_ISK" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PERSEN_ISK"/>
+	</field>
+	<field name="T_ALAT_VAP" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_ALAT_VAP"/>
+	</field>
+	<field name="T_LAMA_VAP" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_LAMA_VAP"/>
+	</field>
+	<field name="T_STATUS_VAP" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_STATUS_VAP"/>
+	</field>
+	<field name="PERSEN_VAP" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PERSEN_VAP"/>
+	</field>
+	<field name="T_ALAT_FLE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_ALAT_FLE"/>
+	</field>
+	<field name="T_LAMA_FLE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_LAMA_FLE"/>
+	</field>
+	<field name="T_STATUS_FLE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_STATUS_FLE"/>
+	</field>
+	<field name="PERSEN_FLE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PERSEN_FLE"/>
+	</field>
+	<field name="T_IDO" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="T_IDO"/>
+	</field>
+	<field name="T_STATUS_IDO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="T_STATUS_IDO"/>
+	</field>
+	<field name="PERSEN_IDO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PERSEN_IDO"/>
+	</field>
+	<variable name="NOMOR" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[new Integer($V{NOMOR}.intValue())+1]]></variableExpression>
+	</variable>
+	<variable name="T_FLEBITIS_LAMA" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_LAMA_FLE}]]></variableExpression>
+	</variable>
+	<variable name="T_FLEBITIS_HAIS" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_STATUS_FLE}]]></variableExpression>
+	</variable>
+	<variable name="T_ISK_LAMA" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_LAMA_ISK}]]></variableExpression>
+	</variable>
+	<variable name="T_ISK_HAIS" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_STATUS_ISK}]]></variableExpression>
+	</variable>
+	<variable name="T_VAP_LAMA" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_LAMA_VAP}]]></variableExpression>
+	</variable>
+	<variable name="T_VAP_HAIS" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_STATUS_VAP}]]></variableExpression>
+	</variable>
+	<variable name="T_IDO_LAMA" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_IDO}]]></variableExpression>
+	</variable>
+	<variable name="T_IDO_HAIS" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_STATUS_IDO}]]></variableExpression>
+	</variable>
+	<variable name="T_FLEBITIS_ALAT" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_ALAT_FLE}]]></variableExpression>
+	</variable>
+	<variable name="T_FLEBITIS_PERSEN" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{PERSEN_FLE}]]></variableExpression>
+	</variable>
+	<variable name="T_ISK_ALAT" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_ALAT_ISK}]]></variableExpression>
+	</variable>
+	<variable name="T_ISK_PERSEN" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{PERSEN_ISK}]]></variableExpression>
+	</variable>
+	<variable name="T_VAP_ALAT" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{T_ALAT_VAP}]]></variableExpression>
+	</variable>
+	<variable name="T_VAP_PERSEN" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{PERSEN_VAP}]]></variableExpression>
+	</variable>
+	<variable name="T_IDO_PERSEN" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{PERSEN_IDO}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="e8322519-fb62-49ac-9ced-be5b248f2cf9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REKAPITULASI DATA HAIs]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="554" height="14" uuid="0426f4e7-2a10-42b7-8d58-00ac8c67b392"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMA_INSTANSI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="34" width="100" height="14" uuid="036825ee-3b9e-4029-9103-e186a0f0a748"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jenis Kunjungan]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="34" width="290" height="14" uuid="da8c6788-08a0-4fcc-8a82-4c066a7b2b9d"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+ $F{DESK_JKUNJUNGA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="48" width="100" height="14" uuid="f203c5e8-d695-4dbf-b775-b58d171bc1e2"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periode]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="48" width="290" height="14" uuid="b459b162-c18a-4b56-8f79-546c7decc232"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+ $F{P_AWAL} + " s/d "+$F{P_AKHIR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="20" height="61" uuid="fc93dc92-e7a0-4e92-9636-1ed240382e90"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="61" uuid="73d46911-d13a-42bc-9dfb-6e96287998ab"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[RUANGAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="116" height="30" uuid="b2f6d3df-73d0-4d53-8f69-26749cbe91b2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[IADP ( FLEBITIS )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="30" width="29" height="31" uuid="b0fc061d-008b-42fb-aaf4-d9c57c8c196a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Jml pasien dgn IVL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="30" width="29" height="31" uuid="f3fd996f-f944-4a78-bf2d-c5808b2bab99"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[lama pemasangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="30" width="29" height="31" uuid="bffa5988-61cc-47ab-8f77-a2add764805e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[HAIs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="30" width="29" height="31" uuid="3c04b18d-cee8-469c-aff7-3a8f3f72102a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="0" width="116" height="30" uuid="c1cf52e2-d693-4e7a-ac46-b9f461382383"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ISK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="30" width="29" height="31" uuid="d1862577-10f1-4197-87b5-3d4133b7524d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Jml pasien dgn UC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="30" width="29" height="31" uuid="d43b2179-a9fc-4001-af7c-d5f4a0d98a09"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[lama pemasangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="30" width="29" height="31" uuid="e8764cfe-fdf8-4567-ae9a-3f566e629d2d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[HAIs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="30" width="29" height="31" uuid="d96dfaff-5a4b-4e38-8acc-43103e2d9637"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="0" width="87" height="30" uuid="f012a6f3-9ae9-4158-a18b-87e93f82f8aa"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[IDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="30" width="29" height="31" uuid="821df27a-69ba-49ea-bd9b-eeca01dc0269"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Jml pasien OP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="30" width="29" height="31" uuid="5ef7ed8b-3b15-4f38-983e-f6fdbf83affd"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[HAIs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="30" width="29" height="31" uuid="f48e7955-2207-463e-97bb-f7bfb46237e3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="0" width="116" height="30" uuid="b3dd88b9-2726-407b-ba3a-d384c6d65cf0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[VAP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="30" width="29" height="31" uuid="7060e633-7fbc-4f85-8830-caae4be7f11d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Jml pasien dgn Ventilator]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="30" width="29" height="31" uuid="d69043f5-cfee-4a88-9c78-63bf0717bd9b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[lama pemasangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="497" y="30" width="29" height="31" uuid="bfb72a86-ce36-47ad-9ae1-b64600b917b6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[HAIs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="30" width="29" height="31" uuid="675a6580-8437-457f-b72d-9966696ff677"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="20" height="30" isPrintWhenDetailOverflows="true" uuid="51c8fb56-96a3-4fa9-b369-47d3fbba2319">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[new Integer($V{NOMOR})+1]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="20" y="0" width="100" height="30" isPrintWhenDetailOverflows="true" uuid="7d51b31e-4993-4127-bf78-8c0a61ef5f50">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{DESK_RUANGAN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="120" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="e36388ba-9fe9-446d-8699-5dfeede55400">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_ALAT_FLE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="149" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="039e00ce-00f4-4714-9e82-4f48bf5e691c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_LAMA_FLE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="178" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="f9470046-d53c-47e5-bfbd-5869193ad7f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_STATUS_FLE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="207" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="d57bfd86-c3a8-48b6-9a1e-59a21ad0ead4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{PERSEN_FLE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="236" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="8ebd3c17-c299-4946-96fb-682406700c48">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_ALAT_ISK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="265" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="2e90d62b-dd39-4573-a42f-186d42209641">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_LAMA_ISK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="294" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="64e00222-9331-41ab-a61a-4a6cd4790ac8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_STATUS_ISK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="323" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="d34f4cab-41e3-4e74-9ceb-7486eff11550">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{PERSEN_ISK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="352" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="f130065c-4cf6-4e6e-9e76-30a680d59b56">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_IDO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="381" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="ebdb97b2-8de7-4133-bbc9-a935bde5c358">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_STATUS_IDO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="410" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="921a8a88-8da5-40ce-8729-c4bc8d20e7f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{PERSEN_IDO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="439" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="69edd266-1c71-4563-b1c0-dee5cdfb379c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_ALAT_VAP}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="468" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="543208c6-dee9-4d0c-b39f-6a1fbf152f33">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_LAMA_VAP}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="497" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="89d4642a-dcd9-438d-ba81-a76812a24a06">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{T_STATUS_VAP}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="526" y="0" width="29" height="30" isPrintWhenDetailOverflows="true" uuid="740f7470-7f83-4d16-9981-1e77844d5ad9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{PERSEN_VAP}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="51" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="16" width="120" height="30" isPrintWhenDetailOverflows="true" uuid="93fc7394-41e4-4eca-bf2b-056401210f96">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="120" y="16" width="116" height="30" isPrintWhenDetailOverflows="true" uuid="a9242d43-a884-45cc-8a40-15b6917247c3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{T_FLEBITIS_HAIS}/$V{T_FLEBITIS_LAMA}) * 100]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="236" y="16" width="116" height="30" isPrintWhenDetailOverflows="true" uuid="e411a5c4-8b01-4ae9-82c0-6898db0204b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{T_ISK_HAIS}/$V{T_ISK_LAMA}) * 100]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="439" y="16" width="116" height="30" isPrintWhenDetailOverflows="true" uuid="d09570c5-8cfd-410a-86de-63459dd37ded">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{T_VAP_HAIS}/$V{T_VAP_LAMA}) * 100]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="352" y="16" width="87" height="30" isPrintWhenDetailOverflows="true" uuid="0d1ff31b-bfa3-407c-8969-24a64f6ae57a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($V{T_IDO_HAIS}/$V{T_IDO_LAMA}) * 100]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="120" height="16" isPrintWhenDetailOverflows="true" uuid="c1901f0b-9143-45dd-a2be-b9489b446f62">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["JUMLAH"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="178" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="402fa86b-1eed-4e3b-832e-dbcd6d903bc4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_FLEBITIS_HAIS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="149" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="a388f95a-8e3c-4bbb-9134-fa0bf76bd987">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_FLEBITIS_LAMA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="120" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="3ea5923e-d20e-4ce4-900b-26bafe57ff77">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_FLEBITIS_ALAT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="207" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="0ced47a3-e9c6-48c9-9174-24e828abcf20">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_FLEBITIS_PERSEN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="323" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="dbd9d19c-5fae-49bc-b830-549cb2cfd375">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_ISK_PERSEN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="294" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="d03592f1-1b36-4c21-8f3e-64dc6683f261">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_ISK_HAIS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="265" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="88feb1f0-f61d-4013-93a3-b95519a1cc84">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_ISK_LAMA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="236" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="a0b4c6a2-9c42-4518-8234-239227e20ebd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_ISK_ALAT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="352" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="54d0f65c-45a2-4a7a-acd4-cf22c83ffd8f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_IDO_LAMA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="381" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="12e0d111-44ba-411e-9053-dc9a9e35d495">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_IDO_HAIS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="410" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="2a6c20c4-f09c-4d6d-ba71-a391c9d02548">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_IDO_PERSEN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="439" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="8c5a9a80-ad88-48e4-ac3f-850c5663a412">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_VAP_ALAT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="468" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="f6249678-497e-4b74-8150-d64f56e93f79">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_VAP_LAMA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="497" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="e2dfc8ee-ce49-4f56-afe2-6c14791276ca">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_VAP_HAIS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="526" y="0" width="29" height="16" isPrintWhenDetailOverflows="true" uuid="c10514a6-074b-4f0e-8dc7-3d9e3693394a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54aea365-a51e-49af-b377-192f8f970829"/>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{T_VAP_PERSEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

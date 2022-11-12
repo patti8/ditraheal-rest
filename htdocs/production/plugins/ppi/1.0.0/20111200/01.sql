@@ -1,0 +1,16 @@
+USE aplikasi;
+UPDATE aplikasi.modules SET LEVEL = '2' WHERE ID = '9901';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990101';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990102';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010201';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010202';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010203';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990103';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990104';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990105';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010501';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010502';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990106';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010601';
+UPDATE aplikasi.modules SET LEVEL = '4' WHERE ID = '99010602';
+UPDATE aplikasi.modules SET LEVEL = '3' WHERE ID = '990107';

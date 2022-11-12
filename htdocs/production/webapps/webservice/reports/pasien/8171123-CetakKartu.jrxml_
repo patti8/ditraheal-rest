@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CetakKartu" pageWidth="240" pageHeight="153" orientation="Landscape" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c9069c98-01ee-43c0-8523-0a0b36708f98">
+	<property name="ireport.zoom" value="2.853116706110003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="93"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIMRSGOS2"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="MyStyle" forecolor="#000000" pattern="" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{NAMALENGKAP}.trim().length() > 25 && $F{NAMALENGKAP}.trim().length() <= 30]]></conditionExpression>
+			<style forecolor="#000000" backcolor="#FFFFFF" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{NAMALENGKAP}.trim().length() > 30]]></conditionExpression>
+			<style forecolor="#000000" backcolor="#FFFFFF" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{NAMALENGKAP}.trim().length() < 25]]></conditionExpression>
+			<style forecolor="#000000" backcolor="#FFFFFF" fontSize="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="PNORM" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[CALL master.CetakBarcodeRM($P{PNORM})]]>
+	</queryString>
+	<field name="NORM" class="java.lang.String"/>
+	<field name="NORM2" class="java.lang.String"/>
+	<field name="NAMALENGKAP" class="java.lang.String"/>
+	<field name="NORMLABEL" class="java.lang.String"/>
+	<field name="KARAKTER" class="java.lang.String"/>
+	<field name="GOLDARAH" class="java.lang.String"/>
+	<field name="RHESUS" class="java.lang.String"/>
+	<field name="NOKTP" class="java.lang.String"/>
+	<field name="NOJKN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="153" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement style="MyStyle" x="14" y="69" width="215" height="18" uuid="0e3ba9f6-b076-42dd-874a-d63705f718e3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMALENGKAP}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" isUsingCache="true" isLazy="true">
+				<reportElement x="160" y="90" width="69" height="59" uuid="cdd604fa-0126-49b9-b2ac-dfa6de4fa88f"/>
+				<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
+     new com.google.zxing.qrcode.QRCodeWriter().encode(
+         $F{NORM},
+         com.google.zxing.BarcodeFormat.QR_CODE, 300, 300))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="14" y="48" width="100" height="20" uuid="5b68aa5f-84ff-41f5-8ac8-2ed9b1c2b125"/>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NORM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

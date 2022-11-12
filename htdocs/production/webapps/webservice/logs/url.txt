@@ -1,0 +1,1 @@
+http://10.10.9.9/webservice/bpjservice/kunjungan/daftarPengajuan?start=0&limit=25&status=1

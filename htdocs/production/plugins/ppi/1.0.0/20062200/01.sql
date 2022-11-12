@@ -1,0 +1,3 @@
+UPDATE aplikasi.modules 
+   SET INTERNAL_PACKAGE = 0
+ WHERE ID LIKE '28%';

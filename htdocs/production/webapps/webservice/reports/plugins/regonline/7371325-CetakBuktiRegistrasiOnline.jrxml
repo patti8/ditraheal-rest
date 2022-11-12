@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CetakEtiket" language="groovy" pageWidth="270" pageHeight="200" orientation="Landscape" columnWidth="254" leftMargin="8" rightMargin="8" topMargin="8" bottomMargin="8" uuid="a22efdad-8279-4b4b-9386-a700c7b301e4">
+	<property name="ireport.zoom" value="3.4522712143931042"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="122"/>
+	<parameter name="PNOMOR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[call yankes.cetakBukti($P{PNOMOR})]]>
+	</queryString>
+	<field name="ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TANGGALKUNJUNGAN" class="java.lang.String"/>
+	<field name="NORM" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NAMA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ANTRIAN" class="java.lang.String"/>
+	<field name="POLIKLINIK" class="java.lang.String"/>
+	<field name="PPK" class="java.lang.String"/>
+	<field name="ALAMAT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="154" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="70" width="254" height="22" uuid="6c04ad55-0638-4412-8a0d-46e8f28368e8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PPK}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="91" width="254" height="11" uuid="490437e0-c3aa-4daa-966e-7f70815ac79a"/>
+				<textElement>
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALAMAT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="106" width="254" height="12" uuid="51f8e0cd-fee3-4095-bb96-bbec8208a633"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Klinik : "+$F{POLIKLINIK}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="118" width="254" height="11" uuid="8067a228-4692-40cc-b582-457bfc3eb4a4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jadwal Kunjungan : "+$F{ANTRIAN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="27" width="106" height="36" uuid="8b60e7c9-cca0-4f60-8f2d-fe333a953afb"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANTRIAN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="106" height="22" uuid="5981bb13-cc6d-443e-ac5c-3514c97cabf4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nomor Antrian]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="148" y="22" width="106" height="41" uuid="f70e4ce4-8bf1-4835-a329-6f59058ee389"/>
+				<jr:Codabar xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{ID}]]></jr:codeExpression>
+				</jr:Codabar>
+			</componentElement>
+			<staticText>
+				<reportElement x="0" y="145" width="254" height="9" uuid="0c3a39ec-1871-487f-9bf6-c975c429421f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="5" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[* Harap Membawa Bukti Transaksi Dan Surat Rujukan Beserta Kelengkapan Berkas Lainny]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

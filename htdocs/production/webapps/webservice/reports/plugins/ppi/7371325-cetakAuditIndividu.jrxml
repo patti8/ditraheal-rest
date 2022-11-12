@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="newReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="812" leftMargin="15" rightMargin="15" topMargin="15" bottomMargin="15" uuid="bc162355-a67d-473a-a5b7-c0827661b39e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="PID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[CALL ppi.`cetakAuditIndividu`($P{PID})]]>
+	</queryString>
+	<field name="NAMA" class="java.lang.String"/>
+	<field name="PROFESI_DESK" class="java.lang.String"/>
+	<field name="GROUP_DESK" class="java.lang.String"/>
+	<field name="KELOMPOK_DESK" class="java.lang.String"/>
+	<field name="KEGIATAN_DESK" class="java.lang.String"/>
+	<field name="NIP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NAMA_PEG" class="java.lang.String"/>
+	<field name="CHECK" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="JUM_PEG" class="java.lang.Long"/>
+	<field name="HASIL" class="java.math.BigDecimal"/>
+	<field name="TOTAL_HASIL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="812" height="20" uuid="07d0bb68-dfb5-4f19-bf9e-d0e1384ad534"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="812" height="20" uuid="55822c39-6a28-4be6-ba23-89b9a8574c96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GROUP_DESK}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="182" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="812" height="182" uuid="dd467df7-cc93-4a66-9d91-a36a3439afa8"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<staticText>
+							<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="170" height="60" uuid="6d82acb7-5863-4d2d-a668-a7d11469044a"/>
+							<textElement verticalAlignment="Middle">
+								<paragraph tabStopWidth="40"/>
+							</textElement>
+							<text><![CDATA[PEGAWAI]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="NAMA_PEG" width="170" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{NAMA_PEG}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="170" height="25" uuid="8488114a-d241-45f9-8402-3597329c8f7d"/>
+								<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3"/>
+								<textElement textAlignment="Left"/>
+								<textFieldExpression><![CDATA[$V{NAMA_PEG}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="170" height="25" uuid="e27b7992-6ccf-4c4d-bfb0-6241862c15b4"/>
+								<textElement verticalAlignment="Middle"/>
+								<text><![CDATA[Total Skor (%)]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="KELOMPOK_DESK" height="30" totalPosition="End" headerPosition="Center">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{KELOMPOK_DESK}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="86" height="30" uuid="77d103a0-7705-4949-81ae-05fe058bad5e"/>
+								<textElement verticalAlignment="Top"/>
+								<textFieldExpression><![CDATA[$V{KELOMPOK_DESK}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#005FB3" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<staticText>
+								<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="42" height="60" uuid="1208b7a1-d8a3-4bb1-a05c-19da5d5ef48a"/>
+								<textElement verticalAlignment="Middle">
+									<paragraph tabStopWidth="40"/>
+								</textElement>
+								<text><![CDATA[Total Skor (%)]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="KEGIATAN_DESK" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{KEGIATAN_DESK}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="44" height="30" isPrintWhenDetailOverflows="true" uuid="7cad6274-ceae-4372-b6d8-bdeef979a88f"/>
+								<textElement verticalAlignment="Top">
+									<paragraph tabStopWidth="40"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{KEGIATAN_DESK}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="43" height="30" uuid="fed320d7-1176-4f02-a2bd-960fd6585d76"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<paragraph tabStopWidth="40"/>
+								</textElement>
+								<text><![CDATA[Skor (%)]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="CHECKMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{CHECK}]]></measureExpression>
+				</measure>
+				<measure name="VAR_CHECK" class="java.lang.Integer">
+					<measureExpression><![CDATA[$F{CHECK}]]></measureExpression>
+				</measure>
+				<measure name="CHECK_SUM" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{CHECK}]]></measureExpression>
+				</measure>
+				<crosstabCell width="44" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="44" height="25" uuid="53bd26d3-f028-4930-9153-494b281f3a95"/>
+							<textElement verticalAlignment="Middle">
+								<font fontName="DejaVu Sans"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VAR_CHECK}.toString().trim().equals("1") ? "√" : ""]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="44" height="25" rowTotalGroup="NAMA_PEG">
+					<cellContents backcolor="#BFE1FF" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="44" height="25" uuid="d50df593-8d0b-43e1-a2d5-7267c2de1f3d"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[($V{CHECK_SUM_NAMA_PEG_ALL}/$V{CHECKMeasure})*100]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="42" columnTotalGroup="KELOMPOK_DESK">
+					<cellContents backcolor="#005FB3" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="42" height="25" uuid="51e21179-eeaf-4352-9ee3-d0e03b7bb8c8"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[($V{CHECK_SUM}/$V{CHECKMeasure})*100]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="42" height="25" rowTotalGroup="NAMA_PEG" columnTotalGroup="KELOMPOK_DESK">
+					<cellContents backcolor="#005FB3" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<textField pattern="###0.00">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="42" height="25" uuid="8c1631da-0d07-4d14-9317-7842897d988d"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[($V{CHECK_SUM_NAMA_PEG_KEGIATAN_DESK_ALL}/$V{CHECKMeasure}) * 100]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="43" columnTotalGroup="KEGIATAN_DESK">
+					<cellContents backcolor="#BFE1FF" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="25" uuid="42746771-01c5-48d5-827f-a2212b23cdc2"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[($V{CHECK_SUM}/$V{CHECKMeasure})*100]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="43" height="25" rowTotalGroup="NAMA_PEG" columnTotalGroup="KEGIATAN_DESK">
+					<cellContents backcolor="#BFE1FF" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="25" uuid="f0d17bee-24e4-40ae-ab2e-f2baece2cfd9"/>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[($V{CHECK_SUM_NAMA_PEG_KEGIATAN_DESK_ALL}/$V{CHECKMeasure}) * 100]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

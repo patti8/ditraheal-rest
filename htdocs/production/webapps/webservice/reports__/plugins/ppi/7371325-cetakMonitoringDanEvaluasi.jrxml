@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cetakMonitoringDanEvaluasi" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba6ac4f0-c653-4156-8850-c5a9b1596f38">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PJENIS" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[CALL ppi.cetakMonitoringDanEvaluasi($P{PID},$P{PJENIS})]]>
+	</queryString>
+	<field name="NAMAINSTANSI" class="java.lang.String"/>
+	<field name="JUDUL" class="java.lang.String"/>
+	<field name="RUANGAN" class="java.lang.String"/>
+	<field name="TANGGAL_BUAT" class="java.lang.String"/>
+	<field name="NAMA_KEGIATAN" class="java.lang.String"/>
+	<field name="YA" class="java.lang.Long"/>
+	<field name="TIDAK" class="java.lang.Long"/>
+	<field name="JUMLAH_YA" class="java.math.BigDecimal"/>
+	<field name="TOTAL" class="java.lang.Long"/>
+	<field name="HASIL" class="java.math.BigDecimal"/>
+	<field name="KET" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RTL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="nomor" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[new Integer($V{nomor}.intValue())+1]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="2bbfae7b-20fd-49ed-aaff-c51cc331f146"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[LEMBAR MONITORING DAN EVALUASI]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="555" height="20" uuid="6577ea88-abf2-4423-a655-e305fc3de836"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{JUDUL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="555" height="20" uuid="591fcb29-f8ce-423a-beba-23e1e9aae4df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMAINSTANSI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="15" width="555" height="20" uuid="ae3f6e3d-b4ae-454b-ac31-635836db0eca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Ruangan : '+$F{RUANGAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="51" height="20" uuid="a8b14e1f-71d7-48e8-b42c-bfd571e6c368"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="0" width="174" height="20" uuid="8aaf8ab8-917d-4f3c-ac8e-5cb7294c7339"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JENIS KEGIATAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="0" width="39" height="20" uuid="75ea90b3-2544-4067-b2c0-36317c2b2a82"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[YA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="0" width="39" height="20" uuid="e4629157-c8cf-4902-9be8-e115df5cd1dd"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIDAK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="0" width="123" height="20" uuid="6c9d4808-fd7f-4b78-a35c-8b9fc7018053"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEMUAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="0" width="129" height="20" uuid="4a4ed7e3-96b8-455e-863b-8a61f7eb1e0d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RTL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToBandHeight" x="51" y="0" width="174" height="20" isRemoveLineWhenBlank="true" uuid="7285598a-68e8-4be5-ab49-8d2f5aa72bbf"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMA_KEGIATAN}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="225" y="0" width="39" height="20" uuid="1326bde1-8f2a-44ae-bc3c-9f91631f775d"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="225" y="0" width="39" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="b6dcf58f-9498-4425-8761-27dc3e1b3068">
+					<printWhenExpression><![CDATA[$F{YA}.toString().trim().equals("1")]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA['√']]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="264" y="0" width="39" height="20" uuid="ff71a6b3-6a06-468b-90b1-423ce6869292"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="264" y="0" width="39" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="8375e955-38e3-4f93-bcef-c76e14945c68">
+					<printWhenExpression><![CDATA[$F{TIDAK}.toString().trim().equals("1")]]></printWhenExpression>
+				</reportElement>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="DejaVu Sans" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA['√']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="51" height="20" uuid="8a37c1eb-8435-4966-b4ea-048735714ebe"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer($V{nomor})+1]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="303" y="0" width="123" height="20" uuid="d5a09906-3384-4c95-b9fe-b361341cbb52"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KET}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="426" y="0" width="129" height="20" uuid="3ea95a1b-d318-48e9-b521-69d7b27a19e8"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RTL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="98" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="163" splitType="Stretch">
+			<textField>
+				<reportElement x="334" y="25" width="221" height="20" uuid="217066a0-7860-46dc-bffc-ccb6078738a9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Makassar : '+$F{TANGGAL_BUAT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="45" width="221" height="20" uuid="db8df0da-9e19-4bbd-ab6e-67f17ed81d7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Megetahui,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="65" width="221" height="20" uuid="bb331504-51b2-45a4-a3b7-0f51b8e19c7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[IPCN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="132" width="221" height="20" uuid="40ccfcbf-06ea-4b58-a6f6-9d6906d10613"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[..................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="25" width="105" height="20" uuid="64731d68-4ed9-4e8f-afe2-7c1132dd5ef9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Rumus Perhitungan : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="45" width="115" height="20" uuid="262e8218-ab39-4a30-8b57-b75a1152efba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah YA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="67" width="115" height="20" uuid="22b45df0-389d-450b-aa2d-c13d5afd3b38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total Item Peryataan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="9" y="65" width="114" height="1" uuid="ffc34abd-c89e-45c5-99ab-8a54be73d6d6"/>
+			</line>
+			<staticText>
+				<reportElement x="127" y="56" width="38" height="20" uuid="e30524d1-a7b5-44a6-a8bf-d5cb4ba1d79a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[X 100]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="225" height="20" uuid="f4313f83-f4fa-4db2-8612-3e9e69706130"/>
+				<box topPadding="0" leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUMLAH]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="303" y="0" width="252" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="84ec1cb8-6465-4fb1-a75f-706f296e34b5"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HASIL}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="225" y="0" width="39" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="c9398c66-b066-47ca-b644-6c505515abf0"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{JUMLAH_YA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="264" y="0" width="39" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="2209b18e-bf43-483e-9262-0a2633414966"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}-$F{JUMLAH_YA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

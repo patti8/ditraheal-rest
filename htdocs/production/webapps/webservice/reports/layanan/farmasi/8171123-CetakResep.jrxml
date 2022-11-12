@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CetakResep" pageWidth="420" pageHeight="566" columnWidth="404" leftMargin="8" rightMargin="8" topMargin="8" bottomMargin="8" whenResourceMissingType="Error" uuid="680b77f2-0739-469a-b557-fe5f6cc5fee2">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="150"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AMBON TEST"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="203142c5-5409-4b08-8837-b143476ecf38">
+		<queryString>
+			<![CDATA[SELECT NOW() TANGGAL]]>
+		</queryString>
+	</subDataset>
+	<subDataset name="Table Dataset 2" uuid="5df1633e-b7af-4038-9945-e99ba65a65e3">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="L-SIMRSGOS2"/>
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<parameter name="PKUNJUNGAN" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[call layanan.CetakFakturDetilResep($P{PKUNJUNGAN})]]>
+		</queryString>
+		<field name="PPK" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="PPK"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="instansi"/>
+		</field>
+		<field name="INSTASI" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="INSTASI"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ppk"/>
+		</field>
+		<field name="NOMOR" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NOMOR"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="KUNJUNGAN" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="KUNJUNGAN"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="TANGGAL" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TANGGAL"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="WAKTU" class="java.sql.Time">
+			<property name="com.jaspersoft.studio.field.label" value="WAKTU"/>
+		</field>
+		<field name="NAMADOKTER" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NAMADOKTER"/>
+		</field>
+		<field name="BERAT_BADAN" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="BERAT_BADAN"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="TINGGI_BADAN" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="TINGGI_BADAN"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="DIAGNOSA" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DIAGNOSA"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ALERGI_OBAT" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ALERGI_OBAT"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="GANGGUAN_FUNGSI_GINJAL" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="GANGGUAN_FUNGSI_GINJAL"/>
+		</field>
+		<field name="MENYUSUI" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="MENYUSUI"/>
+		</field>
+		<field name="HAMIL" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="HAMIL"/>
+		</field>
+		<field name="ASALPENGIRIM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ASALPENGIRIM"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ruangan"/>
+		</field>
+		<field name="NAMAPASIEN" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NAMAPASIEN"/>
+		</field>
+		<field name="TGLLAHIR" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="TGLLAHIR"/>
+		</field>
+		<field name="ALAMAT" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ALAMAT"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="NORM" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NORM"/>
+		</field>
+		<field name="JENISRESEP" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="JENISRESEP"/>
+		</field>
+		<field name="NAMAOBAT" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="NAMAOBAT"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="barang"/>
+		</field>
+		<field name="JUMLAH" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="JUMLAH"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ATURANPAKAI" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ATURANPAKAI"/>
+		</field>
+		<field name="KETERANGAN" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="KETERANGAN"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="RACIKAN" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="RACIKAN"/>
+		</field>
+		<field name="PETUNJUK_RACIKAN" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="PETUNJUK_RACIKAN"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+		</field>
+		<field name="STATUSLAYANAN" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="STATUSLAYANAN"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+		</field>
+		<field name="HARGA" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="HARGA"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="harga_barang"/>
+		</field>
+		<field name="ID_BARANG" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="ID_BARANG"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="barang"/>
+		</field>
+		<field name="JALUR_PENGGUNAAN_OBAT" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="JALUR_PENGGUNAAN_OBAT"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="referensi"/>
+		</field>
+		<group name="group1">
+			<groupExpression><![CDATA[$F{RACIKAN}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="PKUNJUNGAN" class="java.lang.String"/>
+	<parameter name="IMAGES_PATH" class="java.lang.String">
+		<defaultValueExpression><![CDATA[" "]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CETAK_HEADER" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[call layanan.CetakFakturResep($P{PKUNJUNGAN})]]>
+	</queryString>
+	<field name="PPK" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="PPK"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ai"/>
+		<fieldDescription><![CDATA[Pemberi Pelayanan Kesehatan]]></fieldDescription>
+	</field>
+	<field name="INSTASI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="INSTASI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mp"/>
+	</field>
+	<field name="ALAMATINSTANSI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ALAMATINSTANSI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mp"/>
+	</field>
+	<field name="NOMOR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOMOR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+	</field>
+	<field name="KUNJUNGAN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="KUNJUNGAN"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="farmasi"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TANGGAL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TANGGAL"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="WAKTU" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="WAKTU"/>
+	</field>
+	<field name="NAMADOKTER" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMADOKTER"/>
+	</field>
+	<field name="BERAT_BADAN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="BERAT_BADAN"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TINGGI_BADAN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="TINGGI_BADAN"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DIAGNOSA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DIAGNOSA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ALERGI_OBAT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ALERGI_OBAT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="order_resep"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GANGGUAN_FUNGSI_GINJAL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="GANGGUAN_FUNGSI_GINJAL"/>
+	</field>
+	<field name="MENYUSUI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MENYUSUI"/>
+	</field>
+	<field name="HAMIL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="HAMIL"/>
+	</field>
+	<field name="ASALPENGIRIM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ASALPENGIRIM"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ruangan"/>
+	</field>
+	<field name="NAMAPASIEN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NAMAPASIEN"/>
+	</field>
+	<field name="TGLLAHIR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TGLLAHIR"/>
+	</field>
+	<field name="ALAMAT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ALAMAT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NORM" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NORM"/>
+	</field>
+	<field name="JENISRESEP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="JENISRESEP"/>
+	</field>
+	<field name="DESK_CARA_BAYAR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESK_CARA_BAYAR"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="referensi"/>
+	</field>
+	<field name="TGL_MASUK" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TGL_MASUK"/>
+	</field>
+	<field name="TGL_KELUAR" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TGL_KELUAR"/>
+	</field>
+	<field name="USER_PEGAWAI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="USER_PEGAWAI"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="207" splitType="Stretch">
+			<image>
+				<reportElement stretchType="RelativeToTallestObject" x="6" y="0" width="41" height="35" uuid="0f77bf4d-446d-4b20-b979-6c0d971dbe09"/>
+				<imageExpression><![CDATA[$P{IMAGES_PATH} + $F{PPK}.toString() + ".jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="47" y="32" width="357" height="15" uuid="88a72efb-5f87-4b6f-aa4b-7c93f43941a5"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALAMATINSTANSI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="47" y="1" width="357" height="14" uuid="f083a2de-fe3b-479f-8daa-328ab6d3c55f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="AvantGarde-Demi" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INSTASI}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="55" width="402" height="1" uuid="74ac63b5-2fad-4718-8256-2ed8db676b02"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="47" y="16" width="357" height="16" uuid="e97a0c12-9e83-4d67-8d37-3f1fe56fb1b4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["R E S E P"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="207" y="100" width="95" height="13" uuid="3754686c-6bd4-4994-a366-ad7d26775c3b"/>
+				<box leftPadding="0"/>
+				<textElement markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nomor Ijin Praktek : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="153" width="55" height="13" uuid="8b1b9ddc-5665-4e2b-8527-8fa264851529"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Diagnosa : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="133" width="40" height="13" uuid="5ba487b5-83b2-4659-932c-141773712749"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Hamil :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="146" width="50" height="13" uuid="c2b2b485-c2af-4fa8-a708-a0ff31a8c859"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Menyusui : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="59" width="74" height="13" uuid="dbb4bfc0-9e0a-4079-b272-a3fff46f627b"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Sumber Resep : ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="207" y="127" width="197" height="13" uuid="06bfa67c-4bbc-4769-9c7f-32843a8e2dee"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Alergi Obat : "+ $F{ALERGI_OBAT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="207" y="140" width="197" height="13" uuid="46c539b1-2203-404e-99b9-4a6e8048070d"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ganguan Fungsi GInjal : "+$F{GANGGUAN_FUNGSI_GINJAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="41" y="133" width="159" height="13" uuid="dd8cff75-0ec1-4388-ac67-0a7733d36fc5"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HAMIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="146" width="150" height="13" uuid="fddb2467-7fdf-435a-8f97-c006e5e4078d"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MENYUSUI}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="262" y="153" width="142" height="32" uuid="043c6d77-b495-4e2b-878c-9cf88c10be53"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIAGNOSA}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="281" y="60" width="123" height="13" uuid="bc52f046-de84-4cd3-b553-356f74558d52"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ASALPENGIRIM}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="2" y="72" width="198" height="13" uuid="72d6da68-0ce0-43cf-bd78-fae4e386e3ee"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nomor RM : " + $F{NORM}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="2" y="85" width="198" height="13" uuid="73dd4bb3-9c9a-43ad-a1e1-e0ae71bc1712"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Pasien: " + $F{NAMAPASIEN}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="2" y="107" width="198" height="13" uuid="58cc9089-e1f3-4e24-bffb-6df284261593"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tanggal Lahir: " + $F{TGLLAHIR}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="2" y="59" width="198" height="13" uuid="a6bc49a7-b112-4cab-8c64-688b612f481a"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["S. Pembayaran : " + $F{DESK_CARA_BAYAR}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="2" y="120" width="198" height="13" uuid="14107a15-67a8-4aac-a476-f67f5bb3bcf3"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TB/BB* : " + $F{TINGGI_BADAN} +" / "+ $F{BERAT_BADAN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="160" width="40" height="15" uuid="5b96b345-6084-4844-9cc3-8ae3a4684f2e"/>
+				<box leftPadding="0"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Alamat : ]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="207" y="73" width="197" height="13" uuid="9c7d6169-d934-4344-af82-7ce6d478023a"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Dokter : " + $F{NAMADOKTER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="207" y="113" width="83" height="13" uuid="85ae4cf0-3f68-44c8-a420-8a83c841edad"/>
+				<box leftPadding="0"/>
+				<textElement markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Status Dokter : ]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="41" y="159" width="159" height="29" uuid="47e3afea-55fa-4a7e-8859-66736dda3a2d"/>
+				<box>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALAMAT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="190" width="161" height="17" uuid="99fdec1d-d6cd-4b68-8db9-30e9adca5a43"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[R/ Nama perbekalan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="190" width="60" height="17" uuid="4f3b8ec9-bff1-4c81-a0e7-2699db0d78eb"/>
+				<box leftPadding="2"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="190" width="60" height="17" uuid="32865b29-5577-40b1-92dc-45a907fb932b"/>
+				<box leftPadding="2"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Rute]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="190" width="80" height="17" uuid="b02fb8a5-fce3-440e-bb8a-5a0b12720002"/>
+				<box leftPadding="2"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Aturan pakai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="190" width="42" height="17" uuid="c071d0cd-78c2-4aff-8c69-eae654e1b30d"/>
+				<box leftPadding="2"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="11" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Paraf]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<componentElement>
+				<reportElement mode="Opaque" x="4" y="0" width="400" height="13" uuid="98c33708-694a-44f1-ae61-5e29985fd9c4"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 2" uuid="a2c65dcc-6d19-48fd-b590-c552aed73d62">
+						<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+						<datasetParameter name="PKUNJUNGAN">
+							<datasetParameterExpression><![CDATA[$P{PKUNJUNGAN}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="160" uuid="e8295e63-1fbd-4ab6-9857-4c2a8c4ae394">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:detailCell height="30" rowSpan="1">
+							<textField textAdjust="StretchHeight">
+								<reportElement x="0" y="0" width="160" height="15" uuid="3a22e418-0fbe-4752-8ced-bf88e76a9520"/>
+								<box>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement verticalAlignment="Top">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{NAMAOBAT}]]></textFieldExpression>
+							</textField>
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="15" width="160" height="15" uuid="2cbc18c2-61dc-4588-bff4-43435c0f7a8d"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{JUMLAH} + " x " + NumberFormat.getNumberInstance($P{REPORT_LOCALE}).format($F{HARGA}.doubleValue()) + " = " + NumberFormat.getNumberInstance($P{REPORT_LOCALE}).format($F{JUMLAH}.multiply($F{HARGA}).doubleValue())]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="4ecac7e0-bbeb-4f98-9ba6-57fc745a8809">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:detailCell height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="60" height="30" uuid="3b271269-7686-49ba-9d4d-e66a5eca89d7"/>
+								<box>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement verticalAlignment="Top">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{JUMLAH}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="c406a933-4ac8-4846-93dc-ba28b0b63af8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:detailCell height="30">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="60" height="30" uuid="dd396500-3e16-4bde-bf61-2bc33cf13224"/>
+								<box>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement verticalAlignment="Top">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{JALUR_PENGGUNAAN_OBAT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="80" uuid="7d96bfe9-9a82-4fce-8b81-025a80761e96">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:detailCell height="30">
+							<textField textAdjust="StretchHeight">
+								<reportElement x="0" y="0" width="80" height="30" uuid="caafd871-27de-4dba-9f5d-4967b5a711e7"/>
+								<textElement verticalAlignment="Top">
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{KETERANGAN}=="" ? $F{ATURANPAKAI} : $F{ATURANPAKAI} + " ["+$F{KETERANGAN}+"]"]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="42" uuid="9a91f02d-e83f-4924-97c2-6c1336c58a06">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:detailCell height="30"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<summary>
+		<band height="219">
+			<rectangle>
+				<reportElement x="0" y="17" width="103" height="63" uuid="1e260ef2-4ad9-4125-9e83-3f3b5c77b0ad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="102" y="17" width="98" height="63" uuid="764d1796-65e1-46d3-a727-cfd04e872763"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="200" y="17" width="101" height="63" uuid="b77a89a2-4092-4cf5-9f3a-1ff259d56368"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="153" y="0" width="122" height="15" uuid="315187c6-fd66-4bf2-be7c-7844fe02e396"/>
+				<box leftPadding="3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Diisi Farmasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="ContainerBottom" x="1" y="18" width="101" height="32" isPrintWhenDetailOverflows="true" uuid="5174246a-a79e-4ab2-9658-78aaf63e9432"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tahap 1 : Pengkajian
+& Klairifikasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="18" width="98" height="12" uuid="3704ec80-6ab9-414a-a5d2-38b9a68f2891"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tahap 2 : Penyiapan]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="301" y="17" width="103" height="63" uuid="42cdb820-bb4e-49fc-8906-30cf71099a16"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="200" y="19" width="101" height="12" uuid="e0e4c6dd-d4fd-49ee-a63f-b377b83dbbf0"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tahap 3 : Dispensing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="18" width="103" height="31" uuid="1efce6d3-6886-4da7-8b4b-f11d5ae57407"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tahap 4 : Penyerahan & Informasi]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="80" width="140" height="139" uuid="58b6b0cd-20ac-403f-b62f-402ce9872deb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="140" y="80" width="131" height="139" uuid="9a8278f9-cd29-4a0d-84fd-0d2e924ff60f"/>
+			</rectangle>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="80" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="c5f90556-ab0a-411f-a656-4f2b10786162"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pengkajian Resep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="140" y="81" width="131" height="11" isPrintWhenDetailOverflows="true" uuid="eb278a5c-51ea-4e2a-9c47-75b48837c17e"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Klasifikasi & Informasi (S B A R)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="94" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="aff5bcc2-a243-494d-aab2-bbebed3c7a9e"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1. Benar penulisan resep]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="109" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="eb12e95f-0f43-47d4-b5a4-612faf308bf9"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2. Benar Obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="198" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="d91ee8de-15c0-4a70-a116-4d1dc6d974ee"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[8. Interaksi obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="184" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="ff5818c7-0623-48cb-9b8d-d09fbcd3f552"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[7. Duplikasi obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="170" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="0b34a660-e549-4435-b1ea-0eced36a12db"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[6. Benar Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="155" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="7977dc1a-afa0-4ee4-8bcf-c5e79710665a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[5. Benar rute]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="140" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="8991c75d-cb4a-4548-b2c6-2d46101b0e78"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[4. Benar waktu, frekuensi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="124" width="95" height="11" isPrintWhenDetailOverflows="true" uuid="22cb7c1e-d9dd-40fb-92b5-c6496f97cc77"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3. Benar dosis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="80" width="20" height="11" isPrintWhenDetailOverflows="true" uuid="205046f4-3076-4087-a141-31c438849d2e"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="80" width="20" height="11" isPrintWhenDetailOverflows="true" uuid="39767458-5612-4f9a-86c6-c9d515c06854"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tdk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="91" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="7b4c60dc-a929-4ebc-871a-3dd136a53275"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="91" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="4ee10d98-8515-4f60-b4db-1837f5b6318b"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="106" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="176f3834-8aea-49d3-97b4-4ebbc8e88db3"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="106" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="51cfabe6-a490-44a5-a6d8-932cace50b9b"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="121" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="94a5849a-4d4c-4813-bf4c-cb0e03797c1f"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="121" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="020eb187-bf8c-4a63-ab7e-6d67d38e9dc9"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="136" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="c52cfbc0-d871-48ab-98e6-4788a7d55354"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="136" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="2682f50a-c078-437a-98b6-570e3985bef8"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="151" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="f0de1b8c-e895-428a-bf6d-bada9a029991"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="151" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="7cafe102-eaa5-4bfb-8bda-707ef42afc5e"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="166" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="cd77dd33-66ab-4cfa-add0-f912a787c973"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="166" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="22328126-9b55-415c-9914-89419e6c11af"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="181" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="02c19d9c-e0d9-45d8-901f-bf4714abf218"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="181" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="2637eacb-4efe-4682-a194-e3b786a85236"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="96" y="196" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="5aa47865-2665-430a-8884-39779ac8da81"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="196" width="20" height="13" isPrintWhenDetailOverflows="true" uuid="1935baa8-4bc1-4221-969e-1523d02a552f"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="140" y="92" width="131" height="21" isPrintWhenDetailOverflows="true" uuid="020dd97e-1820-492c-867c-5fd907ee9f79"/>
+				<box leftPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[(Situation, Background, Assesment, Recomendation)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="141" y="173" width="80" height="11" isPrintWhenDetailOverflows="true" uuid="9c7773fc-f176-4420-a5c0-f6aa4ae41ba6"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Petugas Farmasi : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="103" height="12" uuid="ce32f2dc-b36c-48ca-8fcd-65ab4905b2b5"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Petugas : ..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="64" width="98" height="12" uuid="c0c4cb50-5927-4c87-893e-b3f01b4162c9"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Petugas : ..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="65" width="100" height="12" uuid="1b6ebb42-1d6d-42f8-b56b-97b71350bad1"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Petugas : ..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="65" width="102" height="12" uuid="21273e31-66f1-46f9-a7d0-66ff93f4c155"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="html">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Petugas : ..........]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="271" y="80" width="133" height="139" uuid="adb5c221-bc43-48fb-8db2-b27b05d526d6"/>
+			</rectangle>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="271" y="196" width="133" height="13" uuid="cd41a905-b236-465f-ad5e-0ce6141e94f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NAMADOKTER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="271" y="91" width="133" height="11" isPrintWhenDetailOverflows="true" uuid="91593fa6-27a2-4617-9f12-7ab89eaf86b2"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nama dan Tanda Tangan Dokter]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="1" y="50" width="101" height="13" uuid="d66e4999-2452-4f6e-b613-c225b3e8aba6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jam : "+$F{TGL_MASUK}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="103" y="50" width="97" height="13" uuid="2e58ce86-78e8-47e7-bde4-97cebdbd79c4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jam : "+$F{TGL_MASUK}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="202" y="51" width="97" height="13" uuid="0e08123f-7882-4bfb-ad13-f8923c9fb269"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jam : "+$F{TGL_MASUK}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="303" y="51" width="97" height="13" uuid="51c00f18-943f-4de1-8a1d-fe8e322a3447"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jam : "+$F{TGL_KELUAR}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="141" y="113" width="130" height="13" uuid="101730bd-0824-48cf-bc14-3b1233a9d965"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tanggal & Jam : "+$F{TGL_KELUAR}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="141" y="184" width="130" height="34" uuid="3edd52a2-3db7-4ddc-828a-46c90151b024"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{USER_PEGAWAI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

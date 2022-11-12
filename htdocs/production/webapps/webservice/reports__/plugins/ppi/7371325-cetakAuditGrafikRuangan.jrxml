@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cetakAuditGrafikRuangan" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="34636036-0183-4f12-9396-2f20d2527752">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="21"/>
+	<parameter name="PRUANGAN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PGROUP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PPERIODE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[CALL ppi.cetakAuditGrafikRuangan($P{PRUANGAN},$P{PGROUP},$P{PPERIODE})]]>
+	</queryString>
+	<field name="ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PERIODE" class="java.lang.String"/>
+	<field name="RUANGAN" class="java.lang.String"/>
+	<field name="GROUP" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RUANGAN_DESK" class="java.lang.String"/>
+	<field name="NILAI" class="java.math.BigDecimal"/>
+	<field name="PLAN" class="java.lang.String"/>
+	<field name="DO" class="java.lang.String"/>
+	<field name="CHECK" class="java.lang.String"/>
+	<field name="ACTION" class="java.lang.String"/>
+	<variable name="nomor" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[new Integer($V{nomor}.intValue())+1]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="555" height="20" uuid="e7fbf4a8-525b-4be6-8e07-5258363da9c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERIODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="d5d636bf-f347-47e0-ab2d-6f3148b4f442"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RUANGAN_DESK}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="61" y="0" width="332" height="20" uuid="c1a6c3de-4aea-4abc-a2fe-d5be0fda333c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[RUANGAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="0" width="162" height="20" uuid="7a5a5b89-2dcb-406b-81bb-05abf0be4282"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SKOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="61" height="20" uuid="8ec48f3e-c98e-436f-9ccf-c2a026c0a6b9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NOMOR]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="61" y="0" width="332" height="20" isPrintWhenDetailOverflows="true" uuid="78e8241f-ed61-4c3a-91d2-4e1c4bf0da59"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{RUANGAN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="393" y="0" width="162" height="20" isPrintWhenDetailOverflows="true" uuid="6eacae88-dab1-45a3-9fe4-af1f9630ac37"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{NILAI}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="61" height="20" isPrintWhenDetailOverflows="true" uuid="086ab240-833e-4ea1-bc6e-236cbafecf6a"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Integer($V{nomor})+1]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="580" splitType="Stretch">
+			<lineChart>
+				<chart>
+					<reportElement x="0" y="9" width="555" height="250" uuid="dbda5bb9-63f8-4a1f-9916-fd6b3a296546"/>
+					<chartTitle>
+						<font fontName="Arial"/>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend position="Top">
+						<font fontName="Arial"/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Ruangan"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{RUANGAN}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{NILAI}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot labelRotation="40.0"/>
+					<categoryAxisFormat labelRotation="40.0">
+						<axisFormat>
+							<labelFont>
+								<font fontName="Arial"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Arial"/>
+							</tickLabelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font fontName="Arial"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="Arial"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+					<rangeAxisMaxValueExpression><![CDATA[100]]></rangeAxisMaxValueExpression>
+				</linePlot>
+			</lineChart>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="343" width="16" height="15" isPrintWhenDetailOverflows="true" uuid="7efd0ac6-7272-49ec-acde-ff7c77980f3a"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="283" width="16" height="15" isPrintWhenDetailOverflows="true" uuid="8e9c32a9-8e9b-4b70-889b-e04caff5dd0a"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[P :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="313" width="16" height="15" isPrintWhenDetailOverflows="true" uuid="b03259f8-39f8-4449-bb95-10455b0b1f5d"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[D : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="372" width="16" height="15" isPrintWhenDetailOverflows="true" uuid="c9aa15e5-092b-4069-bfe5-e6e9a06d14c1"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[A :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="328" width="555" height="15" isPrintWhenDetailOverflows="true" uuid="faca8c03-4e9b-4cbf-b79d-42ea2b3f69ff"/>
+				<textFieldExpression><![CDATA[$F{DO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="357" width="555" height="15" isPrintWhenDetailOverflows="true" uuid="a2ce77af-74e6-4138-91dd-f570834af3ab"/>
+				<textFieldExpression><![CDATA[$F{CHECK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="298" width="555" height="15" isPrintWhenDetailOverflows="true" uuid="031a64cc-be87-4343-ba5d-a3d0100e87fe"/>
+				<textFieldExpression><![CDATA[$F{PLAN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="387" width="555" height="15" isPrintWhenDetailOverflows="true" uuid="94b7407b-5794-45a5-aae9-4ea7cccb94ab"/>
+				<textFieldExpression><![CDATA[$F{ACTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="262" width="147" height="20" uuid="bcfd51b3-7a28-4c2d-8bce-ef6a48ac6957"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SARAN DAN TINDAK LANJUT]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
