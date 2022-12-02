@@ -1,0 +1,2 @@
+class RuleBased < ApplicationRecord
+end

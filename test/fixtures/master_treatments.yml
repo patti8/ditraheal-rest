@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deskripsi: MyString
+  rule_based: one
+  time_duration: one
+  ref_sesi: 1
+
+two:
+  deskripsi: MyString
+  rule_based: two
+  time_duration: two
+  ref_sesi: 1

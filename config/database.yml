@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: ditraheal-development.sqlite3
+  database: db/ditraheal-development.sqlite3
   adapter: sqlite3
   # adapter: mysql2
   # hostname: localhost
@@ -36,8 +36,7 @@ development:
 test:
   <<: *default
   adapter: sqlite3
-  database: u1525333_testing
-  hostname: localhost
+  database: db/ditraheal-testing.sqlite3
   # database: ditraheal_test
 
 # As with config/credentials.yml, you never want to store sensitive information,

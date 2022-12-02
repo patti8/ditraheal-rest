@@ -19,35 +19,52 @@ class Api::V1::PreTestController < WsController
             @skor_efikasis.jenis = 1
 
             @soal = Reference.where(jenis: 2)
+            
+            # Resources::ReferensiSoal.efikasi_by(params[:referensi_soal])
 
-            @cek_efikasi_selesai = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id} AND skor_efikasis.referensi_soal = #{@soal.last.id}")
+            @cek_efikasi_selesai = @skor_efikasis.referensi_soal >= @soal.last.id #SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id} AND skor_efikasis.referensi_soal = #{@soal.last.id}")
    
-            if @cek_efikasi_selesai.present?
+            # if @cek_efikasi_selesai.present?                
                 
-                @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
-                    
-                cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round)
-                
-                @respon = "Pre Test skor efikasi berhasil diupdate. #{cek_pre_test}" 
+            #     @respon = "Pre Test skor efikasi berhasil diupdate. #{cek_pre_test}" 
 
-            else
+            if @skor_efikasis.present?
                 # validasi soal 
                 @cek_pre_test_efikasi = SkorEfikasi.find_by(referensi_soal: @skor_efikasis.referensi_soal, pre_test_id: @skor_efikasis.pre_test_id)
 
                 if Resources::ReferensiSoal.efikasi_by(params[:referensi_soal]).present?
                     if @skor_efikasis.save                        
+                        
                         @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil disimpan"
                         @status = 200
+
+                        # UPDATE SKOR 
+                        if @cek_efikasi_selesai.present?
+                            @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
+                            cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round)
+                        end
+
                     elsif @cek_pre_test_efikasi.present?
-                        @respon = @cek_pre_test_efikasi.update(jawaban: @skor_efikasis.jawaban)
-                        @status = 200
+                        
+                        if @cek_pre_test_efikasi.update(jawaban: @skor_efikasis.jawaban)
+                            
+                            @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil diupdate"
+                            @status = 200
+
+                        end
+
                     else
+
                       @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@skor_efikasis.errors.full_messages}"
                       @status = 400
+
                     end
+
                 else
+
                     @respon = "soal tidak sesuai, mohon dicek kembali"
                     @status = 400
+
                 end
 
             end
@@ -107,19 +124,13 @@ class Api::V1::PreTestController < WsController
             @soal = Reference.where(jenis: 3)
             cek_soal = @soal.select  { |v| v.id == 1 }
 
-            @cek_level_trauma_selesai = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id} AND level_traumas.referensi_soal = #{@soal.last.id}")
+            @cek_level_trauma_selesai = @level_trauma.referensi_soal >= @soal.last.id #LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id} AND level_traumas.referensi_soal = #{@soal.last.id}")
     
             # if cek_soal.present?
-                if @cek_level_trauma_selesai.present?
+                # if @cek_level_trauma_selesai.present?
                 
-                    @hitung = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
-                        
-                    cek_pre_test.update(total_level_trauma_id: @hitung.average(:jawaban).to_f.round)
-                        
-                    @respon = "Pre Test level trauma berhasil diupdate"
-                    @status = 200
-                 
-                else 
+                if @level_trauma.present? 
+
                     @cek_pre_test_level_trauma = LevelTrauma.find_by(referensi_soal: @level_trauma.referensi_soal, pre_test_id: @level_trauma.pre_test_id)
 
                     # cek soal 
@@ -127,9 +138,35 @@ class Api::V1::PreTestController < WsController
                         if @level_trauma.save
                             @respon = "soal no. #{@level_trauma.referensi_soal} berhasil disimpan"
                             @status = 200
+
+                            # UPDATE SKOR 
+                            if cek_pre_test.present?
+                                @hitung = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
+                                if cek_pre_test.update(total_level_trauma_id: @hitung.average(:jawaban).to_f.round)
+                                    
+                                    Resources::TreatmentGenerator.generate_level_trauma(
+                                        cek_pre_test.total_level_trauma_id, 
+                                        cek_pre_test.periode_treatment_id
+                                    )
+
+                                    Resources::TreatmentGenerator.rule_base(
+                                        cek_pre_test.periode_treatment_id
+                                    )
+
+                                    Resources::Tools.generate_date_for_treatment(
+                                        PeriodeTreatment.find_by(id: cek_pre_test.periode_treatment_id).rule ,
+                                        cek_pre_test.periode_treatment_id,
+                                    )
+
+                                end 
+                            end
+                        
+                        
                         elsif  @cek_pre_test_level_trauma.present?
-                            @respon = @cek_pre_test_level_trauma.update(jawaban: @level_trauma.jawaban)
-                            @status = 200
+                            if @cek_pre_test_level_trauma.update(jawaban: @level_trauma.jawaban) 
+                                @response = "soal no. #{@level_trauma.referensi_soal} berhasil diupdate"
+                                @status = 200
+                            end
                         else
                             @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@level_trauma.errors.full_messages}"
                             @status = 400
@@ -153,6 +190,7 @@ class Api::V1::PreTestController < WsController
                 else
                     @respon = "Gagal menambahkan pre test, cek ulang kembali data yang dikirim. #{@pre_test.errors.full_messages}"
                 end
+
             else 
                 @respon = "Periode treatment tidak ditemukan, silahkan dibuat dulu"
             end

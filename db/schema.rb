@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
-  create_table "admins", charset: "utf8mb4", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_125343) do
+  create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -23,14 +23,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "history_tokens", charset: "utf8mb4", force: :cascade do |t|
+  create_table "history_tokens", force: :cascade do |t|
     t.integer "user"
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "identies", charset: "utf8mb4", force: :cascade do |t|
+  create_table "identies", force: :cascade do |t|
     t.string "no_hp"
     t.date "tanggal_lahir"
     t.text "alamat"
@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.string "name"
   end
 
-  create_table "level_traumas", charset: "utf8mb4", force: :cascade do |t|
+  create_table "level_traumas", force: :cascade do |t|
     t.integer "referensi_soal"
     t.integer "jawaban"
     t.integer "pre_test_id"
@@ -51,14 +51,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "logins", charset: "utf8mb4", force: :cascade do |t|
+  create_table "logins", force: :cascade do |t|
     t.integer "id_user"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "periode_treatments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "master_treatments", force: :cascade do |t|
+    t.string "deskripsi"
+    t.integer "rule_based_id", null: false
+    t.integer "time_duration_id", null: false
+    t.integer "ref_sesi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rule_based_id"], name: "index_master_treatments_on_rule_based_id"
+    t.index ["time_duration_id"], name: "index_master_treatments_on_time_duration_id"
+  end
+
+  create_table "periode_treatments", force: :cascade do |t|
     t.integer "identitas_id"
     t.integer "status"
     t.date "tanggal_awal"
@@ -66,9 +77,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "inferensi"
+    t.integer "rule"
+    t.string "level_trauma"
   end
 
-  create_table "pre_tests", charset: "utf8mb4", force: :cascade do |t|
+  create_table "pre_tests", force: :cascade do |t|
     t.integer "total_skor_efikasi"
     t.integer "total_level_trauma_id"
     t.integer "periode_treatment_id"
@@ -76,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "references", charset: "utf8mb4", force: :cascade do |t|
+  create_table "references", force: :cascade do |t|
     t.integer "jenis"
     t.string "deskripsi"
     t.datetime "created_at", null: false
@@ -84,7 +97,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.string "ref_code"
   end
 
-  create_table "skor_efikasis", charset: "utf8mb4", force: :cascade do |t|
+  create_table "rule_baseds", force: :cascade do |t|
+    t.string "mode"
+    t.string "description"
+    t.string "rule"
+    t.string "ref"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skor_efikasis", force: :cascade do |t|
     t.integer "referensi_soal"
     t.integer "jawaban"
     t.integer "pre_test_id"
@@ -94,7 +116,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "treatments", charset: "utf8mb4", force: :cascade do |t|
+  create_table "time_durations", force: :cascade do |t|
+    t.string "deskripsi"
+    t.string "ref_duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "treatments", force: :cascade do |t|
     t.integer "treat"
     t.boolean "check"
     t.integer "periode_treatment_id"
@@ -103,11 +132,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_30_221221) do
     t.date "tanggal"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "master_treatments", "rule_baseds"
+  add_foreign_key "master_treatments", "time_durations"
 end

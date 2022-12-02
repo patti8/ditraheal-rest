@@ -38,6 +38,12 @@ Rails.application.routes.draw do
       get '/by_date/treatment', to: "treatment#by_date"
       post '/update/treat', to: "treatment#update_treat"
 
+      namespace :treatment do
+        get '/daily', to: "daily#show"
+        post '/daily', to: "daily#create"
+      end
+
+
       # IDENTY 
       resources :identies, except: %i[create]
       scope 'identies' do
@@ -51,6 +57,12 @@ Rails.application.routes.draw do
         get '/tes_efikasi', to: 'references#effication_test'
         get '/level_trauma', to: 'references#level_trauma'
       end
+
+      namespace :treatment do
+        
+        post '/', to: 'treatment#create'
+      end
+
   
     end
   end 

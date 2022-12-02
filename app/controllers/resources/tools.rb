@@ -1,6 +1,5 @@
 class Resources::Tools
 
-
     def self.create_treatment_by(periode_treatment_id)
         
         periode_treatment = PeriodeTreatment.find_by(id: periode_treatment_id)
@@ -271,6 +270,85 @@ class Resources::Tools
 
     end
 
+    def self.generate_date_for_treatment(rule_based_id, periode_treatment_id)
+
+        # treatment = Treatment.where(periode_treatment_id: periode_treatment_id)
+        treat_with_rule = MasterTreatment.where(rule_based_id: rule_based_id)
+       
+       treat_sesi1 = {
+            sesi: 1,
+            data: treat_with_rule.where(ref_sesi: 1)
+       }
+        
+       treat_sesi2 = {
+            sesi: 2,
+            data: treat_with_rule.where(ref_sesi: 2)
+       }
+       
+       treat_sesi3 = {
+            sesi: 3,
+            data: treat_with_rule.where(ref_sesi: 3)
+       }
+
+       treat_sesi4 = { 
+            sesi: 4,
+            data: treat_with_rule.where(ref_sesi: 4)
+       }
+
+       treat_sesi = [1, 2, 3, 4]
+
+       treat_sesi.each do |sesi|
+            
+            if sesi == 1
+        
+                start_date = DateTime.now
+                end_date = DateTime.now + 14
+        
+                Resources::TreatmentGenerator.create_treatment_by(
+                    start_date..end_date, 
+                    treat_sesi1[:data], 
+                    periode_treatment_id
+                )
+            
+           elsif sesi == 2
+    
+                start_date = DateTime.now + 14
+                end_date = start_date + 14
+
+                Resources::TreatmentGenerator.create_treatment_by(
+                    start_date..end_date, 
+                    treat_sesi2[:data], 
+                    periode_treatment_id
+                )
+        
+           elsif sesi == 3
+    
+                start_date = DateTime.now + 14 + 14
+                end_date = start_date + 14
+        
+                Resources::TreatmentGenerator.create_treatment_by(
+                    start_date..end_date, 
+                    treat_sesi3[:data], 
+                    periode_treatment_id,
+                )
+                
+      
+    
+           elsif sesi == 4
+            
+                start_date = DateTime.now + 14 + 14 + 14
+                end_date = start_date + 14
+        
+                Resources::TreatmentGenerator.create_treatment_by(
+                    start_date..end_date, 
+                    treat_sesi4[:data], 
+                    periode_treatment_id,
+                )
+    
+           end
+       end
+       
+    end
 
     def self.level_trauma(nilai)
         if nilai <= 40

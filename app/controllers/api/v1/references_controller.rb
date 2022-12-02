@@ -11,14 +11,14 @@ class Api::V1::ReferencesController < WsController
 
   # GET /reference/tes_efikasi
   def effication_test
-    @effication_test = Resources::ReferensiSoal.jenis_soal(2)
+    @effication_test = Reference.where(jenis: 2)
 
     render :json => {"code": 200, success: true, "message": "authentication success", data: @effication_test}  
   end
 
    # GET /reference/level_trauma
   def level_trauma
-    @effication_test = Resources::ReferensiSoal.jenis_soal(3)
+    @effication_test = Reference.where(jenis: 3)
 
     render :json => {"code": 200, success: true, "message": "authentication success", data: @effication_test}  
   end

@@ -1,0 +1,2 @@
+class TimeDuration < ApplicationRecord
+end
