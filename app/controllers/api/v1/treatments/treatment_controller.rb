@@ -11,12 +11,12 @@ class Api::V1::Treatments::TreatmentController < WsController
             
             if cek_pre_test.update(total_level_trauma_id: @hitung.average(:jawaban).to_f.round)
                 
-                Resources::TreatmentGenerator.generate_level_trauma(
+                @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
                     cek_pre_test.total_level_trauma_id, 
                     cek_pre_test.periode_treatment_id
                 )
-
-                Resources::TreatmentGenerator.rule_base(
+                
+                @generate_rule_base = Resources::TreatmentGenerator.rule_base(
                     cek_pre_test.periode_treatment_id
                 )
 
@@ -24,6 +24,15 @@ class Api::V1::Treatments::TreatmentController < WsController
                     PeriodeTreatment.find_by(id: cek_pre_test.periode_treatment_id).rule ,
                     cek_pre_test.periode_treatment_id,
                 )
+
+                render :json => {
+                    status: 200,
+                    messages: "successfully",
+                    data: {
+                        generate_lvl_trauma: @generate_lvl_trauma[:data],
+                        rule_base: @generate_rule_base[:data]
+                    }
+                }
 
             end
              
