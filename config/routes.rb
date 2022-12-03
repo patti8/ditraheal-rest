@@ -38,9 +38,10 @@ Rails.application.routes.draw do
       get '/by_date/treatment', to: "treatment#by_date"
       post '/update/treat', to: "treatment#update_treat"
 
-      namespace :treatment do
+      namespace :treatments do
         get '/daily', to: "daily#show"
         post '/daily', to: "daily#create"
+        post '/', to: 'treatment#create'
       end
 
 
@@ -58,12 +59,6 @@ Rails.application.routes.draw do
         get '/level_trauma', to: 'references#level_trauma'
       end
 
-      namespace :treatment do
-        
-        post '/', to: 'treatment#create'
-      end
-
-  
     end
   end 
 

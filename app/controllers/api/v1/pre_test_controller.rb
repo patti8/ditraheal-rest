@@ -137,30 +137,7 @@ class Api::V1::PreTestController < WsController
                     if Resources::ReferensiSoal.level_trauma_by(params[:referensi_soal]).present?
                         if @level_trauma.save
                             @respon = "soal no. #{@level_trauma.referensi_soal} berhasil disimpan"
-                            @status = 200
-
-                            # UPDATE SKOR 
-                            if cek_pre_test.present?
-                                @hitung = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
-                                if cek_pre_test.update(total_level_trauma_id: @hitung.average(:jawaban).to_f.round)
-                                    
-                                    Resources::TreatmentGenerator.generate_level_trauma(
-                                        cek_pre_test.total_level_trauma_id, 
-                                        cek_pre_test.periode_treatment_id
-                                    )
-
-                                    Resources::TreatmentGenerator.rule_base(
-                                        cek_pre_test.periode_treatment_id
-                                    )
-
-                                    Resources::Tools.generate_date_for_treatment(
-                                        PeriodeTreatment.find_by(id: cek_pre_test.periode_treatment_id).rule ,
-                                        cek_pre_test.periode_treatment_id,
-                                    )
-
-                                end 
-                            end
-                        
+                            @status = 200                        
                         
                         elsif  @cek_pre_test_level_trauma.present?
                             if @cek_pre_test_level_trauma.update(jawaban: @level_trauma.jawaban) 
@@ -207,15 +184,11 @@ class Api::V1::PreTestController < WsController
         if skor.present?
             render :json => {success: true, "message": "Data berhasil diambil", data: skor}, status: 200
         else
-            render :json => {success: false, "message": "Gagal", data: skor}, status: 402
+            render :json => {success: false, "message": "Gagal", data: skor}, status: 401
         end
     end
 
     private 
-
-        def cek_pre_test
-          cek_pre_test = PreTest.find_by(periode_treatment_id: params[:periode_treatment_id])
-        end
 
         def batasi_per_user
         end

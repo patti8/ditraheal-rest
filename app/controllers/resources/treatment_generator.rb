@@ -5,11 +5,57 @@ class Resources::TreatmentGenerator
         periode_treatment = PeriodeTreatment.find_by(id: periode_treatment_id)
         
         if skor <= 26
-            periode_treatment.update(level_trauma: "rendah")
+            
+            if periode_treatment.update(level_trauma: "rendah")
+                render :json => {
+                    status: 200, 
+                    messages: "periode treatment successfully updated.",
+                    data: periode_treatment
+                    
+                }
+            else
+                render :json => {
+                    status: 400, 
+                    messages: false,
+                    data: nil
+                    
+                }
+            end
         elsif skor >= 26 && skor <= 43
-            periode_treatment.update(level_trauma: "sedang")
+            
+            if periode_treatment.update(level_trauma: "sedang")
+                render :json => {
+                    status: 200, 
+                    messages: "periode treatment successfully updated.",
+                    data: periode_treatment
+                    
+                }
+            else
+                render :json => {
+                    status: 400, 
+                    messages: false,
+                    data: nil
+                    
+                }
+            end
+
         elsif skor >= 44
-            periode_treatment.update(level_trauma: "tinggi")
+
+            if periode_treatment.update(level_trauma: "tinggi")
+                render :json => {
+                    status: 200, 
+                    messages: "periode treatment successfully updated.",
+                    data: periode_treatment
+                    
+                }
+            else
+                render :json => {
+                    status: 400, 
+                    messages: false,
+                    data: nil
+                    
+                }
+            end
         end
 
     end
@@ -51,30 +97,13 @@ class Resources::TreatmentGenerator
 
     end
 
-    # def self.treatment_by(rule_base, periode_treatment_id)
-
-    #     # SESI I  
-    #     start_date = DateTime.now
-    #     MasterTreatment.where(rule_based_id: rule_base).each do |rule|
-            
-    #         Treatment.create(
-    #             treat: rule.id,
-    #             check: 0,
-    #             periode_treatment_id: periode_treatment_id,
-    #             tanggal: Resources::Tools.generate_date_for_treatment(periode_treatment_id, rule.ref_sesi)
-    #         )
-
-    #     end
-
-    # end
-
     def  self.create_treatment_by(date_range, treat_master, periode_treatment_id)
         
         (date_range).each do |date|
             treat_master.each do |treat|
                 treat = Treatment.create(
                     treat: treat.id,
-                    check: 0,
+                    checklist: 0,
                     periode_treatment_id: periode_treatment_id,
                     tanggal: date                
                 )
