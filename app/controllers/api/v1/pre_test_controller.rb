@@ -190,10 +190,6 @@ class Api::V1::PreTestController < WsController
 
     private 
 
-        def batasi_per_user
-        end
-
-
         def test_params
             params.permit(:referensi_soal, :jawaban, :pre_test_id, :jenis)
         end
