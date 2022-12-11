@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
       namespace :treatments do
         get '/daily', to: "daily#show"
-        post '/daily', to: "daily#create"
+        post '/daily/treat/:id', to: "daily#create"
         post '/', to: 'treatment#create'
       end
 

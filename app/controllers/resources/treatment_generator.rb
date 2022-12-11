@@ -149,7 +149,7 @@ class Resources::TreatmentGenerator
             else
                 response(400, nil)
             end
-            
+
         end 
 
     end
