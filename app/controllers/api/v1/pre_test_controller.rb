@@ -9,88 +9,19 @@ class Api::V1::PreTestController < WsController
     # post efficacious_test 
     def effication_pre_test
         
-        # jika belum ada pre test 
-        if cek_pre_test.present?
-
-            # @respon = "pre test telah dilakukan"
-
-            @skor_efikasis = SkorEfikasi.new(test_params)
-            @skor_efikasis.pre_test_id = cek_pre_test.id
-            @skor_efikasis.jenis = 1
-
-            @soal = Reference.where(jenis: 2)
-            
-            # Resources::ReferensiSoal.efikasi_by(params[:referensi_soal])
-
-            @cek_efikasi_selesai = @skor_efikasis.referensi_soal >= @soal.last.id #SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id} AND skor_efikasis.referensi_soal = #{@soal.last.id}")
-   
-            # if @cek_efikasi_selesai.present?                
-                
-            #     @respon = "Pre Test skor efikasi berhasil diupdate. #{cek_pre_test}" 
-
-            if @skor_efikasis.present?
-                # validasi soal 
-                @cek_pre_test_efikasi = SkorEfikasi.find_by(referensi_soal: @skor_efikasis.referensi_soal, pre_test_id: @skor_efikasis.pre_test_id)
-
-                if Resources::ReferensiSoal.efikasi_by(params[:referensi_soal]).present?
-                    if @skor_efikasis.save                        
-                        
-                        @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil disimpan"
-                        @status = 200
-
-                        # UPDATE SKOR 
-                        if @cek_efikasi_selesai.present?
-                            @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
-                            cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round)
-                        end
-
-                    elsif @cek_pre_test_efikasi.present?
-                        
-                        if @cek_pre_test_efikasi.update(jawaban: @skor_efikasis.jawaban)
-                            
-                            @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil diupdate"
-                            @status = 200
-
-                        end
-
-                    else
-
-                      @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@skor_efikasis.errors.full_messages}"
-                      @status = 400
-
-                    end
-
-                else
-
-                    @respon = "soal tidak sesuai, mohon dicek kembali"
-                    @status = 400
-
-                end
-
-            end
+        data = Resources::TestGenerator.effication(
+            cek_pre_test,
+            1,
+            params,
+            test_params
+        )
         
-        else
-
-            if @periode_treatment_id.present?
-                @pre_test = PreTest.new(periode_treatment_id: params[:periode_treatment_id])
-                
-                if @pre_test.save
-                    @respon = "Pre Test berhasil dibuat"
-                    @status = 200
-                else
-                    @respon = "Gagal menambahkan pre test, cek ulang kembali data yang dikirim. #{@pre_test.errors.full_messages}"
-                    @status = 400
-                end
-
-            else
-                @respon = "Periode treatment tidak ditemukan, silahkan dibuat dulu"                
-            end 
-
-       
-        end       
-       
+        respon = data[0]
+        status = data[1]
+        skor_efikasis = data[2]
+        
         # render :json => {"code": 200, success: true, "message": "#{@respon}.", data: @skor_efikasis}  
-        render :json => {success: if @status == 200 then true else false end, "message": "#{@respon}.", data: @skor_efikasis}, status: @status
+        render :json => {success: if status == 200 then true else false end, "message": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
         
     end
 

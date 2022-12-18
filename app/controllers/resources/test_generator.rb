@@ -1,11 +1,11 @@
 # JENIS => [1: pre test, 2: post test]
 
-class Test::Generator
+class Resources::TestGenerator
 
 
-    def self.effication(pre_test=nil, jenis, params, test_params)
-
-        if pre_test.present?
+    def self.effication(cek_pre_test=nil, jenis, params, test_params)
+        
+        if cek_pre_test.present?
 
             @skor_efikasis = SkorEfikasi.new(test_params)
             @skor_efikasis.pre_test_id = cek_pre_test.id
@@ -25,10 +25,10 @@ class Test::Generator
                         @status = 200
 
                         # UPDATE SKOR 
-                        if @cek_efikasi_selesai.present?
-                            @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
-                            cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round)
-                        end
+                        # if @cek_efikasi_selesai.present?
+                        #     @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
+                        #     cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round)
+                        # end
 
                     elsif @cek_pre_test_efikasi.present?
                         
@@ -52,6 +52,13 @@ class Test::Generator
                     @status = 400
 
                 end
+
+                # OUTPUT 
+                [
+                    @respon,
+                    @status,
+                    @skor_efikasis
+                ]
 
             end
 

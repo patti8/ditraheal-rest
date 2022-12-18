@@ -39,7 +39,7 @@ class Api::V1::TreatmentController < WsController
     end
 
     def generate
-        Resources::Tools.create_treatment_by(params[:periode_treatment])
+        Resources::Tools.create_treatment_by(params[:periode_treatment_id])
     end
 
     def by_date

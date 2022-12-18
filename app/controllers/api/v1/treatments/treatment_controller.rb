@@ -24,7 +24,7 @@ class Api::V1::Treatments::TreatmentController < WsController
                     PeriodeTreatment.find_by(id: cek_pre_test.periode_treatment_id).rule ,
                     cek_pre_test.periode_treatment_id,
                 )
-
+                
                 render :json => {
                     status: 200,
                     messages: "successfully",

@@ -351,6 +351,7 @@ class Resources::Tools
     end
 
     def self.level_trauma(nilai)
+    
         if nilai <= 40
             "Level Trauma Rendah"
         elsif nilai > 40 && nilai <= 70
@@ -358,6 +359,7 @@ class Resources::Tools
         elsif nilai > 70
             "Level Trauma Tinggi"
         end
+        
     end
 
     def self.rule_base(level_trauma, hobi)
