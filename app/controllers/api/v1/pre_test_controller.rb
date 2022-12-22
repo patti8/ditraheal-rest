@@ -1,6 +1,6 @@
 
-# JENIS 1 => TEST EFIKASI 
-# JENIS 2 => TEST LEVEL TRAUMA
+# JENIS 1 => PRE TEST 
+# JENIS 2 => POST TEST
 
 class Api::V1::PreTestController < WsController
     before_action :cek_pre_test
