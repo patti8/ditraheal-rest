@@ -692,3 +692,21 @@ I, [2022-08-11T23:00:40.869729 #24148]  INFO -- : [ddd8dab0-e5c8-459c-a9bc-0890b
 F, [2022-08-11T23:00:40.874439 #24148] FATAL -- : [ddd8dab0-e5c8-459c-a9bc-0890b41682a4]   
 [ddd8dab0-e5c8-459c-a9bc-0890b41682a4] ActionController::RoutingError (No route matches [GET] "/packs/js/application-6c2cd89996771249403c.js"):
 [ddd8dab0-e5c8-459c-a9bc-0890b41682a4]   
+I, [2022-12-28T13:59:47.357264 #467409]  INFO -- : Migrating to AddColumnRefcode (20220926202247)
+I, [2022-12-28T13:59:47.619918 #467409]  INFO -- : Migrating to AddColumnInferensi (20220926212801)
+I, [2022-12-28T13:59:47.826139 #467409]  INFO -- : Migrating to CreateTreatments (20220929211836)
+I, [2022-12-28T13:59:48.049202 #467409]  INFO -- : Migrating to AddColumnTanggal (20220930221221)
+I, [2022-12-28T13:59:48.254763 #467409]  INFO -- : Migrating to CreateRuleBaseds (20221124021217)
+I, [2022-12-28T13:59:48.485768 #467409]  INFO -- : Migrating to CreateTimeDurations (20221124021352)
+I, [2022-12-28T13:59:48.703677 #467409]  INFO -- : Migrating to CreateMasterTreatments (20221124021948)
+I, [2022-12-28T13:59:48.922118 #467409]  INFO -- : Migrating to AddColumnRuleBased (20221124061216)
+I, [2022-12-28T13:59:49.135180 #467409]  INFO -- : Migrating to AddColumnLevelTrauma (20221124125343)
+I, [2022-12-28T14:02:53.060195 #470006]  INFO -- : [52250d2a-e906-4788-a567-2724a56183ca] Started POST "/login" for 127.0.0.1 at 2022-12-28 14:02:53 +0900
+I, [2022-12-28T14:02:55.086870 #470006]  INFO -- : [52250d2a-e906-4788-a567-2724a56183ca] Processing by UsersController#login as */*
+I, [2022-12-28T14:02:55.087108 #470006]  INFO -- : [52250d2a-e906-4788-a567-2724a56183ca]   Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+W, [2022-12-28T14:02:55.087937 #470006]  WARN -- : [52250d2a-e906-4788-a567-2724a56183ca] Can't verify CSRF token authenticity.
+I, [2022-12-28T14:02:55.660205 #470006]  INFO -- : [52250d2a-e906-4788-a567-2724a56183ca] Completed 200 OK in 573ms (Views: 0.6ms | ActiveRecord: 1424.1ms | Allocations: 2047)
+I, [2022-12-28T14:07:21.623409 #470006]  INFO -- : [d66fb2ff-f867-4063-9a9c-181e4f827d80] Started POST "/login" for 127.0.0.1 at 2022-12-28 14:07:21 +0900
+I, [2022-12-28T14:07:21.624664 #470006]  INFO -- : [d66fb2ff-f867-4063-9a9c-181e4f827d80] Processing by UsersController#login as */*
+I, [2022-12-28T14:07:21.624768 #470006]  INFO -- : [d66fb2ff-f867-4063-9a9c-181e4f827d80]   Parameters: {"no_hp"=>"08119235212", "tanggal_lahir"=>"1997-11-22", "user"=>{}}
+W, [2022-12-28T14:07:21.625060 #470006]  WARN -- : [d66fb2ff-f867-4063-9a9c-181e4f827d80] Can't verify CSRF token authenticity.

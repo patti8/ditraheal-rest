@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_125343) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_28_051704) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -81,14 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_125343) do
     t.string "level_trauma"
   end
 
-  create_table "pre_tests", force: :cascade do |t|
-    t.integer "total_skor_efikasi"
-    t.integer "total_level_trauma_id"
-    t.integer "periode_treatment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "references", force: :cascade do |t|
     t.integer "jenis"
     t.string "deskripsi"
@@ -116,6 +108,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_125343) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tests", force: :cascade do |t|
+    t.integer "total_skor_efikasi"
+    t.integer "total_level_trauma_id"
+    t.integer "periode_treatment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "jenis"
+  end
+
   create_table "time_durations", force: :cascade do |t|
     t.string "deskripsi"
     t.string "ref_duration"
@@ -125,7 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_125343) do
 
   create_table "treatments", force: :cascade do |t|
     t.integer "treat"
-    t.boolean "check"
+    t.boolean "checklist"
     t.integer "periode_treatment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
