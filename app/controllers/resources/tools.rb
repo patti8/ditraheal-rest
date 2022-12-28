@@ -3,7 +3,7 @@ class Resources::Tools
     def self.create_treatment_by(periode_treatment_id)
         
         periode_treatment = PeriodeTreatment.find_by(id: periode_treatment_id)
-        pre_test = PreTest.find_by(periode_treatment_id: periode_treatment.id)
+        pre_test = Test.find_by(periode_treatment_id: periode_treatment.id)
         identy = Identy.find_by(id: periode_treatment.identitas_id)
         hobi = Reference.find_by(jenis: 1, id: identy.hobi).deskripsi
 

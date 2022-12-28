@@ -1,6 +1,6 @@
 class Api::V1::Treatments::TreatmentController < WsController
     
-    before_action :cek_pre_test
+    before_action :cek_test
 
     def create
         

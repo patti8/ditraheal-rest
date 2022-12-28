@@ -3,17 +3,16 @@
 class Resources::TestGenerator
 
     def self.test(model, data, referensi_soal)
-            # cek_test = data[0]
-            # jenis = data[1]
-            # params = data[2]
-            # test_params = data[3]
-            # jenis_soal = data[4]
+            cek_test = data[0]
+            jenis = data[1] # pre test atau post test
+            test_params = data[2] # record model params
+            jenis_soal = data[3] # soal efikasi  atau level trauma
 
-            @test = model.new(data[3])
-            @test.pre_test_id = data[0].id
-            @test.jenis = data[1]
+            @test = model.new(test_params)
+            @test.pre_test_id = cek_test.id
+            @test.jenis = jenis
 
-            @soal = Reference.where(jenis: data[4])
+            @soal = Reference.where(jenis: jenis_soal)
 
             @cek_test_selesai = @test.referensi_soal >= @soal.last.id 
 
@@ -72,9 +71,8 @@ class Resources::TestGenerator
             data = [
                 cek_test,
                 jenis,
-                params,
                 test_params,
-                2
+                2 # ref. soal efikasi
             ]
 
             test(
@@ -87,8 +85,24 @@ class Resources::TestGenerator
 
     end
 
-    def self.level_trauma(pre_test = nil, jenis)
-    
+    def self.level_trauma(cek_test=nil, jenis, params, test_params)
+        
+        if cek_test.present?
+            
+            data = [
+                cek_test,
+                jenis,
+                test_params,
+                3 # ref. soal level trauma
+            ]
+
+            test(
+                LevelTrauma, 
+                data, 
+                Resources::ReferensiSoal.level_trauma_by(params[:referensi_soal])
+            )
+
+        end
     end
 
 end

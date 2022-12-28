@@ -28,7 +28,12 @@ Rails.application.routes.draw do
 
       post "/pre_test/efikasi", to: "pre_test#effication_pre_test"
       get "/pre_test/efikasi", to: "pre_test#get_effication_pre_test"
+      
+      post "/post_test/efikasi", to: "post_test#effication_test"
+      post "/post_test/level_trauma", to: "post_test#level_trauma_test"
+
       get '/pre_test/skor/:periode_treatment_id', to: "pre_test#skor"
+      post '/:test/update_skor/:periode_treatment_id', to: "pre_test#update_skor" 
 
       post "/pre_test/level_trauma", to: "pre_test#level_trauma_pre_test"
 
