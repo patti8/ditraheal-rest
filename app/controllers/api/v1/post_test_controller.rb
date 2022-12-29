@@ -20,7 +20,7 @@ class Api::V1::PostTestController < WsController
         status = data[1]
         skor_efikasis = data[2]
         
-        render :json => {success: if status == 200 then true else false end, "message": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
+        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
         
     end
 
@@ -38,9 +38,9 @@ class Api::V1::PostTestController < WsController
             status = data[1]
             level_trauma = data[2]
 
-            render :json => {success: if status == 200 then true else false end, "message": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, status: status
+            render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, status: status
         else
-            render :json => {success: false, "message": "Gagal menyimpan. Cek kembali data yang dimasukan.", data: nil}, status: 402
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal menyimpan. Cek kembali data yang dimasukan.", data: nil}, status: 402
         end
     end
 
@@ -48,9 +48,9 @@ class Api::V1::PostTestController < WsController
         skor = Test.find_by(periode_treatment_id: params[:periode_treatment_id])
 
         if skor.present?
-            render :json => {success: true, "message": "Data berhasil diambil", data: skor}, status: 200
+            render :json => {code: if status == 200 then 200 else 400 end, success: true, "messages": "Data berhasil diambil", data: skor}, status: 200
         else
-            render :json => {success: false, "message": "Gagal", data: skor}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, status: 401
         end
     end
 
@@ -64,10 +64,10 @@ class Api::V1::PostTestController < WsController
             @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_test.id}")
             
             if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round) && cek_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round)
-                render :json => {"code": 200, success: true, "message": "berhasil menyimpan.", data: cek_test}  
+                render :json => {"code": 200, success: true, "messages": "berhasil menyimpan.", data: cek_test}  
             end
         else
-            render :json => {success: false, "message": "Gagal", data: nil}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, status: 401
         end
 
     end

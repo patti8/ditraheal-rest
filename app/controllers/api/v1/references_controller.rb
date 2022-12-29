@@ -6,21 +6,21 @@ class Api::V1::ReferencesController < WsController
   def hobby
     @hobi = Reference.where(jenis: 1)
 
-    render :json => {"code": 200, success: true, "message": "hobby references success", data: @hobi}  
+    render :json => {"code": 200, success: true, "messages": "hobby references success", data: @hobi}  
   end
 
   # GET /reference/tes_efikasi
   def effication_test
     @effication_test = Reference.where(jenis: 2)
 
-    render :json => {"code": 200, success: true, "message": "authentication success", data: @effication_test}  
+    render :json => {"code": 200, success: true, "messages": "authentication success", data: @effication_test}  
   end
 
    # GET /reference/level_trauma
   def level_trauma
     @effication_test = Reference.where(jenis: 3)
 
-    render :json => {"code": 200, success: true, "message": "authentication success", data: @effication_test}  
+    render :json => {"code": 200, success: true, "messages": "authentication success", data: @effication_test}  
   end
 
 

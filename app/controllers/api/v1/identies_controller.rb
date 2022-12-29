@@ -25,11 +25,11 @@ class Api::V1::IdentiesController < WsController
 
     if @identy.save
 
-      render :json => {"code": 200, success: true, "message": "identy create success", data: @identy} 
+      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy} 
       
     else
     
-      render :json => {"code": 204, success: false, "message": "#{@identy.errors.full_messages}", data: nil} 
+      render :json => {"code": 204, success: false, "messages": "#{@identy.errors.full_messages}", data: nil} 
     
     end
   end

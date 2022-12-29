@@ -20,8 +20,8 @@ class Api::V1::PreTestController < WsController
         status = data[1]
         skor_efikasis = data[2]
         
-        # render :json => {"code": 200, success: true, "message": "#{@respon}.", data: @skor_efikasis}  
-        render :json => {success: if status == 200 then true else false end, "message": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
+        # render :json => {"code": 200, success: true, "messages": "#{@respon}.", data: @skor_efikasis}  
+        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
         
     end
 
@@ -31,11 +31,11 @@ class Api::V1::PreTestController < WsController
      
         if params[:pre_test_id].present? && @pre_test.present?
 
-            render :json => {"code": 200, success: true, "message": "authentication success.", data: @pre_test}  
+            render :json => {"code": 200, success: true, "messages": "authentication success.", data: @pre_test}  
 
         else
 
-            render :json => {"code": 401, success: false, "message": "Pre test tidak ditemukan.", data: nil}  
+            render :json => {"code": 401, success: false, "messages": "Pre test tidak ditemukan.", data: nil}  
 
         end
     end
@@ -54,7 +54,7 @@ class Api::V1::PreTestController < WsController
         status = data[1]
         level_trauma = data[2]
         
-        render :json => {success: if status == 200 then true else false end, "message": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, status: status
+        render :json => {success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, status: status
     
     end
 
@@ -62,9 +62,9 @@ class Api::V1::PreTestController < WsController
         skor = Test.find_by(periode_treatment_id: params[:periode_treatment_id])
 
         if skor.present?
-            render :json => {success: true, "message": "Data berhasil diambil", data: skor}, status: 200
+            render :json => {code: if status == 200 then 200 else 400 end, success: true, "messages": "Data berhasil diambil", data: skor}, status: 200
         else
-            render :json => {success: false, "message": "Gagal", data: skor}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, status: 401
         end
     end
 
@@ -83,15 +83,29 @@ class Api::V1::PreTestController < WsController
                 @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
     
                 if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end) && cek_pre_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end)
-                    render :json => {"code": 200, success: true, "message": "berhasil menyimpan.", data: cek_pre_test}  
+                    @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
+                        cek_pre_test.total_level_trauma_id, 
+                        cek_pre_test.periode_treatment_id
+                    )
+
+                    render :json => {
+                        "code": 200, 
+                        success: true, 
+                        "messages": "berhasil menyimpan.", 
+                        data: {
+                                generate_lvl_trauma: @generate_lvl_trauma[:data][:level_trauma],
+                                pre_test: cek_pre_test
+                            }
+                            
+                    }  
                 end
 
             else
-                render :json => {success: false, "message": "Gagal", data: nil}, status: 401
+                render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, status: 401
             end
 
         else
-            render :json => {success: false, "message": "Gagal", data: nil}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, status: 401
         end
 
     end

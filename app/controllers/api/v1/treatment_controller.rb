@@ -10,14 +10,14 @@ class Api::V1::TreatmentController < WsController
         
         if @cek.present?
 
-            render :json => {"code": 400, success: false, "message": "Anda memiliki treatment yang belum selesai.", data: nil}, status: 400  
+            render :json => {"code": 400, success: false, "messages": "Anda memiliki treatment yang belum selesai.", data: nil}, status: 400  
         
         else
             if @periode.save
-                PreTest.create!(periode_treatment_id: @periode.id)
-                render :json => {"code": 200, success: true, "message": "🎉Yeay, periode treatment berhasil dibuat.", data: @periode}  
+                Test.create!(periode_treatment_id: @periode.id)
+                render :json => {"code": 200, success: true, "messages": "🎉Yeay, periode treatment berhasil dibuat.", data: @periode}  
             else
-                render :json => {"code": 400, success: false, "message": "#{@periode.errors.full_messages}", data: nil }, status: 400 
+                render :json => {"code": 400, success: false, "messages": "#{@periode.errors.full_messages}", data: nil }, status: 400 
             end
         end
         
@@ -30,10 +30,10 @@ class Api::V1::TreatmentController < WsController
         
         if params[:identitas_id].present? && @periode.present?
             
-            render :json => {"code": 200, success: true, "message": "authentication success.", data: @periode.last}  
+            render :json => {"code": 200, success: true, "messages": "authentication success.", data: @periode.last}  
 
         else
-            render :json => {"code": 204, success: false, "message": "Maaf, periode treatment tidak ditemukan.", data: nil}  
+            render :json => {"code": 204, success: false, "messages": "Maaf, periode treatment tidak ditemukan.", data: nil}  
         end
 
     end
@@ -48,11 +48,11 @@ class Api::V1::TreatmentController < WsController
 
        if @treatment.present?
             
-        render :json => {"code": 200, success: true, "message": "berhasil menarik data.", data: @treatment}, status: 200  
+        render :json => {"code": 200, success: true, "messages": "berhasil menarik data.", data: @treatment}, status: 200  
        
        else
 
-        render :json => {"code": 400, success: false, "message": "gagal menarik data.", data: nil }, status: 400  
+        render :json => {"code": 400, success: false, "messages": "gagal menarik data.", data: nil }, status: 400  
        
        end
 
@@ -76,11 +76,11 @@ class Api::V1::TreatmentController < WsController
 
          end
 
-         render :json => {"code": 200, success: true, "message": "check berhasil diupdate menjadi #{update}.", data: @treat}, status: 200  
+         render :json => {"code": 200, success: true, "messages": "check berhasil diupdate menjadi #{update}.", data: @treat}, status: 200  
         
         else
 
-         render :json => {"code": 400, success: false, "message": "harap periksa kembali data yang dimasukan.", data: nil }, status: 400  
+         render :json => {"code": 400, success: false, "messages": "harap periksa kembali data yang dimasukan.", data: nil }, status: 400  
         
         end
 

@@ -11,7 +11,7 @@ class Api::V1::TesEfikasiController < WsController
       render json: @efikasi_all
     # else
       # render json: {
-      #   message: "Anda belum login"
+      #   messages: "Anda belum login"
       # }
     # end
   end

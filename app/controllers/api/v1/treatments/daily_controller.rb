@@ -20,9 +20,9 @@ class Api::V1::Treatments::DailyController < WsController
           ")
           
         if @treat.present?
-          render :json => {status: true, message: "successfully for get data", data: @treat}
+          render :json => {code: if status == 200 then 200 else 400 end, status: true, messages: "successfully for get data", data: @treat}
         else
-          render :json => {status: false, message: "data not found", data: nil}, status: 400
+          render :json => {code: if status == 200 then 200 else 400 end, status: false, messages: "data not found", data: nil}, status: 400
         end
 
     end
