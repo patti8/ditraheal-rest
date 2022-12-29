@@ -72,7 +72,7 @@ class Api::V1::PreTestController < WsController
         
         cek_pre_test = Test.find_by(
             periode_treatment_id: params[:periode_treatment_id],
-            jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end
+            # jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end
         )
 
         if params[:test] == "pre_test" || params[:test] == "post_test"
@@ -101,7 +101,7 @@ class Api::V1::PreTestController < WsController
                 end
 
             else
-                render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, status: 401
+                render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal11111111", data: nil}, status: 401
             end
 
         else
