@@ -63,7 +63,7 @@ class Api::V1::PostTestController < WsController
             @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_test.id}")
             @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_test.id}")
             
-            if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round) && cek_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round)
+            if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round) && cek_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round)
                 render :json => {"code": 200, success: true, "messages": "berhasil menyimpan.", data: cek_test}  
             end
         else

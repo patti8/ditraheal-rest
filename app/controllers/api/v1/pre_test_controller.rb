@@ -31,7 +31,14 @@ class Api::V1::PreTestController < WsController
      
         if params[:pre_test_id].present? && @pre_test.present?
 
-            render :json => {"code": 200, success: true, "messages": "authentication success.", data: @pre_test}  
+            
+
+            render :json => {
+                "code": 200, 
+                success: true, 
+                "messages": "authentication success.", 
+                data:  @pre_test
+            }  
 
         else
 
@@ -62,7 +69,22 @@ class Api::V1::PreTestController < WsController
         skor = Test.find_by(periode_treatment_id: params[:periode_treatment_id])
 
         if skor.present?
-            render :json => {code: if status == 200 then 200 else 400 end, success: true, "messages": "Data berhasil diambil", data: skor}, status: 200
+            
+            @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
+                skor.total_level_trauma_id, 
+                skor.periode_treatment_id
+            )
+
+            render :json => {
+                code: if status == 200 then 200 else 400 end, 
+                success: true, 
+                "messages": "Data berhasil diambil", 
+                data: {
+                    generate_lvl_trauma: @generate_lvl_trauma[:data][:level_trauma],
+                    skor: skor
+                }
+            }, 
+                status: 200
         else
             render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, status: 401
         end
@@ -82,7 +104,7 @@ class Api::V1::PreTestController < WsController
                 @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
                 @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
     
-                if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end) && cek_pre_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end)
+                if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end) && cek_pre_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end)
                     @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
                         cek_pre_test.total_level_trauma_id, 
                         cek_pre_test.periode_treatment_id
