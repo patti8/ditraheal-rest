@@ -12,12 +12,12 @@ class Api::V1::SessionController < WsController
         session['nohp'] = ceklogin.no_hp
         render json: {
           messages: "Halo #{session['name']}, kamu berhasil masuk!",
-          status: 200
+          success: 200
         }
       else
         render json: {
           error: "Periksa kembali no hp dan tanggal lahir anda.",
-          status: 400
+          success: 400
         }
       end
     end
@@ -28,7 +28,7 @@ class Api::V1::SessionController < WsController
             session['password'] = nil
             render json: {
                 messages: "Anda berhasil keluar!",
-                status: 200
+                success: 200
             }
         # end
     end

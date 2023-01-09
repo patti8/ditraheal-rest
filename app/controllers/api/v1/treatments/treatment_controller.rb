@@ -27,7 +27,7 @@ class Api::V1::Treatments::TreatmentController < WsController
                 
                 render :json => {
                     code: if status == 200 then 200 else 400 end,
-                    status: true,
+                    success: true,
                     messages: "successfully",
                     data: {
                         generate_lvl_trauma: @generate_lvl_trauma[:data],
@@ -40,10 +40,10 @@ class Api::V1::Treatments::TreatmentController < WsController
         else
             render :json => {
                 code: if status == 200 then 200 else 400 end,
-                status: false,
+                success: false,
                 messages: false,
                 data: nil
-            }, status: 400
+            }, success: 400
         end
 
     end

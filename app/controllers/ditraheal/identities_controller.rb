@@ -49,7 +49,7 @@ class Ditraheal::IdentitiesController < DitrahealController
     def destroy
         @identy.destroy
 
-        redirect_to root_path, status: :see_other
+        redirect_to root_path, success: :see_other
 
     end
     

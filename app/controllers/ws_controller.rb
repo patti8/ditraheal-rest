@@ -46,7 +46,7 @@ class WsController < ActionController::Base
     end
 
     def authorized
-        render :json => {"code": 203, status: :unauthorized , "message": "authentication failed !", data: nil } unless logged_in?
+        render :json => {"code": 203, success: :unauthorized , messages: "authentication failed !", data: nil } unless logged_in?
     end
 
     private 

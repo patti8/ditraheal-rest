@@ -175,14 +175,14 @@ class Resources::TreatmentGenerator
 
         if status == 200
             {
-                status: 200, 
+                success: 200, 
                 messages: "periode treatment successfully updated.",
                 data: data
                 
             }
         else
             {
-                status: 400, 
+                success: 400, 
                 messages: false,
                 data: data
             }

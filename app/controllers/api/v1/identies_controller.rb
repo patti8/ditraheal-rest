@@ -39,7 +39,7 @@ class Api::V1::IdentiesController < WsController
     if @identy.update(identy_params)
       render json: @identy
     else
-      render json: @identy.errors, status: :unprocessable_entity
+      render json: @identy.errors, success: :unprocessable_entity
     end
   end
 

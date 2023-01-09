@@ -18,10 +18,10 @@ class UsersController < WsController
           HistoryToken.create(user: @user.id, token: token)
         end
         session['name'] = @user.id
-        render :json => {"code": 200, success: true, "message": "authentication success", data: [id: @user.id, name: @user.name, no_hp: @user.no_hp, tanggal_lahir: @user.tanggal_lahir, token: token]}  
+        render :json => {"code": 200, success: true, messages: "authentication success", data: [id: @user.id, name: @user.name, no_hp: @user.no_hp, tanggal_lahir: @user.tanggal_lahir, token: token]}  
         # render json: {user: @user.name, token: token}
       else
-        render :json => {"code": 204, success: false, "message": "Invalid phone number or date of birth", data: nil}  
+        render :json => {"code": 204, success: false, messages: "Invalid phone number or date of birth", data: nil}  
 
       end
     end
@@ -37,7 +37,7 @@ class UsersController < WsController
       historytoken = HistoryToken.find_by(token: params[:by_token])
       user = Identy.find_by(id: historytoken.user)
       if params[:by_token].present? && historytoken.present?
-        render :json => {"code": 200, success: true, "message": "authentication success", data: [name: user.name, no_hp: user.no_hp, tanggal_lahir: user.tanggal_lahir, token: historytoken.token, last_login: historytoken.updated_at]}  
+        render :json => {"code": 200, success: true, messages: "authentication success", data: [id: user.id, name: user.name, no_hp: user.no_hp, tanggal_lahir: user.tanggal_lahir, token: historytoken.token, last_login: historytoken.updated_at]}  
       end
     end
 

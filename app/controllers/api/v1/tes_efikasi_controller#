@@ -30,10 +30,10 @@ class Api::V1::TesEfikasiController < WsController
     @tes_efikasi = TesEfikasi.new(tes_efikasi_params)
 
     if @tes_efikasi.save
-      Login.create!(id_user: @tes_efikasi.id, status: 1)
-      render json: [status: "success", data: @tes_efikasi], status: :ok # ,location: @tes_efikasi
+      Login.create!(id_user: @tes_efikasi.id, success: 1)
+      render json: [success: "success", data: @tes_efikasi], success: :ok # ,location: @tes_efikasi
     else
-      render json: @tes_efikasi.errors, status: :unprocessable_entity
+      render json: @tes_efikasi.errors, success: :unprocessable_entity
     end
   end
 
@@ -42,7 +42,7 @@ class Api::V1::TesEfikasiController < WsController
     if @tes_efikasi.update(tes_efikasi_params)
       render json: @tes_efikasi
     else
-      render json: @tes_efikasi.errors, status: :unprocessable_entity
+      render json: @tes_efikasi.errors, success: :unprocessable_entity
     end
   end
 

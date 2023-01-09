@@ -34,9 +34,9 @@ class Api::V1::ReferencesController < WsController
     @reference = Reference.new(reference_params)
 
     if @reference.save
-      render json: @reference, status: :created, location: @reference
+      render json: @reference, success: :created, location: @reference
     else
-      render json: @reference.errors, status: :unprocessable_entity
+      render json: @reference.errors, success: :unprocessable_entity
     end
   end
 
@@ -45,7 +45,7 @@ class Api::V1::ReferencesController < WsController
     if @reference.update(reference_params)
       render json: @reference
     else
-      render json: @reference.errors, status: :unprocessable_entity
+      render json: @reference.errors, success: :unprocessable_entity
     end
   end
 

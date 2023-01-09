@@ -20,7 +20,7 @@ class Api::V1::PostTestController < WsController
         status = data[1]
         skor_efikasis = data[2]
         
-        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
+        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, success: status
         
     end
 
@@ -38,9 +38,9 @@ class Api::V1::PostTestController < WsController
             status = data[1]
             level_trauma = data[2]
 
-            render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, status: status
+            render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, success: status
         else
-            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal menyimpan. Cek kembali data yang dimasukan.", data: nil}, status: 402
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal menyimpan. Cek kembali data yang dimasukan.", data: nil}, success: 402
         end
     end
 
@@ -48,9 +48,9 @@ class Api::V1::PostTestController < WsController
         skor = Test.find_by(periode_treatment_id: params[:periode_treatment_id])
 
         if skor.present?
-            render :json => {code: if status == 200 then 200 else 400 end, success: true, "messages": "Data berhasil diambil", data: skor}, status: 200
+            render :json => {code: if status == 200 then 200 else 400 end, success: true, "messages": "Data berhasil diambil", data: skor}, success: 200
         else
-            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, success: 401
         end
     end
 
@@ -67,7 +67,7 @@ class Api::V1::PostTestController < WsController
                 render :json => {"code": 200, success: true, "messages": "berhasil menyimpan.", data: cek_test}  
             end
         else
-            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, success: 401
         end
 
     end

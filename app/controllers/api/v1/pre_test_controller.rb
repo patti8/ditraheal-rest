@@ -21,7 +21,7 @@ class Api::V1::PreTestController < WsController
         skor_efikasis = data[2]
         
         # render :json => {"code": 200, success: true, "messages": "#{@respon}.", data: @skor_efikasis}  
-        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, status: status
+        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, success: status
         
     end
 
@@ -61,7 +61,7 @@ class Api::V1::PreTestController < WsController
         status = data[1]
         level_trauma = data[2]
         
-        render :json => {success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, status: status
+        render :json => {success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, success: status
     
     end
 
@@ -84,9 +84,9 @@ class Api::V1::PreTestController < WsController
                     skor: skor
                 }
             }, 
-                status: 200
+                success: 200
         else
-            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, success: 401
         end
     end
 
@@ -123,11 +123,11 @@ class Api::V1::PreTestController < WsController
                 end
 
             else
-                render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal11111111", data: nil}, status: 401
+                render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal11111111", data: nil}, success: 401
             end
 
         else
-            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, success: 401
         end
 
     end

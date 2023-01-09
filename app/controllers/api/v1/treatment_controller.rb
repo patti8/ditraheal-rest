@@ -10,14 +10,14 @@ class Api::V1::TreatmentController < WsController
         
         if @cek.present?
 
-            render :json => {"code": 400, success: false, "messages": "Anda memiliki treatment yang belum selesai.", data: nil}, status: 400  
+            render :json => {"code": 400, success: false, "messages": "Anda memiliki treatment yang belum selesai.", data: nil}, success: 400  
         
         else
             if @periode.save
                 Test.create!(periode_treatment_id: @periode.id)
                 render :json => {"code": 200, success: true, "messages": "🎉Yeay, periode treatment berhasil dibuat.", data: @periode}  
             else
-                render :json => {"code": 400, success: false, "messages": "#{@periode.errors.full_messages}", data: nil }, status: 400 
+                render :json => {"code": 400, success: false, "messages": "#{@periode.errors.full_messages}", data: nil }, success: 400 
             end
         end
         
@@ -48,11 +48,11 @@ class Api::V1::TreatmentController < WsController
 
        if @treatment.present?
             
-        render :json => {"code": 200, success: true, "messages": "berhasil menarik data.", data: @treatment}, status: 200  
+        render :json => {"code": 200, success: true, "messages": "berhasil menarik data.", data: @treatment}, success: 200  
        
        else
 
-        render :json => {"code": 400, success: false, "messages": "gagal menarik data.", data: nil }, status: 400  
+        render :json => {"code": 400, success: false, "messages": "gagal menarik data.", data: nil }, success: 400  
        
        end
 
@@ -76,11 +76,11 @@ class Api::V1::TreatmentController < WsController
 
          end
 
-         render :json => {"code": 200, success: true, "messages": "check berhasil diupdate menjadi #{update}.", data: @treat}, status: 200  
+         render :json => {"code": 200, success: true, "messages": "check berhasil diupdate menjadi #{update}.", data: @treat}, success: 200  
         
         else
 
-         render :json => {"code": 400, success: false, "messages": "harap periksa kembali data yang dimasukan.", data: nil }, status: 400  
+         render :json => {"code": 400, success: false, "messages": "harap periksa kembali data yang dimasukan.", data: nil }, success: 400  
         
         end
 
