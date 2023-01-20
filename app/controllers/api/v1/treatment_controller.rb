@@ -15,7 +15,12 @@ class Api::V1::TreatmentController < WsController
         else
             if @periode.save
                 Test.create!(periode_treatment_id: @periode.id)
-                render :json => {"code": 200, success: true, "messages": "🎉Yeay, periode treatment berhasil dibuat.", data: @periode}  
+                render :json => {
+                    "code": 200, 
+                    success: true, 
+                    "messages": "🎉Yeay, periode treatment berhasil dibuat.", 
+                    data: @periode
+                }  
             else
                 render :json => {"code": 400, success: false, "messages": "#{@periode.errors.full_messages}", data: nil }, success: 400 
             end
@@ -30,10 +35,41 @@ class Api::V1::TreatmentController < WsController
         
         if params[:identitas_id].present? && @periode.present?
             
-            render :json => {"code": 200, success: true, "messages": "authentication success.", data: @periode.last}  
+            # debugger
+            periode = @periode.last
+            treatment = Treatment.where(periode_treatment_id: periode.id) 
+          
+      
+            # treat.tanggal_awal_treatment = @treatment.first.created_at
+            # treat.tanggal_akhir_treatment = @treatment.last.created_at
+            # treat.tanggal_sedang_treatment = @treatment.where(checklist: true).last.created_at
+            
+            
+            render :json => {
+                "code": 200, 
+                success: true, 
+                "messages": "authentication success.", 
+                data: {
+                    id: periode.id,
+                    identitas_id: periode.identitas_id,
+                    status: periode.status,
+                    tanggal_awal: periode.tanggal_awal,
+                    tanggal_akhir: periode.tanggal_akhir,
+                    inferensi: periode.inferensi,
+                    rule: periode.rule,
+                    level_trauma: periode.level_trauma,
+                    treatment_kelompok: 0,
+                    tanggal_awal_treatment:  treatment.first.tanggal.strftime("%Y-%m-%d"),
+                    tanggal_akhir_treatment: treatment.last.tanggal.strftime("%Y-%m-%d"),
+                    tanggal_sedang_treatment:  treatment.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d"),
+                } 
+    
+            }  
 
         else
+            
             render :json => {"code": 204, success: false, "messages": "Maaf, periode treatment tidak ditemukan.", data: nil}  
+        
         end
 
     end
