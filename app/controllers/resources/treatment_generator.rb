@@ -171,12 +171,41 @@ class Resources::TreatmentGenerator
         end
     end
 
+    def self.treat_kelompok(periode_treatment, hobi)
+
+        link = Reference.find_by(ref_code: hobi)
+
+        tk_sekali_waktu = Reference.where(jenis: 11)
+
+        PeriodeTreatment.find_by(id: periode_treatment).update(
+            link_group: link.id
+        )
+
+        tk_sekali_waktu.each do |treat|
+            TreatmentKelompok.create(
+                periode_treatment: periode_treatment,
+                jenis: 1,
+                treat_kelompok_sekali: treat.id
+            )
+
+        end
+
+        # treatment berulang 
+        (1..10).each do |treat|
+            TreatmentKelompok.create(
+                periode_treatment: periode_treatment,
+                jenis: 2
+            )
+        end    
+
+    end
+
     def self.response(status, data)
 
         if status == 200
             {
                 success: 200, 
-                messages: "periode treatment successfully updated.",
+                messages: true,
                 data: data
                 
             }

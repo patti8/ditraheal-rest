@@ -49,6 +49,8 @@ class WsController < ActionController::Base
         render :json => {"code": 203, success: :unauthorized , messages: "authentication failed !", data: nil } unless logged_in?
     end
 
+    
+
     private 
 
         def cek_test
@@ -58,5 +60,28 @@ class WsController < ActionController::Base
         def set_csrf_cookie
             cookies["CSRF-TOKEN"] = "form_authenticity_token"
         end
+
+        def tanggapan(code, messages, data)
+            
+            if status == 200 || status == 203
+                render :json =>
+                {
+                    code: code,
+                    success: true, 
+                    messages: messages,
+                    data: data
+                }
+            else
+                render :json =>
+                {
+                    code: code,
+                    success: false, 
+                    messages: messages,
+                    data: nil
+                }
+            end
+            
+        end
+
 
 end

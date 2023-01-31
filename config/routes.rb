@@ -48,6 +48,12 @@ Rails.application.routes.draw do
         get '/daily', to: "daily#show"
         post '/daily/treat/:id', to: "daily#create"
         post '/', to: 'treatment#create'
+        
+        # treat_kelompok 
+        get '/kelompok/sekali', to: 'treatment#treatment_kelompok_tampil_sekali'
+        get '/kelompok/berulang', to: 'treatment#treatment_kelompok_tampil_berulang'
+        post '/kelompok', to: 'treatment#treat_kelompok_checklist'
+      
       end
 
 

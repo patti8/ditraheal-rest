@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_051704) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_205555) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_051704) do
     t.string "inferensi"
     t.integer "rule"
     t.string "level_trauma"
+    t.integer "link_group"
   end
 
   create_table "references", force: :cascade do |t|
@@ -122,6 +123,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_051704) do
     t.string "ref_duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "treatment_kelompoks", force: :cascade do |t|
+    t.integer "periode_treatment"
+    t.string "treat_kelompok_sekali"
+    t.boolean "check_treat_kelompok_sekali"
+    t.integer "jenis"
+    t.boolean "bercerita_tentang_hal_hal_berhubungan_dengan_hobi"
+    t.boolean "bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi"
+    t.boolean "saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi"
+    t.boolean "saling_memotivasi_sesama_anggota_kelompok"
+    t.string "saling_mendoakan_sesama_anggota_kelompok_menurut"
+    t.boolean "keyakinan_masing_masing"
+    t.boolean "melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok"
+    t.integer "sesi"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "link"
   end
 
   create_table "treatments", force: :cascade do |t|

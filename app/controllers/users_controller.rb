@@ -41,11 +41,6 @@ class UsersController < WsController
       end
     end
 
-
-
     private
-  
-      # def user_params
-      #   params.permit(:username, :password)
-      # end
+
 end

@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  periode_treatment: 1
+  treat_kelompok_sekali: MyString
+  check_treat_kelompok_sekali: false
+  jenis: 1
+  bercerita_tentang_hal_hal_berhubungan_dengan_hobi: false
+  bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi: false
+  saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi: false
+  saling_memotivasi_sesama_anggota_kelompok: false
+  saling_mendoakan_sesama_anggota_kelompok_menurut: MyString
+  keyakinan_masing_masing: false
+  melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok: false
+  sesi: 1
+
+two:
+  periode_treatment: 1
+  treat_kelompok_sekali: MyString
+  check_treat_kelompok_sekali: false
+  jenis: 1
+  bercerita_tentang_hal_hal_berhubungan_dengan_hobi: false
+  bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi: false
+  saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi: false
+  saling_memotivasi_sesama_anggota_kelompok: false
+  saling_mendoakan_sesama_anggota_kelompok_menurut: MyString
+  keyakinan_masing_masing: false
+  melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok: false
+  sesi: 1
