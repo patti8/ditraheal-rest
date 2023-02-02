@@ -44,7 +44,6 @@ class Api::V1::TreatmentController < WsController
             # treat.tanggal_akhir_treatment = @treatment.last.created_at
             # treat.tanggal_sedang_treatment = @treatment.where(checklist: true).last.created_at
             
-            
             render :json => {
                 "code": 200, 
                 success: true, 
@@ -61,7 +60,7 @@ class Api::V1::TreatmentController < WsController
                     treatment_kelompok: 0,
                     tanggal_awal_treatment:  treatment.first.tanggal.strftime("%Y-%m-%d"),
                     tanggal_akhir_treatment: treatment.last.tanggal.strftime("%Y-%m-%d"),
-                    tanggal_sedang_treatment:  treatment.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d"),
+                    tanggal_sedang_treatment:  if treatment.where(checklist: true).order(updated_at: :desc).present? then treatment.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d") else "-" end ,
                 } 
     
             }  

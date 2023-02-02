@@ -63,7 +63,8 @@ class Api::V1::Treatments::TreatmentController < WsController
         if @treat.present?
             
             data = @treat.map { |d|  {treat_kelompok_sekali: Reference.find_by(id: d['treat_kelompok_sekali']).deskripsi, checklist: d['check_treat_kelompok_sekali']} }
-            
+
+
             tanggapan(
                 200,
                 "data ditemukan",
@@ -79,6 +80,7 @@ class Api::V1::Treatments::TreatmentController < WsController
             )
 
         end
+
     end
 
     def treatment_kelompok_tampil_berulang
@@ -89,9 +91,7 @@ class Api::V1::Treatments::TreatmentController < WsController
         )
 
         if @treat.present?
-            
-            # data = @treat.map { |d|  {treat_kelompok_sekali: Reference.find_by(id: d['treat_kelompok_sekali']).deskripsi, checklist: d['check_treat_kelompok_sekali']} }
-            
+                        
             tanggapan(
                 200,
                 "data ditemukan",
@@ -106,7 +106,9 @@ class Api::V1::Treatments::TreatmentController < WsController
                     :saling_mendoakan_sesama_anggota_kelompok_menurut,
                     :keyakinan_masing_masing,
                     :melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok,
-                    :link
+                    :link,
+                    :created_at,
+                    :updated_at
                 ).first
             )
 
@@ -123,7 +125,142 @@ class Api::V1::Treatments::TreatmentController < WsController
 
     end
 
-    def treat_kelompok_ceklist
+    def treat_kelompok_checklist
+        
+        @treat_kelompok_sekali = TreatmentKelompok.select(
+                                    :id, 
+                                    :treat_kelompok_sekali,
+                                    :check_treat_kelompok_sekali, 
+                                    :created_at, 
+                                    :updated_at
+                                ).find_by(id: params[:id], jenis: 1)
+        
+        @treat_kelompok_berulang = TreatmentKelompok.select(
+                                    :id, 
+                                    :created_at, 
+                                    :updated_at
+        ).find_by(id: params[:id], jenis: 2, treat_kelompok_sekali: nil)
+
+
+        if @treat_kelompok_sekali.present? && params[:jenis_treat_kelompok] == "sekali"
+
+            if @treat_kelompok_sekali.update(
+                check_treat_kelompok_sekali: if @treat_kelompok_sekali.check_treat_kelompok_sekali == true then false else true end
+            )
+                
+                @treat_kelompok_sekali.treat_kelompok_sekali = Reference.find_by(id: @treat_kelompok_sekali.treat_kelompok_sekali).deskripsi
+
+                tanggapan(
+                    200,
+                    "data ditemukan",
+                    @treat_kelompok_sekali
+                )
+
+            end
+
+        elsif @treat_kelompok_berulang.present?  && params[:jenis_treat_kelompok] != "sekali"  # && params[:treat]
+            
+            if params[:treat].present?
+
+                data_treat = @treat_kelompok_berulang
+                    
+                if params[:treat][:bercerita_tentang_hal_hal_berhubungan_dengan_hobi].present?
+                    @treat_kelompok_berulang.update(
+                        bercerita_tentang_hal_hal_berhubungan_dengan_hobi: params[:treat][:bercerita_tentang_hal_hal_berhubungan_dengan_hobi]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+
+                elsif params[:treat][:bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi].present?
+                    @treat_kelompok_berulang.update(
+                        bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi: params[:treat][:bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+
+                elsif params[:treat][:saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi].present?
+                    @treat_kelompok_berulang.update(
+                        saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi: params[:treat][:saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+
+                elsif params[:treat][:saling_memotivasi_sesama_anggota_kelompok].present?
+                    @treat_kelompok_berulang.update(
+                        saling_memotivasi_sesama_anggota_kelompok: params[:treat][:saling_memotivasi_sesama_anggota_kelompok]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+
+                elsif params[:treat][:saling_mendoakan_sesama_anggota_kelompok_menurut].present?
+                    @treat_kelompok_berulang.update(
+                        saling_mendoakan_sesama_anggota_kelompok_menurut: params[:treat][:saling_mendoakan_sesama_anggota_kelompok_menurut]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+
+                elsif params[:treat][:keyakinan_masing_masing].present?
+                    @treat_kelompok_berulang.update(
+                        keyakinan_masing_masing: params[:treat][:keyakinan_masing_masing]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+
+                elsif params[:treat][:melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok].present?
+                    @treat_kelompok_berulang.update(
+                        melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok: params[:treat][:melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok]
+                    )
+
+                    tanggapan(
+                        200,
+                        "data ditemukan",
+                        data_treat
+                    )
+                else
+                    tanggapan(
+                        400,
+                        "treatment belum diisi",
+                        nil
+                    )
+                end
+
+            
+            end
+
+            
+        else
+            
+            tanggapan( 
+                400,
+                "data tidak ditemukan, silahkan cek lagi id periode treatment",
+                nil
+            )
+
+        end
 
     end
 
@@ -132,10 +269,9 @@ class Api::V1::Treatments::TreatmentController < WsController
         def treat_kelompok(jenis, params)
             @treat = TreatmentKelompok.where(
                 jenis: jenis, 
-                # check_treat_kelompok_sekali: nil,
-                periode_treatment:  params #params[:periode_treatment_id]
-                
+                periode_treatment:  params
             )
         end
+
 
 end
