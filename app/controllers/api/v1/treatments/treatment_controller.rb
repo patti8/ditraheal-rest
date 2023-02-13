@@ -55,7 +55,7 @@ class Api::V1::Treatments::TreatmentController < WsController
 
     def treatment_kelompok_tampil_sekali
         
-        @treat = treat_kelompok(
+        @treat = treat_sekali(
             1, 
             params[:periode_treatment_id]
         )
@@ -89,7 +89,19 @@ class Api::V1::Treatments::TreatmentController < WsController
             params[:periode_treatment_id]
         )
 
-        if @treat.present?
+        if params[:all].present?
+            @all_treat = TreatmentKelompok.where(
+                jenis: 2,
+                periode_treatment: params[:periode_treatment_id],
+            )
+
+            tanggapan(
+                200,
+                "data ditemukan",
+                @all_treat
+            )
+
+        elsif  @treat.present? && !params[:all].present?
 
             @treat = @treat.first
             data = [
@@ -166,7 +178,10 @@ class Api::V1::Treatments::TreatmentController < WsController
                 nil
             )
 
+
         end
+
+  
 
 
     end
@@ -312,18 +327,23 @@ class Api::V1::Treatments::TreatmentController < WsController
 
     private
 
-        def treat_kelompok(jenis, params)
-            # @treat = TreatmentKelompok.where(
-            #     jenis: jenis, 
-            #     periode_treatment:  params
-            # )
+        def treat_sekali(jenis, params)
+            
+            @treat = TreatmentKelompok.where(
+                jenis: jenis, 
+                periode_treatment:  params
+            )
 
-            sedang_update = TreatmentKelompok.where(jenis: 2, periode_treatment: 7)
-                                    .where("updated_at > created_at and updated_at == ?", Date.today.strftime("%y-%m-%d"))
+        end
+
+        def treat_kelompok(jenis, params)
+  
+            sedang_update = TreatmentKelompok.where(jenis: jenis, periode_treatment: params)
+                                    .where("strftime('%Y-%m-%d', updated_at) LIKE '#{(Date.today-1.day).strftime("%Y-%m-%d")}%'")
+            
+            
             if sedang_update.present?
-                data = TreatmentKelompok.where(jenis: 2, periode_treatment: 7)
-                                    .where("updated_at > created_at")
-                return data
+                return sedang_update
             else
                 data =  TreatmentKelompok.where(
                     jenis: jenis, 

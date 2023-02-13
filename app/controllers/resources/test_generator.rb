@@ -9,19 +9,41 @@ class Resources::TestGenerator
             jenis_soal = data[3] # soal efikasi  atau level trauma
 
             @test = model.new(test_params)
-            @test.pre_test_id = cek_test.id
+
+            if jenis == 1
+                @test.post_test_id = 0
+                @test.pre_test_id = cek_test.id
+            elsif jenis == 2
+                @test.pre_test_id = 0
+                @test.post_test_id = cek_test.id
+            end
+            
             @test.jenis = jenis
 
             @soal = Reference.where(jenis: jenis_soal)
 
             @cek_test_selesai = @test.referensi_soal >= @soal.last.id 
-
-            if @test.present?
-                @cek_test = model.find_by(referensi_soal: @test.referensi_soal, pre_test_id: @test.pre_test_id)
             
+            
+            if @test.present?
+                
+                if jenis == 1
+                    @cek_test = model.find_by(referensi_soal: @test.referensi_soal, pre_test_id: @test.pre_test_id)
+                elsif jenis == 2
+                    @cek_test = model.find_by(referensi_soal: @test.referensi_soal, post_test_id: @test.post_test_id)
+                end
+
                 if referensi_soal.present?
-                    if @test.save                        
-                        
+                    
+                    if @test.save      
+
+                        if jenis == 1
+                            PeriodeTreatment.find_by(id: @test.pre_test_id).update(tanggal_akhir: Time.now)
+                        elsif jenis == 2
+                            
+                            PeriodeTreatment.find_by(id: @test.post_test_id ).update(tanggal_akhir: Time.now)
+                        end
+
                         @respon = "soal no. #{@test.referensi_soal} berhasil disimpan"
                         @status = 200
 
@@ -33,8 +55,15 @@ class Resources::TestGenerator
 
                     elsif @cek_test.present?
                         
-                        if @cek_test.update(jawaban: @test.jawaban)
+                        if @cek_test.update!(jawaban: @test.jawaban)
                             
+                            
+                            if @test.jenis == 1
+                                PeriodeTreatment.find_by(id: @cek_test.pre_test_id).update(tanggal_akhir: Time.now)
+                            elsif jenis == 2
+                                PeriodeTreatment.find_by(id: @cek_test.post_test_id).update(tanggal_akhir: Time.now)
+                            end
+
                             @respon = "soal no. #{@test.referensi_soal} berhasil diupdate"
                             @status = 200
 
@@ -62,6 +91,7 @@ class Resources::TestGenerator
                 ]
 
             end
+
     end
 
     def self.effication(cek_test=nil, jenis, params, test_params)

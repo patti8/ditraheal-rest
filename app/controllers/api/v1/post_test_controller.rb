@@ -21,28 +21,13 @@ class Api::V1::PostTestController < WsController
         status = data[1]
         skor_efikasis = data[2]
         
-        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, success: status
+        render :json => {
+            code: if status == 200 then 200 else 400 end, 
+            success: if status == 200 then true else false end, 
+            "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", 
+            data: skor_efikasis
+        }, success: status
         
-    end
-
-    def level_trauma_test
-        
-        if cek_test.present?
-            data = Resources::TestGenerator.level_trauma(
-                cek_test,
-                2,
-                params,
-                test_params
-            )
-            
-            respon = data[0]
-            status = data[1]
-            level_trauma = data[2]
-
-            render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, success: status
-        else
-            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal menyimpan. Cek kembali data yang dimasukan.", data: nil}, success: 402
-        end
     end
 
     def skor
@@ -57,21 +42,93 @@ class Api::V1::PostTestController < WsController
 
     def update_skor
         
-        cek_test = Test.find_by(periode_treatment_id: params[:periode_treatment_id]) 
+        
+        cek_pre_test = Test.find_by(
+            periode_treatment_id: params[:periode_treatment_id],
+            # jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end
+        )
+
         
         if cek_test.present?
-
-            @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_test.id}")
-            @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_test.id}")
             
-            if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round) && cek_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round)
-                render :json => {"code": 200, success: true, "messages": "berhasil menyimpan.", data: cek_test}  
+            @hitung_efikasi = SkorEfikasi.where("skor_efikasis.post_test_id = #{cek_test.id}")
+            
+            if @hitung_efikasi
+                
+                if cek_pre_test.update(post_test_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round) 
+                    render :json => {"code": 200, success: true, "messages": "berhasil menyimpan.", data: cek_test}  
+                end
             end
         else
             render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, success: 401
         end
 
     end
+
+
+    def validasi
+        
+        if params[:periode_treatment_id].present?
+            # check treatment kelompok 
+        
+            # treatment kelompok berulang sudah lebih dari 8
+            treat_kelompok_berulang = TreatmentKelompok.where(
+                
+                jenis: 2,
+                periode_treatment: params[:periode_treatment_id],
+                bercerita_tentang_hal_hal_berhubungan_dengan_hobi: nil,
+                bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi: nil,
+                saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi: nil,
+                saling_memotivasi_sesama_anggota_kelompok: nil,
+                saling_mendoakan_sesama_anggota_kelompok_menurut: nil,
+                melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok: nil,
+
+            ).count #must < 8
+
+            # must > 3
+            treat_kelompok_sekali = TreatmentKelompok.where(jenis: 1,  check_treat_kelompok_sekali: true).count
+
+            # must > 80%
+            treat_pribadi = Treatment.where(periode_treatment_id: params[:periode_treatment_id])
+            hitung_presentase = treat_pribadi.where(checklist: true).count.to_f / treat_pribadi.count.to_f * 100
+
+            messages = {}
+
+            case
+            when treat_kelompok_berulang < 8
+                messages[:treat_kelompok_berulang] = "treatment berulang kurang dari 8 kali"
+            when treat_kelompok_sekali < 3
+                messages[:treat_kelompok_sekali] = "treatment kelompok sekali belum selesai"
+            # elsif hitung_presentase < 80
+            #     "treatment personal belum selesai"
+            end
+
+            
+            if messages.present?
+                tanggapan(
+                    200,
+                    "treatment belum lengkap",
+                    messages
+                )
+            elsif !messages.present?
+                tanggapan(
+                    200,
+                    "treatment telah lengkap",
+                    "yeay, silahkan lanjutkan untuk post test"
+                )
+            end
+
+        else
+            tanggapan(
+                400,
+                "data tidak ditemukan, silahkan cek lagi id periode treatment",
+                nil
+            )
+        end
+        
+
+    end
+
 
     private 
 
