@@ -54,10 +54,9 @@ Rails.application.routes.draw do
         # treat_kelompok 
         get '/kelompok/sekali', to: 'treatment#treatment_kelompok_tampil_sekali'
         get '/kelompok/berulang', to: 'treatment#treatment_kelompok_tampil_berulang'
+        get '/kelompok/berulang/:periode_treatment_id/all', to: 'treatment#treatment_kelompok_tampil_berulang_all'
         post '/kelompok', to: 'treatment#treat_kelompok_checklist'
-      
       end
-
 
       # IDENTY 
       resources :identies, except: %i[create]

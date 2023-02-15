@@ -21,10 +21,11 @@ class Api::V1::PostTestController < WsController
         status = data[1]
         skor_efikasis = data[2]
         
+        
         render :json => {
             code: if status == 200 then 200 else 400 end, 
             success: if status == 200 then true else false end, 
-            "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", 
+            "messages": "#{if status == 200 then response else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", 
             data: skor_efikasis
         }, success: status
         
@@ -85,8 +86,8 @@ class Api::V1::PostTestController < WsController
 
             ).count #must < 8
 
-            # must > 3
-            treat_kelompok_sekali = TreatmentKelompok.where(jenis: 1,  check_treat_kelompok_sekali: true).count
+            # must > 6
+            treat_kelompok_sekali = TreatmentKelompok.where(periode_treatment: params[:periode_treatment_id], jenis: 1,  check_treat_kelompok_sekali: true).count
 
             # must > 80%
             treat_pribadi = Treatment.where(periode_treatment_id: params[:periode_treatment_id])
@@ -94,16 +95,17 @@ class Api::V1::PostTestController < WsController
 
             messages = {}
 
-            case
-            when treat_kelompok_berulang < 8
+            
+            if treat_kelompok_berulang == 10 || treat_kelompok_berulang > 2
                 messages[:treat_kelompok_berulang] = "treatment berulang kurang dari 8 kali"
-            when treat_kelompok_sekali < 3
+            elsif treat_kelompok_sekali < 3
                 messages[:treat_kelompok_sekali] = "treatment kelompok sekali belum selesai"
-            # elsif hitung_presentase < 80
-            #     "treatment personal belum selesai"
+            
+            elsif hitung_presentase < 50
+                messages[:treat_kelompok_sekali] = "treatment personal anda belum mencapai target 50%"
             end
 
-            
+
             if messages.present?
                 tanggapan(
                     200,

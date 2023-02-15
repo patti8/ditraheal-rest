@@ -4,7 +4,7 @@ class Ditraheal::IdentitiesController < DitrahealController
 
     def index
         
-        @identities = Identy.all
+        @identities = Identy.all.order(created_at: :desc)
 
         # hoby = Reference.find_by('jenis= ? AND deskripsi LIKE ?', 1, "%#{params[:query]}%") # if params[:query].present?
 

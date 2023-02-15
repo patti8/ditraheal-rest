@@ -1,7 +1,7 @@
 class Ditraheal::EfficaciousTestsController < DitrahealController
 
     def index
-        @efficacious_test = TesEfikasi.all
+        @efficacious_test = Test.all
     end
 
     def new

@@ -1,6 +1,10 @@
 
 <h3 align="center">Ditraheal Apps</h3>
 
+[x] hasil post test  masih belum sesuai
+[] treatment berulang (all) sesuaikan format supaya ada juga title
+[x] get treat kelompok masih belum sesuai
+
 <div align="center">
 
 [![Hackathon](https://img.shields.io/badge/hackathon-name-orange.svg)](http://hackathon.url.com)

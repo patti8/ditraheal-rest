@@ -35,7 +35,7 @@ class Resources::TestGenerator
 
                 if referensi_soal.present?
                     
-                    if @test.save      
+                    if @test.save   
 
                         if jenis == 1
                             PeriodeTreatment.find_by(id: @test.pre_test_id).update(tanggal_akhir: Time.now)
@@ -66,7 +66,7 @@ class Resources::TestGenerator
 
                             @respon = "soal no. #{@test.referensi_soal} berhasil diupdate"
                             @status = 200
-
+                            
                         end
 
                     else
@@ -82,14 +82,14 @@ class Resources::TestGenerator
                     @status = 400
 
                 end
-
+                
                 # OUTPUT 
                 [
                     @respon,
                     @status,
                     @test
                 ]
-
+                
             end
 
     end
@@ -104,13 +104,13 @@ class Resources::TestGenerator
                 test_params,
                 2 # ref. soal efikasi
             ]
-
+            
             test(
                 SkorEfikasi, 
                 data, 
                 Resources::ReferensiSoal.efikasi_by(params[:referensi_soal])
             )
-
+            
         end
 
     end

@@ -16,6 +16,7 @@ class Api::V1::PreTestController < WsController
             test_params
         )
         
+        
         respon = data[0]
         status = data[1]
         skor_efikasis = data[2]
