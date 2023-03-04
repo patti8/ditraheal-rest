@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_09_020338) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_013335) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -135,7 +135,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_020338) do
     t.boolean "bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi"
     t.boolean "saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi"
     t.boolean "saling_memotivasi_sesama_anggota_kelompok"
-    t.string "saling_mendoakan_sesama_anggota_kelompok_menurut"
+    t.boolean "saling_mendoakan_sesama_anggota_kelompok_menurut"
     t.boolean "keyakinan_masing_masing"
     t.boolean "melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok"
     t.integer "sesi"

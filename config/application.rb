@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Portofolio
   class Application < Rails::Application
-    config.action_controller.default_protect_from_forgery = true
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

@@ -63,7 +63,7 @@ class WsController < ActionController::Base
 
         def tanggapan(code, messages, data)
             
-            if status == 200 || status == 203
+            if code == 200 || code == 203
                 render :json =>
                 {
                     code: code,
@@ -77,7 +77,7 @@ class WsController < ActionController::Base
                     code: code,
                     success: false, 
                     messages: messages,
-                    data: nil
+                    data: if data.present? then data else nil end 
                 }
             end
             

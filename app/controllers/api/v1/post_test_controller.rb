@@ -77,12 +77,12 @@ class Api::V1::PostTestController < WsController
                 
                 jenis: 2,
                 periode_treatment: params[:periode_treatment_id],
-                bercerita_tentang_hal_hal_berhubungan_dengan_hobi: nil,
-                bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi: nil,
-                saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi: nil,
-                saling_memotivasi_sesama_anggota_kelompok: nil,
-                saling_mendoakan_sesama_anggota_kelompok_menurut: nil,
-                melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok: nil,
+                bercerita_tentang_hal_hal_berhubungan_dengan_hobi: true,
+                bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi: true,
+                saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi: true,
+                saling_memotivasi_sesama_anggota_kelompok: true,
+                saling_mendoakan_sesama_anggota_kelompok_menurut: true,
+                melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok: true,
 
             ).count #must < 8
 
@@ -96,20 +96,20 @@ class Api::V1::PostTestController < WsController
             messages = {}
 
             
-            if treat_kelompok_berulang == 10 || treat_kelompok_berulang > 2
-                messages[:treat_kelompok_berulang] = "treatment berulang kurang dari 8 kali"
+            if !treat_kelompok_berulang == 10 || treat_kelompok_berulang <= 2
+                messages[:treat_kelompok_message] = "treatment berulang kurang dari 8 kali"
             elsif treat_kelompok_sekali < 3
-                messages[:treat_kelompok_sekali] = "treatment kelompok sekali belum selesai"
+                messages[:treat_kelompok_message] = "treatment kelompok sekali belum selesai"
             
             elsif hitung_presentase < 50
-                messages[:treat_kelompok_sekali] = "treatment personal anda belum mencapai target 50%"
+                messages[:treat_kelompok_message] = "treatment personal anda belum mencapai target 50%"
             end
 
 
             if messages.present?
                 tanggapan(
-                    200,
-                    "treatment belum lengkap",
+                    204,
+                    messages[:treat_kelompok_message],
                     messages
                 )
             elsif !messages.present?

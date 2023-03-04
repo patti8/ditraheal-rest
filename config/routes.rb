@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  mount AdminPanel::Engine => "/admin_panel"
+  
   devise_for :admins do
     get '/admins/sign_out' => 'devise/sessions#destroy'
   end

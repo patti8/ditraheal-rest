@@ -18,7 +18,7 @@ class UsersController < WsController
           HistoryToken.create(user: @user.id, token: token)
         end
         session['name'] = @user.id
-        render :json => {"code": 200, success: true, messages: "authentication success", data: [id: @user.id, name: @user.name, no_hp: @user.no_hp, tanggal_lahir: @user.tanggal_lahir, token: token]}  
+        render :json => {"code": 200, success: true, messages: "authentication success", data: [id: @user.id, name: @user.name, follower: @user.follower, no_hp: @user.no_hp, tanggal_lahir: @user.tanggal_lahir, token: token]}  
         # render json: {user: @user.name, token: token}
       else
         render :json => {"code": 204, success: false, messages: "Invalid phone number or date of birth", data: nil}  

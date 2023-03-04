@@ -12,7 +12,6 @@ gem "sqlite3"
 gem "puma", "~> 5.0"
 gem "turbo-rails"
 gem 'stimulus-rails'
-gem "webpacker"
 
 gem 'sass-rails'
 gem 'jwt'
@@ -28,7 +27,7 @@ gem 'jquery-rails'
 gem "turbo-rails"
 gem "pagy", "~> 5.5"
 gem "pg_search", "~> 2.3"
-
+gem "webpacker"
 
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
@@ -81,3 +80,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'admin_panel', path: 'vendor/admin_panel'
+gem "importmap-rails", "~> 1.1"

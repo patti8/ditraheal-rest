@@ -30,9 +30,16 @@ class Ditraheal::IdentitiesController < DitrahealController
     
     end
 
-    # def show
-    #     @title = "Detail Data Pengguna"
-    # end
+    def show
+        @title = "Detail Data Pengguna"
+        @identy = Identy.find_by(id: params[:id])
+        @periode_treatment = PeriodeTreatment.where(identitas_id: @identy.id).last
+        @treat_kelompok_sekali = TreatmentKelompok.where(periode_treatment: @periode_treatment.id, jenis: 1,  check_treat_kelompok_sekali: true).count
+        
+        @treat_pribadi = Treatment.where(periode_treatment_id: @periode_treatment.id)
+        @hitung_presentase = @treat_pribadi.where(checklist: true).count.to_f / @treat_pribadi.count.to_f * 100
+    
+    end
 
     def edit
     
