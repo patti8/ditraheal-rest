@@ -157,7 +157,7 @@ class Resources::TreatmentGenerator
     def  self.create_treatment_by(date_range, treat_master, periode_treatment_id)
         
         (date_range).each do |date|
-            treat_master.each do |treat|
+            treat_master.where(status: 1).each do |treat|
                 treat = Treatment.create(
                     treat: treat.id,
                     checklist: 0,

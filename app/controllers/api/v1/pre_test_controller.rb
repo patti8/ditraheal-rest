@@ -1,96 +1,27 @@
 
-# JENIS 1 => TEST EFIKASI 
-# JENIS 2 => TEST LEVEL TRAUMA
+# JENIS 1 => PRE TEST 
+# JENIS 2 => POST TEST
 
 class Api::V1::PreTestController < WsController
-    before_action :cek_pre_test
+    before_action :cek_pre_test, only: %i[efficacious_test level_trauma_pre_test]
     before_action :cek_periode_treatment, only: %i[effication_pre_test, level_trauma_pre_test]
 
     # post efficacious_test 
     def effication_pre_test
         
-        # jika belum ada pre test 
-        if cek_pre_test.present?
-
-            # @respon = "pre test telah dilakukan"
-
-            @skor_efikasis = SkorEfikasi.new(test_params)
-            @skor_efikasis.pre_test_id = cek_pre_test.id
-            @skor_efikasis.jenis = 1
-
-            @soal = Reference.where(jenis: 2)
-            
-            # Resources::ReferensiSoal.efikasi_by(params[:referensi_soal])
-
-            @cek_efikasi_selesai = @skor_efikasis.referensi_soal >= @soal.last.id #SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id} AND skor_efikasis.referensi_soal = #{@soal.last.id}")
-   
-            # if @cek_efikasi_selesai.present?                
-                
-            #     @respon = "Pre Test skor efikasi berhasil diupdate. #{cek_pre_test}" 
-
-            if @skor_efikasis.present?
-                # validasi soal 
-                @cek_pre_test_efikasi = SkorEfikasi.find_by(referensi_soal: @skor_efikasis.referensi_soal, pre_test_id: @skor_efikasis.pre_test_id)
-
-                if Resources::ReferensiSoal.efikasi_by(params[:referensi_soal]).present?
-                    if @skor_efikasis.save                        
-                        
-                        @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil disimpan"
-                        @status = 200
-
-                        # UPDATE SKOR 
-                        if @cek_efikasi_selesai.present?
-                            @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
-                            cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.average(:jawaban).to_f.round)
-                        end
-
-                    elsif @cek_pre_test_efikasi.present?
-                        
-                        if @cek_pre_test_efikasi.update(jawaban: @skor_efikasis.jawaban)
-                            
-                            @respon = "soal no. #{@skor_efikasis.referensi_soal} berhasil diupdate"
-                            @status = 200
-
-                        end
-
-                    else
-
-                      @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@skor_efikasis.errors.full_messages}"
-                      @status = 400
-
-                    end
-
-                else
-
-                    @respon = "soal tidak sesuai, mohon dicek kembali"
-                    @status = 400
-
-                end
-
-            end
+        data = Resources::TestGenerator.effication(
+            cek_pre_test,
+            1,
+            params,
+            test_params
+        )
         
-        else
-
-            if @periode_treatment_id.present?
-                @pre_test = PreTest.new(periode_treatment_id: params[:periode_treatment_id])
-                
-                if @pre_test.save
-                    @respon = "Pre Test berhasil dibuat"
-                    @status = 200
-                else
-                    @respon = "Gagal menambahkan pre test, cek ulang kembali data yang dikirim. #{@pre_test.errors.full_messages}"
-                    @status = 400
-                end
-
-            else
-                @respon = "Periode treatment tidak ditemukan, silahkan dibuat dulu"                
-            end 
-
-       
-        end       
-       
-        # render :json => {"code": 200, success: true, "message": "#{@respon}.", data: @skor_efikasis}  
-        render :json => {success: if @status == 200 then true else false end, "message": "#{@respon}.", data: @skor_efikasis}, status: @status
+        respon = data[0]
+        status = data[1]
+        skor_efikasis = data[2]
+        
+        # render :json => {"code": 200, success: true, "messages": "#{@respon}.", data: @skor_efikasis}  
+        render :json => {code: if status == 200 then 200 else 400 end, success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", data: skor_efikasis}, success: status
         
     end
 
@@ -100,11 +31,18 @@ class Api::V1::PreTestController < WsController
      
         if params[:pre_test_id].present? && @pre_test.present?
 
-            render :json => {"code": 200, success: true, "message": "authentication success.", data: @pre_test}  
+            
+
+            render :json => {
+                "code": 200, 
+                success: true, 
+                "messages": "authentication success.", 
+                data:  @pre_test
+            }  
 
         else
 
-            render :json => {"code": 401, success: false, "message": "Pre test tidak ditemukan.", data: nil}  
+            render :json => {"code": 401, success: false, "messages": "Pre test tidak ditemukan.", data: nil}  
 
         end
     end
@@ -112,87 +50,89 @@ class Api::V1::PreTestController < WsController
 
     def level_trauma_pre_test
       
-        # jika belum ada pre test 
-        if cek_pre_test.present?
-
-            @respon = "pre test telah dilakukan"
-
-            @level_trauma = LevelTrauma.new(test_params)
-            @level_trauma.pre_test_id = cek_pre_test.id
-            @level_trauma.jenis = 1
-
-            @soal = Reference.where(jenis: 3)
-            cek_soal = @soal.select  { |v| v.id == 1 }
-
-            @cek_level_trauma_selesai = @level_trauma.referensi_soal >= @soal.last.id #LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id} AND level_traumas.referensi_soal = #{@soal.last.id}")
+        data = Resources::TestGenerator.level_trauma(
+            cek_pre_test,
+            1,
+            params,
+            test_params
+        )
+        
+        respon = data[0]
+        status = data[1]
+        level_trauma = data[2]
+        
+        render :json => {success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, success: status
     
-            # if cek_soal.present?
-                # if @cek_level_trauma_selesai.present?
-                
-                if @level_trauma.present? 
-
-                    @cek_pre_test_level_trauma = LevelTrauma.find_by(referensi_soal: @level_trauma.referensi_soal, pre_test_id: @level_trauma.pre_test_id)
-
-                    # cek soal 
-                    if Resources::ReferensiSoal.level_trauma_by(params[:referensi_soal]).present?
-                        if @level_trauma.save
-                            @respon = "soal no. #{@level_trauma.referensi_soal} berhasil disimpan"
-                            @status = 200                        
-                        
-                        elsif  @cek_pre_test_level_trauma.present?
-                            if @cek_pre_test_level_trauma.update(jawaban: @level_trauma.jawaban) 
-                                @response = "soal no. #{@level_trauma.referensi_soal} berhasil diupdate"
-                                @status = 200
-                            end
-                        else
-                            @respon = "Periksa kembali data yang dimasukan. Apakah sudah diisikan dengan benar? #{@level_trauma.errors.full_messages}"
-                            @status = 400
-                            @level_trauma = nil
-                        end
-                    else
-                        @respon = "soal tidak sesuai, mohon dicek kembali"
-                        @status = 400
-                    end
-                    
-                end
-        
-        
-        else
-
-            if @periode_treatment_id.present?
-                @pre_test = PreTest.new(periode_treatment_id: params[:periode_treatment_id])
-            
-                if @pre_test.save
-                    @respon = "Pre Test berhasil dibuat"
-                else
-                    @respon = "Gagal menambahkan pre test, cek ulang kembali data yang dikirim. #{@pre_test.errors.full_messages}"
-                end
-
-            else 
-                @respon = "Periode treatment tidak ditemukan, silahkan dibuat dulu"
-            end
-
-        end       
-       
-
-        render :json => {success: if @status == 200 then true else false end, "message": "#{@respon}.", data: @level_trauma}, status: @status
     end
 
     def skor
-        skor = PreTest.find_by(periode_treatment_id: params[:periode_treatment_id])
+        skor = Test.find_by(periode_treatment_id: params[:periode_treatment_id])
 
         if skor.present?
-            render :json => {success: true, "message": "Data berhasil diambil", data: skor}, status: 200
+            
+            @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
+                skor.total_level_trauma_id, 
+                skor.periode_treatment_id
+            )
+
+            render :json => {
+                code: if status == 200 then 200 else 400 end, 
+                success: true, 
+                "messages": "Data berhasil diambil", 
+                data: {
+                    generate_lvl_trauma: @generate_lvl_trauma[:data][:level_trauma],
+                    skor: skor
+                }
+            }, 
+                success: 200
         else
-            render :json => {success: false, "message": "Gagal", data: skor}, status: 401
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: skor}, success: 401
         end
     end
 
-    private 
+    def update_skor
+        
+        cek_pre_test = Test.find_by(
+            periode_treatment_id: params[:periode_treatment_id],
+            # jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end
+        )
 
-        def batasi_per_user
+        if params[:test] == "pre_test" || params[:test] == "post_test"
+            
+            if cek_pre_test.present?
+
+                @hitung_efikasi = SkorEfikasi.where("skor_efikasis.pre_test_id = #{cek_pre_test.id}")
+                @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
+    
+                if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end) && cek_pre_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end)
+                    @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
+                        cek_pre_test.total_level_trauma_id, 
+                        cek_pre_test.periode_treatment_id
+                    )
+
+                    render :json => {
+                        "code": 200, 
+                        success: true, 
+                        "messages": "berhasil menyimpan.", 
+                        data: {
+                                generate_lvl_trauma: @generate_lvl_trauma[:data][:level_trauma],
+                                pre_test: cek_pre_test
+                            }
+                            
+                    }  
+                end
+
+            else
+                render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal11111111", data: nil}, success: 401
+            end
+
+        else
+            render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, success: 401
         end
 
+    end
+
+    private 
 
         def test_params
             params.permit(:referensi_soal, :jawaban, :pre_test_id, :jenis)

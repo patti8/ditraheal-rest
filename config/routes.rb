@@ -57,6 +57,7 @@ Rails.application.routes.draw do
         get '/hobi', to: 'references#hobby'
         get '/tes_efikasi', to: 'references#effication_test'
         get '/level_trauma', to: 'references#level_trauma'
+        get '/link_medsos', to: 'references#link_medsos'
       end
 
     end
@@ -80,10 +81,19 @@ Rails.application.routes.draw do
       resources :master_soal_efikasi
       resources :master_soal_level_trauma
       resources :master_hobi
+      
+      resources :master_treatment do
+        get '/status', to: 'master_treatment#update_status'
+      end
+
+      post '/ditraheal/references/master_treatment', to: 'master_treatment#create'
+
     end
 
     
     resources :group_sosmed
+    patch '/group_sosmed/:id', to: 'group_sosmed#update', as: "update_sosmed"
+  
   end
 
 end

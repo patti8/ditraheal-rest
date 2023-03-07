@@ -13,16 +13,21 @@ class Api::V1::Treatments::DailyController < WsController
         treatments.periode_treatment_id,
         treatments.checklist
         ")
-        .where(tanggal: Time.now.strftime("%Y-%m-%d"))
         .joins("
           LEFT JOIN master_treatments mt ON mt.id = treatments.treat
           LEFT JOIN rule_baseds rb ON rb.id = mt.rule_based_id
           ")
-          
-        if @treat.present?
-          render :json => {status: true, message: "successfully for get data", data: @treat}
+             
+        if params[:tanggal]
+          @treat = @treat.where(tanggal: params[:tanggal])
         else
-          render :json => {status: false, message: "data not found", data: nil}, status: 400
+          @treat = @treat.where(tanggal: Time.now.strftime("%Y-%m-%d"))
+        end
+
+        if @treat.present?
+          render :json => {code: if status == 200 then 200 else 400 end, success: true, messages: "successfully for get data", data: @treat}
+        else
+          render :json => {code: if status == 200 then 200 else 400 end, success: false, messages: "data not found", data: nil}, success: 400
         end
 
     end
@@ -33,9 +38,9 @@ class Api::V1::Treatments::DailyController < WsController
       
       if @treat.present?
         if @treat.checklist == false then @treat.update(checklist: true) else @treat.update(checklist: false) end 
-        render json: {status: 200, messages: "checklist successfully updated", data: @treat}, status: 200
+        render json: {success: 200, messages: "checklist successfully updated", data: @treat}, success: 200
       else
-        render json:  {status: 400, messages: false, data: nil}, status: 400
+        render json:  {success: 400, messages: false, data: nil}, success: 400
       end
     end
 

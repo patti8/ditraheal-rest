@@ -3,7 +3,7 @@ class Resources::Tools
     def self.create_treatment_by(periode_treatment_id)
         
         periode_treatment = PeriodeTreatment.find_by(id: periode_treatment_id)
-        pre_test = PreTest.find_by(periode_treatment_id: periode_treatment.id)
+        # pre_test = PreTest.find_by(periode_treatment_id: periode_treatment.id)
         identy = Identy.find_by(id: periode_treatment.identitas_id)
         hobi = Reference.find_by(jenis: 1, id: identy.hobi).deskripsi
 
@@ -17,25 +17,29 @@ class Resources::Tools
             treatment.tanggal = date
             treatment.periode_treatment_id = periode_treatment.id
 
-            if rule_base == 163 # MODE I
+            if rule_base == 10 # MODE I
 
-                data = [
-                    date, 
-                    periode_treatment.id, 
-                    8, # JENIS
-                    2 # REF CODE
-                ]
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
+                #     8, # JENIS
+                #     2 # REF CODE
+                # ]
 
                 # HOBI
-                create_hobi_treatment(data)
+                # create_hobi_treatment(data)
                
-                # LEVEL TRAUMA 
-                Reference.where(jenis: 6, ref_code: 49).each do |referensi|
+                # TREAT 
+                MasterTreatment.where(status: 1, rule_based_id: 10).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
+                # Reference.where(jenis: 6, ref_code: 49).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
 
-            elsif rule_base == 164 # MODE II
+            elsif rule_base == 6 # MODE II
 
                 # HOBI
                 data = [
@@ -46,209 +50,255 @@ class Resources::Tools
                 ]
                 
                 # HOBI
-                create_hobi_treatment(data)
+                # create_hobi_treatment(data)
 
                 # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                # TREAT 
+                MasterTreatment.where(status: 1, rule_based_id: 6).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
+                # Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
 
-            elsif rule_base == 165 # MODE III
+            elsif rule_base == 2 # MODE III
 
                 # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
                     
-                    8, # JENIS
-                    2 # REF CODE
-                ]
+                #     8, # JENIS
+                #     2 # REF CODE
+                # ]
                 
                 # HOBI
-                create_hobi_treatment(data)
+                # create_hobi_treatment(data)
 
                 # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 51).each do |referensi|
+                MasterTreatment.where(status: 1, rule_based_id: 2).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
+                # Reference.where(jenis: 6, ref_code: 51).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
             
-            elsif rule_base == 166 # MODE IV
+            elsif rule_base == 9 # MODE IV
                 
                 # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
                     
-                    8, # JENIS
-                    4 # REF CODE
-                ]
+                #     8, # JENIS
+                #     4 # REF CODE
+                # ]
                 
-                # HOBI
-                create_hobi_treatment(data)
+                # # HOBI
+                # create_hobi_treatment(data)
                 
                 # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 49).each do |referensi|
+                MasterTreatment.where(status: 1, rule_based_id: 9).each do |referensi|
+                    treatment.treat = referensi.id
+                    treatment.save
+                end
+                # Reference.where(jenis: 6, ref_code: 49).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+
+            elsif rule_base == 5 # MODE V
+                
+                # HOBI
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
+                    
+                #     8, # JENIS
+                #     4 # REF CODE
+                # ]
+                
+                # # HOBI
+                # create_hobi_treatment(data)
+                
+                # LEVEL TRAUMA
+                MasterTreatment.where(status: 1, rule_based_id: 5).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
 
-            elsif rule_base == 167 # MODE V
+                # Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+
+            elsif rule_base == 1 # MODE VI
                 
                 # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
                     
-                    8, # JENIS
-                    4 # REF CODE
-                ]
+                #     8, # JENIS
+                #     4 # REF CODE
+                # ]
                 
-                # HOBI
-                create_hobi_treatment(data)
+                # # HOBI
+                # create_hobi_treatment(data)
                 
                 # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                MasterTreatment.where(status: 1, rule_based_id: 1).each do |referensi|
+                    treatment.treat = referensi.id
+                    treatment.save
+                end
+                # Reference.where(jenis: 6, ref_code: 51).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+
+            elsif rule_base == 12 # MODE VII
+                
+                # HOBI
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
+                    
+                #     8, # JENIS
+                #     1 # REF CODE
+                # ]
+                
+                # # HOBI
+                # create_hobi_treatment(data)
+                
+                # LEVEL TRAUMA
+                MasterTreatment.where(status: 1, rule_based_id: 12).each do |referensi|
+                    treatment.treat = referensi.id
+                    treatment.save
+                end
+                # Reference.where(jenis: 6, ref_code: 49).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+            elsif rule_base == 8 # MODE VIII
+                
+                # HOBI
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
+                    
+                #     8, # JENIS
+                #     1 # REF CODE
+                # ]
+                
+                # # HOBI
+                # create_hobi_treatment(data)
+                
+                # LEVEL TRAUMA
+                MasterTreatment.where(status: 1, rule_based_id: 8).each do |referensi|
+                    treatment.treat = referensi.id
+                    treatment.save
+                end
+                # Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+
+            elsif rule_base == 4 # MODE IX
+                
+                # HOBI
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
+                    
+                #     8, # JENIS
+                #     1 # REF CODE
+                # ]
+                
+                # HOBI
+                # create_hobi_treatment(data)
+                
+                # # LEVEL TRAUMA
+                MasterTreatment.where(status: 1, rule_based_id: 4).each do |referensi|
+                    treatment.treat = referensi.id
+                    treatment.save
+                end
+                # Reference.where(jenis: 6, ref_code: 51).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+
+            elsif rule_base == 11 # MODE X
+                
+                # HOBI
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
+                    
+                #     8, # JENIS
+                #     3 # REF CODE
+                # ]
+                
+                # # HOBI
+                # create_hobi_treatment(data)
+                
+                # # LEVEL TRAUMA
+                # Reference.where(jenis: 6, ref_code: 49).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+                MasterTreatment.where(status: 1, rule_based_id: 11).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
 
-            elsif rule_base == 168 # MODE VI
+            elsif rule_base == 7 # MODE XI
                 
                 # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
-                    
-                    8, # JENIS
-                    4 # REF CODE
-                ]
-                
-                # HOBI
-                create_hobi_treatment(data)
-                
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 51).each do |referensi|
-                    treatment.treat = referensi.id
-                    treatment.save
-                end
-
-            elsif rule_base == 169 # MODE VII
-                
-                # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
-                    
-                    8, # JENIS
-                    1 # REF CODE
-                ]
-                
-                # HOBI
-                create_hobi_treatment(data)
-                
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 49).each do |referensi|
-                    treatment.treat = referensi.id
-                    treatment.save
-                end
-            elsif rule_base == 170 # MODE VIII
-                
-                # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
-                    
-                    8, # JENIS
-                    1 # REF CODE
-                ]
-                
-                # HOBI
-                create_hobi_treatment(data)
-                
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 50).each do |referensi|
-                    treatment.treat = referensi.id
-                    treatment.save
-                end
-
-            elsif rule_base == 171 # MODE IX
-                
-                # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
-                    
-                    8, # JENIS
-                    1 # REF CODE
-                ]
-                
-                # HOBI
-                create_hobi_treatment(data)
-                
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 51).each do |referensi|
-                    treatment.treat = referensi.id
-                    treatment.save
-                end
-
-            elsif rule_base == 172 # MODE X
-                
-                # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
-                    
-                    8, # JENIS
-                    3 # REF CODE
-                ]
-                
-                # HOBI
-                create_hobi_treatment(data)
-                
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 49).each do |referensi|
-                    treatment.treat = referensi.id
-                    treatment.save
-                end
-
-            elsif rule_base == 173 # MODE XI
-                
-                # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
     
-                    8, # JENIS
-                    3 # REF CODE
-                ]
+                #     8, # JENIS
+                #     3 # REF CODE
+                # ]
                 
-                # HOBI
-                create_hobi_treatment(data)
+                # # HOBI
+                # create_hobi_treatment(data)
                 
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                # # LEVEL TRAUMA
+                # Reference.where(jenis: 6, ref_code: 50).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+                MasterTreatment.where(status: 1, rule_based_id: 7).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
 
-            elsif rule_base == 174 # MODE XII
+            elsif rule_base == 3 # MODE XII
                 
                 # HOBI
-                data = [
-                    date, 
-                    periode_treatment.id, 
+                # data = [
+                #     date, 
+                #     periode_treatment.id, 
                     
-                    8, # JENIS
-                    3 # REF CODE
-                ]
+                #     8, # JENIS
+                #     3 # REF CODE
+                # ]
                 
-                # HOBI
-                create_hobi_treatment(data)
+                # # HOBI
+                # create_hobi_treatment(data)
                 
-                # LEVEL TRAUMA
-                Reference.where(jenis: 6, ref_code: 51).each do |referensi|
+                # # LEVEL TRAUMA
+                # Reference.where(jenis: 6, ref_code: 51).each do |referensi|
+                #     treatment.treat = referensi.id
+                #     treatment.save
+                # end
+                MasterTreatment.where(status: 1, rule_based_id: 3).each do |referensi|
                     treatment.treat = referensi.id
                     treatment.save
                 end
@@ -363,29 +413,29 @@ class Resources::Tools
     def self.rule_base(level_trauma, hobi)
 
         if level_trauma == "Level Trauma Rendah" && hobi == "Musik"
-            163 # JENIS 9
+            10 # JENIS 9
         elsif level_trauma == "Level Trauma Sedang" && hobi == "Musik"
-            164
+            6
         elsif level_trauma == "Level Trauma Tinggi" && hobi == "Musik"
-            165
+            2
         elsif level_trauma == "Level Trauma Rendah" && hobi == "Olahraga"
-            166 # JENIS 9
+            9 # JENIS 9
         elsif level_trauma == "Level Trauma Sedang" && hobi == "Olahraga"
-            167
+            5
         elsif level_trauma == "Level Trauma Tinggi" && hobi == "Olahraga"
-            168
+            1
         elsif level_trauma == "Level Trauma Rendah" && hobi == "Art/Seni"
-            169 # JENIS 9
+            12 # JENIS 9
         elsif level_trauma == "Level Trauma Sedang" && hobi == "Art/Seni"
-            170
+            8
         elsif level_trauma == "Level Trauma Tinggi" && hobi == "Art/Seni"
-            171
+            4
         elsif level_trauma == "Level Trauma Rendah" && hobi == "Membaca/Menonton"
-            172 # JENIS 9
+            11 # JENIS 9
         elsif level_trauma == "Level Trauma Sedang" && hobi == "Membaca/Menonton"
-            173
+            7
         elsif level_trauma == "Level Trauma Tinggi" && hobi == "Membaca/Menonton"
-            174
+            3
         end
 
     end

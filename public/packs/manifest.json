@@ -1,19 +1,33 @@
 {
-  "application.js": "/packs/js/application-6c2cd89996771249403c.js",
-  "application.js.map": "/packs/js/application-6c2cd89996771249403c.js.map",
+  "application.css": "/packs/css/application-4fe6f30c.css",
+  "application.js": "/packs/js/application-c0662b83bfe600eeee77.js",
+  "application.js.map": "/packs/js/application-c0662b83bfe600eeee77.js.map",
   "entrypoints": {
     "application": {
+      "css": [
+        "/packs/css/application-4fe6f30c.css"
+      ],
       "js": [
-        "/packs/js/application-6c2cd89996771249403c.js"
+        "/packs/js/application-c0662b83bfe600eeee77.js"
       ],
       "js.map": [
-        "/packs/js/application-6c2cd89996771249403c.js.map"
+        "/packs/js/application-c0662b83bfe600eeee77.js.map"
+      ]
+    },
+    "referensi": {
+      "js": [
+        "/packs/js/referensi-6311c59789a6a24f90c4.js"
+      ],
+      "js.map": [
+        "/packs/js/referensi-6311c59789a6a24f90c4.js.map"
       ]
     }
   },
   "media/images/img1.jpg": "/packs/media/images/img1-17fd9b8bebbfb880aafd8f7e1b1823d3.jpg",
   "media/images/logo-dark.svg": "/packs/media/images/logo-dark-63167c8c707a6369071fb5d10f8cd304.svg",
   "media/images/logo-light.svg": "/packs/media/images/logo-light-3cbbacbf4606325f0f1ea2d10fa0d783.svg",
-  "vendors~actioncable.js": "/packs/js/vendors~actioncable-c592403c886988a78232.chunk.js",
-  "vendors~actioncable.js.map": "/packs/js/vendors~actioncable-c592403c886988a78232.chunk.js.map"
+  "referensi.js": "/packs/js/referensi-6311c59789a6a24f90c4.js",
+  "referensi.js.map": "/packs/js/referensi-6311c59789a6a24f90c4.js.map",
+  "vendors~actioncable.js": "/packs/js/vendors~actioncable-886239882de750dd40fb.chunk.js",
+  "vendors~actioncable.js.map": "/packs/js/vendors~actioncable-886239882de750dd40fb.chunk.js.map"
 }

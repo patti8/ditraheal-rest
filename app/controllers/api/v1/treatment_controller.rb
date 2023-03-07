@@ -10,14 +10,20 @@ class Api::V1::TreatmentController < WsController
         
         if @cek.present?
 
-            render :json => {"code": 400, success: false, "message": "Anda memiliki treatment yang belum selesai.", data: nil}, status: 400  
+            render :json => {"code": 400, success: false, "messages": "Anda memiliki treatment yang belum selesai.", data: nil}, success: 400  
         
         else
+
             if @periode.save
-                PreTest.create!(periode_treatment_id: @periode.id)
-                render :json => {"code": 200, success: true, "message": "🎉Yeay, periode treatment berhasil dibuat.", data: @periode}  
+                Test.create!(periode_treatment_id: @periode.id)
+                render :json => {
+                    "code": 200, 
+                    success: true, 
+                    "messages": "🎉Yeay, periode treatment berhasil dibuat.", 
+                    data: @periode
+                }  
             else
-                render :json => {"code": 400, success: false, "message": "#{@periode.errors.full_messages}", data: nil }, status: 400 
+                render :json => {"code": 400, success: false, "messages": "#{@periode.errors.full_messages}", data: nil }, success: 400 
             end
         end
         
@@ -30,16 +36,54 @@ class Api::V1::TreatmentController < WsController
         
         if params[:identitas_id].present? && @periode.present?
             
-            render :json => {"code": 200, success: true, "message": "authentication success.", data: @periode.last}  
+            # debugger
+            periode = @periode.last
+            treatment = Treatment.where(periode_treatment_id: periode.id) 
+          
+      
+            # treat.tanggal_awal_treatment = @treatment.first.created_at
+            # treat.tanggal_akhir_treatment = @treatment.last.created_at
+            # treat.tanggal_sedang_treatment = @treatment.where(checklist: true).last.created_at
+            
+            # if treatment.present?
+                render :json => {
+                    "code": 200, 
+                    success: true, 
+                    "messages": "authentication success.", 
+                    data: {
+                        id: periode.id,
+                        identitas_id: periode.identitas_id,
+                        status: periode.status,
+                        tanggal_awal: periode.tanggal_awal,
+                        tanggal_akhir: periode.tanggal_akhir,
+                        inferensi: periode.inferensi,
+                        rule: periode.rule,
+                        level_trauma: periode.level_trauma,
+                        treatment_kelompok: 0,
+                        tanggal_awal_treatment:  if treatment.present? then treatment.first.tanggal.strftime("%Y-%m-%d") else "silahkan generate treatment terlebih dahulu" end,
+                        tanggal_akhir_treatment: if treatment.present? then  treatment.last.tanggal.strftime("%Y-%m-%d") else "silahkan generate treatment terlebih dahulu" end,
+                        tanggal_sedang_treatment:   if treatment.present? then if treatment.where(checklist: true).order(updated_at: :desc).present? then treatment.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d") else "-" end else "silahkan generate treatment terlebih dahulu" end,
+                    } 
+        
+                }  
+            # else
+            #     tanggapan(
+            #         400,
+            #         "data tidak ditemukan. Silahkan lalukan post treatment terlebih dahulu",
+            #         nil
+            #     )
+            # end
 
         else
-            render :json => {"code": 204, success: false, "message": "Maaf, periode treatment tidak ditemukan.", data: nil}  
+            
+            render :json => {"code": 204, success: false, "messages": "Maaf, periode treatment tidak ditemukan.", data: nil}  
+        
         end
 
     end
 
     def generate
-        Resources::Tools.create_treatment_by(params[:periode_treatment])
+        Resources::Tools.create_treatment_by(params[:periode_treatment_id])
     end
 
     def by_date
@@ -48,11 +92,11 @@ class Api::V1::TreatmentController < WsController
 
        if @treatment.present?
             
-        render :json => {"code": 200, success: true, "message": "berhasil menarik data.", data: @treatment}, status: 200  
+        render :json => {"code": 200, success: true, "messages": "berhasil menarik data.", data: @treatment}, success: 200  
        
        else
 
-        render :json => {"code": 400, success: false, "message": "gagal menarik data.", data: nil }, status: 400  
+        render :json => {"code": 400, success: false, "messages": "gagal menarik data.", data: nil }, success: 400  
        
        end
 
@@ -76,11 +120,11 @@ class Api::V1::TreatmentController < WsController
 
          end
 
-         render :json => {"code": 200, success: true, "message": "check berhasil diupdate menjadi #{update}.", data: @treat}, status: 200  
+         render :json => {"code": 200, success: true, "messages": "check berhasil diupdate menjadi #{update}.", data: @treat}, success: 200  
         
         else
 
-         render :json => {"code": 400, success: false, "message": "harap periksa kembali data yang dimasukan.", data: nil }, status: 400  
+         render :json => {"code": 400, success: false, "messages": "harap periksa kembali data yang dimasukan.", data: nil }, success: 400  
         
         end
 

@@ -28,6 +28,9 @@ gem 'jquery-rails'
 gem "turbo-rails"
 gem "pagy", "~> 5.5"
 gem "pg_search", "~> 2.3"
+gem "chartkick"
+gem 'groupdate'
+
 
 
 

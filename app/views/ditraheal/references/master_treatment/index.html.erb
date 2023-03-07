@@ -1,0 +1,87 @@
+<%= javascript_pack_tag "referensi", "data-turbo-track": "reload" %>
+
+<%= turbo_frame_tag "second_frame" do %>
+
+
+  <div class="card shadow">
+    <div class="card-header">
+      <div class="d-flex justify-content-between">
+        Referensi Master Treatment 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         Tambah
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Treatment</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              
+              <div class="modal-body">
+                <%= form_with model: @master_treatment, url: ditraheal_references_ditraheal_references_master_treatment_path, method: :post, data: { turbo: "false", target: "second_frame" }, class: "form" do |f| %>
+                  <div class="form-group">
+                    <%= f.label :nama_treatment %>
+                    <%= f.text_field :deskripsi, class: "form-control", required: true %>
+                  </div>
+                  
+                  <div class="form-group">
+                    <%= f.label :rule_base %>
+                    <%= f.select :rule_based_id, options_for_select(RuleBased.all.map{ |rb| [rb.mode, rb.id] }), {}, { class: 'form-control' } %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :time_duration_id, "Time Duration" %>
+                    <%= f.select :time_duration_id, options_for_select(TimeDuration.where("id > 100").map{ |td| [td.deskripsi, td.id] }), {}, { class: 'form-control' } %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :ref_sesi, "Sesi" %>
+                    <%= f.select :ref_sesi, options_for_select([1, 2, 3, 4]), {}, { class: 'form-control' } %>
+                  </div>
+
+                 
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 
+                 <div class="form-group">
+                    <%= f.submit "Save", class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="card-body">
+      <%= form_tag ditraheal_references_master_treatment_index_path, method: :get, id: "filter-form" do %>
+        <% prompt_text = params[:rule_base_mode].presence || "-- Pilih Rule Base --" %>
+        <%= select_tag :rule_base_mode, options_for_select(RuleBased.order(mode: :ASC).pluck(:mode).uniq), prompt: prompt_text %>
+      <% end %>
+      
+      <br>
+      <ul class="list-group ">
+        <% @treat.each_with_index do |treat, index| %>
+      
+          <li class="list-group-item">
+            <div class="text-<%= treat.status == true ? "dark" : "danger" %>"><%= index +=1%>. <%= treat.deskripsi %></div>
+            <small class="badge text-white bg-primary"  data-bs-toggle="popover" data-bs-title="Rule Based Detail" data-bs-content="<%= RuleBased.find_by(id: treat.rule_based_id).description %>"><%= RuleBased.find_by(id: treat.rule_based_id).mode %></small>
+            <small class="badge text-white bg-warning"><%= TimeDuration.find_by(id: treat.time_duration_id).deskripsi %></small>
+          <small class="badge text-white bg-primary"><%= treat.ref_sesi %></small>
+            <small><%= link_to  "update status", ditraheal_references_master_treatment_status_path(treat), method: :get, class: "btn btn-small badge btn-danger", data: { turbo: "false", target: "second_frame" }  %></small>
+          </li>
+
+        <% end %>
+      </ul>
+      
+    </div>
+  </div>
+<% end %>

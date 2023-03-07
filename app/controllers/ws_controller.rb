@@ -52,7 +52,7 @@ class WsController < ActionController::Base
     private 
 
         def cek_pre_test
-            cek_pre_test = PreTest.find_by(periode_treatment_id: params[:periode_treatment_id])
+            cek_pre_test = Test.find_by(periode_treatment_id: params[:periode_treatment_id])
         end
 
         def set_csrf_cookie
