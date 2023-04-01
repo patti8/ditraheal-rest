@@ -2,6 +2,8 @@ import "@hotwired/turbo-rails"
 require("@popperjs/core")
 require("@rails/activestorage").start
 require("@rails/ujs").start
+import "chartkick/chart.js"
+
 import "bootstrap"
 
 window.Rails
@@ -9,6 +11,7 @@ window.Rails
 import { Tooltip, Popover } from "bootstrap"
 
 import "controllers"
+import Chart from 'chart.js/auto';
 
 require("../stylesheets/application.scss")
 
@@ -26,3 +29,12 @@ document.addEventListener("turbo:load", () => {
         return new Popover(popoverTriggerEl)
     })
 })
+
+
+
+document.addEventListener("turbo:load", function() {
+    $(document).on("change", "#filter-form select", function() {
+        $("#filter-form").submit();
+    });
+  })
+  

@@ -7,15 +7,15 @@ class Api::V1::IdentiesController < WsController
   def index
       @identies = Identy.all
 
-      render json: @identies
+      render json:{code: 200, success: true, "messages": "data berhasil diambil.", data: @identies}, success: true 
   end
 
   # GET /identies/1
   def show
     if @identy.present?
-      render json: @identy
+      render json: {code: 200, success: true, "messages": "data berhasil diambil.", data: @identy}, success: true 
     else
-      render json: "identy not found"
+      render json:{code: 400, success: false, "messages": "identy not found", data: @identy}, success: true 
     end
   end
 
@@ -37,9 +37,9 @@ class Api::V1::IdentiesController < WsController
   # PATCH/PUT /identies/1
   def update
     if @identy.update(identy_params)
-      render json: @identy
-    else
-      render json: @identy.errors, success: :unprocessable_entity
+      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy} 
+    else      
+      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy} 
     end
   end
 

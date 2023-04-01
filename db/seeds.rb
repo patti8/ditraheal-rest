@@ -52,7 +52,29 @@
 # Reference.create(jenis: 3, deskripsi: "Saya mampu untuk tidak larut dalam emosi ketika memikirkan atau teringat akan peristiwa bencana yang terjadi.")
 # Reference.create(jenis: 3, deskripsi: "Ketika saya berusaha untuk tidak memikirkan, maka kejadian bencana itu tidak lagi terlintas dipikiran saya")
 
-# Admin.create(email: "admin@ditraheal.com", password: "qwe123", password_confirmation: "qwe123")
+# Reference.create(
+#     jenis: 14, 
+#     deskripsi: "https://fb.me/g/p_1Gpv18gNSAA4iw9y/kJjddWxB",
+#     ref_code: 1 #art
+# )
+# Reference.create(
+#     jenis: 14, 
+#     deskripsi: "https://fb.me/g/p_mSLkEVd5Hmr4WC2R/GxNzt3Lk",
+#     ref_code: 2 #musik
+# )
+# Reference.create(
+#     jenis: 14, 
+#     deskripsi: "https://fb.me/g/p_VdwTwWx6koK1yFq6/Cn3lRlRx",
+#     ref_code: 3 #membaca/menonton
+# )
+# Reference.create(
+#     jenis: 14, 
+#     deskripsi: "https://fb.me/g/p_bpyEAqB4obxMTT3k/WXNAHVne",
+#     ref_code: 4 #olahraga
+# )
+
+
+Admin.create(email: "admin@ditraheal.com", password: "qwe123", password_confirmation: "qwe123")
     
 
 # MASTER TREATMENT 
@@ -952,6 +974,7 @@
 # MasterTreatment.create(deskripsi: 'Tonton olahraga favorit Anda atau tonton tayangan ulang salah satu pertandingan/permainan/pertemuan terbaik.', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
 # MasterTreatment.create(deskripsi: 'Membuat List daftar Novel kesukaan / Film Kesukaan', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
 # MasterTreatment.create(deskripsi: 'Merencanakan untuk marathon 3 Film kesukaan dalam suatu kesempatan', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
+<<<<<<< HEAD
 # MasterTreatment.create(deskripsi: 'Bersilaturahmi dengan kerabat yang lama tidak terhubung (baik secara surat fisik ataupun secara elektronik atau digital)', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
 
 
@@ -968,3 +991,6 @@ Reference.create(id:188,jenis: 13, deskripsi: 'https://docs.google.com/spreadshe
 Reference.create(id:189,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035177', ref_code: '2' )
 Reference.create(id:190,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035178', ref_code: '3' )
 Reference.create(id:191,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035179', ref_code: '4' )
+=======
+# MasterTreatment.create(deskripsi: 'Bersilaturahmi dengan kerabat yang lama tidak terhubung (baik secara surat fisik ataupun secara elektronik atau digital)', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
+>>>>>>> fitur-treatment

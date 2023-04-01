@@ -1,7 +1,7 @@
 class Ditraheal::GroupSosmedController < DitrahealController
 
     def index
-    
+        @link_medsos = Reference.where(jenis: 14)
     end
 
     def new
@@ -21,7 +21,14 @@ class Ditraheal::GroupSosmedController < DitrahealController
     end
 
     def update
-    
+        
+        @sosmed = Reference.where(jenis: 14).find(params[:id])
+        if  @sosmed.update(link_params)
+            redirect_to ditraheal_group_sosmed_index_path, notice: "Link berhasil diubah.", turbo: false
+        else
+            render :index
+        end
+
     end
 
     def destroy
@@ -30,6 +37,10 @@ class Ditraheal::GroupSosmedController < DitrahealController
 
     private
     
+        def link_params
+            params.permit(:deskripsi)
+        end
+
         def set_title
             @title = "Group Sosial Media"
         end

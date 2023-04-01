@@ -1,0 +1,63 @@
+class Api::V1::TesEfikasiController < WsController
+    before_action :set_tes_efikasi, only: %i[ show update destroy ]
+    before_action :current_user, only: %i[index, show, destroy, update]  
+
+
+    # GET /identies
+  def index
+
+      @efikasi_all = TesEfikasi.all
+      render json: @efikasi_all
+
+  end
+
+
+  def show
+    if @tes_efikasi.present?
+      render json: @tes_efikasi
+    else
+      render json: "tes_efikasi not found"
+    end
+  end
+
+
+  def create
+    @tes_efikasi = TesEfikasi.new(tes_efikasi_params)
+
+    if @tes_efikasi.save
+      Login.create!(id_user: @tes_efikasi.id, status: 1)
+      render json: [status: "success", data: @tes_efikasi], status: :ok # ,location: @tes_efikasi
+    else
+      render json: @tes_efikasi.errors, status: :unprocessable_entity
+    end
+  end
+
+
+  def update
+    if @tes_efikasi.update(tes_efikasi_params)
+      render json: @tes_efikasi
+    else
+      render json: @tes_efikasi.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /identies/
+  def destroy
+    if @tes_efikasi.destroy
+      render json: "tes_efikasi deleted successfully."
+    else
+      render json: "Data is not found or deleted."
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_tes_efikasi
+      @tes_efikasi = TesEfikasi.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def tes_efikasi_params
+      params.require(:tes_efikasi).permit(:identy, :question, :answer)
+    end
+end

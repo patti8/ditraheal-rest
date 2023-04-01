@@ -1,6 +1,6 @@
 class Api::V1::ReferencesController < WsController
   before_action :set_reference, only: %i[ show update destroy ]
-  before_action :authorized , except: %i[hobby]
+  before_action :authorized , except: %i[hobby link_medsos]
 
   # GET /references hobby
   def hobby
@@ -8,6 +8,32 @@ class Api::V1::ReferencesController < WsController
 
     render :json => {"code": 200, success: true, "messages": "hobby references success", data: @hobi}  
   end
+
+  def link_medsos
+   
+
+    if params[:hobi].present?
+      @link_medsos = Reference.where(jenis: 14, ref_code: params[:hobi])
+    else
+      @link_medsos = Reference.where(jenis: 14)
+    end
+
+    @data = []
+    
+    @link_medsos.each do |medsos|
+      # if medsos.ref_code == 1
+        data = {
+          title: "Group Treatment Kelompok Hobi #{Reference.find_by(id: medsos.ref_code).deskripsi}",
+          deskripsi: medsos.deskripsi,
+          link: medsos.deskripsi,
+        }
+        @data << data
+      # end
+    end
+    
+    render :json => {"code": 200, success: true, "messages": "medsos references success", data: @data}  
+  end
+
 
   # GET /reference/tes_efikasi
   def effication_test

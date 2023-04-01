@@ -62,7 +62,7 @@ class Api::V1::PreTestController < WsController
         status = data[1]
         level_trauma = data[2]
         
-        render :json => {success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: level_trauma}, success: status
+        render :json => {success: if status == 200 then true else false end, "messages": "#{if status == 200 then respon else "Gagal menyimpan. Cek kembali data yang dimasukan. #{level_trauma.errors.full_messages}" end}.", data: status == 200 ? level_trauma : nil}, success: status
     
     end
 
@@ -106,6 +106,7 @@ class Api::V1::PreTestController < WsController
                 @hitung_level_trauma = LevelTrauma.where("level_traumas.pre_test_id = #{cek_pre_test.id}")
     
                 if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end) && cek_pre_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end)
+                    
                     @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
                         cek_pre_test.total_level_trauma_id, 
                         cek_pre_test.periode_treatment_id

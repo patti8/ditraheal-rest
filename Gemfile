@@ -28,6 +28,10 @@ gem "turbo-rails"
 gem "pagy", "~> 5.5"
 gem "pg_search", "~> 2.3"
 gem "webpacker"
+gem "chartkick"
+gem 'groupdate'
+
+
 
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
@@ -81,5 +85,5 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'admin_panel', path: 'vendor/admin_panel'
+# gem 'admin_panel', path: 'vendor/admin_panel'
 gem "importmap-rails", "~> 1.1"

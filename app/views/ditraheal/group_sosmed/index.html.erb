@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+        <th>link</th>
+        <th>Link</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <% @link_medsos.each do |link| %>
+            <tr>
+                <td><%= Reference.find_by(id: link.ref_code).deskripsi%></td>
+                <td><%= link_to link.deskripsi, "#{link.deskripsi}" %></td>
+                <td>
+                    <%= turbo_frame_tag "link-update-#{link.id}" do %>
+                        <%= form_with url: ditraheal_update_sosmed_path(link.id), method: :patch, local: true, data: {turbo: false} do |form| %>
+                            <%= form.text_field :deskripsi, value: link.deskripsi, class: "form-control" %>
+                            <%= form.submit "Update", class: "btn btn-primary" %>
+                        <% end %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
