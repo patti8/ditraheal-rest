@@ -62,8 +62,6 @@ class Api::V1::Treatments::TreatmentController < WsController
 
 
         if @treat.present?
-
-            debugger
             
             data = @treat.map { |d|  {id: d['id'], treat_kelompok_sekali: Reference.find_by(id: d['treat_kelompok_sekali']).deskripsi, checklist: kelompok_berulang_true_false_show(d['check_treat_kelompok_sekali'])} }
 
