@@ -3,6 +3,7 @@ require("@popperjs/core")
 require("@rails/activestorage").start
 require("@rails/ujs").start
 import "chartkick/chart.js"
+import $ from 'jquery';
 
 import "bootstrap"
 
@@ -32,9 +33,5 @@ document.addEventListener("turbo:load", () => {
 
 
 
-document.addEventListener("turbo:load", function() {
-    $(document).on("change", "#filter-form select", function() {
-        $("#filter-form").submit();
-    });
-  })
+
   

@@ -35,10 +35,10 @@
                                 <td><%= identy.follower %></td>
 
                                 <% @hoby = Reference.find_by(jenis: 1, id: identy.hobi)%>
-                                <td><%= @hoby.deskripsi %></td>
+                                <td><%= @hoby.present? ? @hoby.deskripsi : "-" %></td>
                                 
                                 <td>
-                                    <%= link_to  "Show", ditraheal_identity_path(identy) %>
+                                    <%= link_to  "Show", ditraheal_identity_path(identy.id), data: {turbo: false} %>
                                     <%#= link_to "Show", "#", class: "btn-sm btn-primary", data: { 'bs-toggle' => "modal", 'bs-target' => "#showModal#{identy.id}" } %>
                                     <% @identy = identy %>
                                     <%= render "show", locals: { identy: @hoby, tes: @identy } %>

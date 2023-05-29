@@ -1,7 +1,8 @@
+  
+
 <%= javascript_pack_tag "referensi", "data-turbo-track": "reload" %>
 
 <%= turbo_frame_tag "second_frame" do %>
-
 
   <div class="card shadow">
     <div class="card-header">
@@ -22,38 +23,101 @@
               </div>
               
               <div class="modal-body">
-                <%= form_with model: @master_treatment, url: ditraheal_references_ditraheal_references_master_treatment_path, method: :post, data: { turbo: "false", target: "second_frame" }, class: "form" do |f| %>
-                  <div class="form-group">
-                    <%= f.label :nama_treatment %>
-                    <%= f.text_field :deskripsi, class: "form-control", required: true %>
-                  </div>
-                  
-                  <div class="form-group">
-                    <%= f.label :rule_base %>
-                    <%= f.select :rule_based_id, options_for_select(RuleBased.all.map{ |rb| [rb.mode, rb.id] }), {}, { class: 'form-control' } %>
-                  </div>
 
-                  <div class="form-group">
-                    <%= f.label :time_duration_id, "Time Duration" %>
-                    <%= f.select :time_duration_id, options_for_select(TimeDuration.where("id > 100").map{ |td| [td.deskripsi, td.id] }), {}, { class: 'form-control' } %>
-                  </div>
 
-                  <div class="form-group">
-                    <%= f.label :ref_sesi, "Sesi" %>
-                    <%= f.select :ref_sesi, options_for_select([1, 2, 3, 4]), {}, { class: 'form-control' } %>
-                  </div>
-
+                <!-- Elemen yang berisi form-form yang sudah dibuat sebelumnya -->
+                <div id="form-container">
                  
+                </div>
+
+                <button id="add-form-btn" type="button">Add Form</button>
+
+                
+                <script>
+                  // Menambahkan event listener pada tombol add-form
+                  document.getElementById('add-form-btn').addEventListener('click', function() {
+                    // Membuat elemen baru untuk form
+                    var newForm = document.createElement('div');
+
+                    // Menambahkan HTML untuk form baru
+                    newForm.innerHTML = `
+                      <%= form_with model: @master_treatment, url: ditraheal_references_ditraheal_references_master_treatment_path, method: :post, data: { turbo: "false", target: "second_frame" }, class: "form" do |f| %>
+                        
+                        <hr>
+
+                        <div class="form-group">
+                          <%= f.label :nama_treatment %>
+                          <%= f.text_field :deskripsi, class: "form-control", required: true %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :rule_base %>
+                          <%= f.select :rule_based_id, options_for_select(RuleBased.all.map{ |rb| [rb.mode, rb.id] }), {}, { class: 'form-control' } %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :time_duration_id, "Time Duration" %>
+                          <%= f.select :time_duration_id, options_for_select(TimeDuration.where("id > 100").map{ |td| [td.deskripsi, td.id] }), {}, { class: 'form-control' } %>
+                        </div>
+
+                        <div class="form-group">
+                          <%= f.label :ref_sesi, "Sesi" %>
+                          <%= f.select :ref_sesi, options_for_select([1, 2, 3, 4]), {}, { class: 'form-control' } %>
+                        </div>
+
+                        <input type="hidden" name="form_type[]" value="master_treatment">
+                      <% end %>
+                    `;
+
+                    // Menambahkan form baru ke dalam dokumen
+                    document.getElementById('form-container').appendChild(newForm);
+                  });
+
+                  // Menambahkan satu tombol submit untuk semua form
+                  var submitButton = document.createElement('button');
+                  submitButton.innerHTML = "Save";
+                  submitButton.className = "btn btn-primary";
+                  submitButton.addEventListener('click', function() {
+                    // Mendapatkan semua form yang ada di dalam container
+                    var forms = document.getElementById('form-container').querySelectorAll('.form');
+
+                    // Membuat objek FormData dan menambahkan data dari masing-masing form
+                    var formData = new FormData();
+                    forms.forEach(function(form) {
+                      var formDataItem = {};
+                      var inputs = form.elements;
+                      for (var i = 0; i < inputs.length; i++) {
+                        formDataItem[inputs[i].name] = inputs[i].value;
+                      }
+                      formData.append('data[]', JSON.stringify(formDataItem));
+                    });
+                    
+                    
+                    var csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+                    // Melakukan request POST untuk menyimpan data
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', ' /ditraheal/references/ditraheal/references/master_treatment');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('X-CSRF-Token', csrfToken);
+                    xhr.onload = function() {
+                      if (xhr.status === 200) {
+                        alert('Data berhasil disimpan')
+                      } else {
+                       alert('Terjadi kesalahan');
+                      }
+                    };
+                    console.log(formData)
+                    xhr.send(JSON.stringify({ forms: formData.getAll('data[]') }));
+                  });
+
+                  // Menambahkan tombol submit ke dalam dokumen
+                  document.getElementById('form-container').appendChild(submitButton);
+                </script>
+
 
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 
-                 <div class="form-group">
-                    <%= f.submit "Save", class: "btn btn-primary" %>
-                  </div>
-                <% end %>
-              </div>
+              
             </div>
           </div>
 
@@ -62,10 +126,15 @@
       </div>
     </div>
     <div class="card-body">
-      <%= form_tag ditraheal_references_master_treatment_index_path, method: :get, id: "filter-form" do %>
+     <%= form_tag ditraheal_references_master_treatment_index_path, method: :get, id: "filter-form", data: { turbo_frame: "second_frame" } do %>
         <% prompt_text = params[:rule_base_mode].presence || "-- Pilih Rule Base --" %>
         <%= select_tag :rule_base_mode, options_for_select(RuleBased.order(mode: :ASC).pluck(:mode).uniq), prompt: prompt_text %>
+        <%= hidden_field_tag :additional_param, "value" %>
+        <%= button_tag "Search", type: :submit %>
       <% end %>
+
+
+
       
       <br>
 

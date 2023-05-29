@@ -12,6 +12,7 @@ class Resources::Tools
         treatment = Treatment.new
 
         tgl_akhir = Date.today + 30.days
+        
         (Date.today..tgl_akhir).each do |date|
             
             treatment.tanggal = date

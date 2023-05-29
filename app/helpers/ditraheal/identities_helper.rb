@@ -11,4 +11,14 @@ module Ditraheal::IdentitiesHelper
         link_to name, request.params.merge(sort: column, direction: direction), **options
     end
 
+    def level_trauma(nilai)
+        if nilai <= 40
+            "Level Trauma Rendah"
+        elsif nilai > 40 && nilai <= 70
+            "Level Trauma Sedang"
+        elsif nilai > 70
+            "Level Trauma Tinggi"
+        end
+    end
+
 end

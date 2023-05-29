@@ -22,6 +22,7 @@ class Api::V1::ReferencesController < WsController
     
     @link_medsos.each do |medsos|
       # if medsos.ref_code == 1
+      
         data = {
           title: "Group Treatment Kelompok Hobi #{Reference.find_by(id: medsos.ref_code).deskripsi}",
           deskripsi: medsos.deskripsi,

@@ -32,18 +32,18 @@
 # RuleBased.create(mode:'MODE X',description: 'Treatment Kode_TLR + HMM >= 5', rule: 'IF Level_trauma = Rendah And Hobby = Baca/Nonton THEN Treatment MODE X', ref: 'level rendah + hobi membaca/menonton' )
 # RuleBased.create(mode:'MODE VII',description: 'Treatment Kode_TLR + Kode_HAS >= 5', rule: 'IF Level_trauma = Rendah And Hobi = Art THEN Treatment MODE VII', ref: 'level rendah + hobi art' )
 
-# TesEfikasi.create(identy: 1, question: 7, answer: 100 )
+# # TesEfikasi.create(identy: 1, question: 7, answer: 100 )
 
-# (51..70).each do |id|
-#     Identy.create!(
-#         id: id,
-#         name: Faker::Name.name,
-#         tanggal_lahir: rand(1..1000).days.ago.to_date,
-#         hobi: rand(1..3),
-#         no_hp: "082199#{rand(500111..100011)}",
-#         follower: rand(100..1000)
-#     )
-# end
+# # (51..70).each do |id|
+# #     Identy.create!(
+# #         id: id,
+# #         name: Faker::Name.name,
+# #         tanggal_lahir: rand(1..1000).days.ago.to_date,
+# #         hobi: rand(1..3),
+# #         no_hp: "082199#{rand(500111..100011)}",
+# #         follower: rand(100..1000)
+# #     )
+# # end
 
 # Reference.create(jenis: 3, deskripsi: "Saya tidak akan terlalu sering mengingat-ingat awal mula kejadian bencana")
 # Reference.create(jenis: 3, deskripsi: "Saya jarang mengalami mengalami kesulitan untuk tidur")
@@ -51,6 +51,10 @@
 # Reference.create(jenis: 3, deskripsi: "Saya tidak mudah tersinggung dan marah")
 # Reference.create(jenis: 3, deskripsi: "Saya mampu untuk tidak larut dalam emosi ketika memikirkan atau teringat akan peristiwa bencana yang terjadi.")
 # Reference.create(jenis: 3, deskripsi: "Ketika saya berusaha untuk tidak memikirkan, maka kejadian bencana itu tidak lagi terlintas dipikiran saya")
+
+Reference.create(id:179,jenis: 11, deskripsi: 'Memperkenalkan diri', ref_code: '' )
+Reference.create(id:180,jenis: 11, deskripsi: 'Menceritakan pengalaman pribadi ketika bencana terjadi, bisa melalui tulisan, rekaman suara maupun rekaman video', ref_code: '-' )
+Reference.create(id:181,jenis: 11, deskripsi: 'Yang diharapkan dari komunitas penyintas trauma', ref_code: '-' )
 
 # Reference.create(
 #     jenis: 14, 
@@ -74,7 +78,7 @@
 # )
 
 
-Admin.create(email: "admin@ditraheal.com", password: "qwe123", password_confirmation: "qwe123")
+# Admin.create(email: "admin@ditraheal.com", password: "qwe123", password_confirmation: "qwe123")
     
 
 # MASTER TREATMENT 
@@ -974,23 +978,4 @@ Admin.create(email: "admin@ditraheal.com", password: "qwe123", password_confirma
 # MasterTreatment.create(deskripsi: 'Tonton olahraga favorit Anda atau tonton tayangan ulang salah satu pertandingan/permainan/pertemuan terbaik.', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
 # MasterTreatment.create(deskripsi: 'Membuat List daftar Novel kesukaan / Film Kesukaan', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
 # MasterTreatment.create(deskripsi: 'Merencanakan untuk marathon 3 Film kesukaan dalam suatu kesempatan', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
-<<<<<<< HEAD
 # MasterTreatment.create(deskripsi: 'Bersilaturahmi dengan kerabat yang lama tidak terhubung (baik secara surat fisik ataupun secara elektronik atau digital)', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
-
-
-Reference.create(id:179,jenis: 11, deskripsi: 'Memperkenalkan diri', ref_code: '' )
-Reference.create(id:180,jenis: 11, deskripsi: 'Menceritakan pengalaman pribadi ketika bencana terjadi, bisa melalui tulisan, rekaman suara maupun rekaman video', ref_code: '-' )
-Reference.create(id:181,jenis: 11, deskripsi: 'Yang diharapkan dari komunitas penyintas trauma', ref_code: '-' )
-Reference.create(id:182,jenis: 12, deskripsi: 'Bercerita tentang hal-hal berhubungan dengan hobi', ref_code: '-' )
-Reference.create(id:183,jenis: 12, deskripsi: 'Bercerita aktifitas sehari-hari berhubungan dengan hobi', ref_code: '-' )
-Reference.create(id:184,jenis: 12, deskripsi: 'Saran untuk meningkatkan kecintaan/keseruan pada hobi', ref_code: '-' )
-Reference.create(id:185,jenis: 12, deskripsi: 'Saling memotivasi sesama anggota kelompok', ref_code: '-' )
-Reference.create(id:186,jenis: 12, deskripsi: 'Saling mendoakan sesama anggota kelompok menurut keyakinan masing-masing', ref_code: '-' )
-Reference.create(id:187,jenis: 12, deskripsi: 'Melakukan percakapan pribadi dengan topik ringan lainnya dengan sesama anggota kelompok.', ref_code: '-' )
-Reference.create(id:188,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035176', ref_code: '1' )
-Reference.create(id:189,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035177', ref_code: '2' )
-Reference.create(id:190,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035178', ref_code: '3' )
-Reference.create(id:191,jenis: 13, deskripsi: 'https://docs.google.com/spreadsheets/d/1DtDPJ7DgJCICbQ99QmGJzaHHGxr1FYJe9wuO7ykTS7Y/edit#gid=179035179', ref_code: '4' )
-=======
-# MasterTreatment.create(deskripsi: 'Bersilaturahmi dengan kerabat yang lama tidak terhubung (baik secara surat fisik ataupun secara elektronik atau digital)', rule_based_id: 3,time_duration_id: 177, ref_sesi: 4)
->>>>>>> fitur-treatment

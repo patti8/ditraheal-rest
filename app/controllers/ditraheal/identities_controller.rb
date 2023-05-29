@@ -31,11 +31,22 @@ class Ditraheal::IdentitiesController < DitrahealController
     end
 
     def show
+        
         @title = "Detail Data Pengguna"
         @identy = Identy.find_by(id: params[:id])
-        @periode_treatment = PeriodeTreatment.where(identitas_id: @identy.id).last
-        @treat_kelompok_sekali = TreatmentKelompok.where(periode_treatment: @periode_treatment.id, jenis: 1,  check_treat_kelompok_sekali: true).count
+        @periode_treatment = PeriodeTreatment.where(identitas_id: params[:id]).last
         
+        # presentase pengerjaan 
+        # TREATMENT PRIBADI
+        total_treat = Treatment.where(periode_treatment_id: @periode_treatment.id).count.to_f
+        treat_dikerjakan =  Treatment.where(periode_treatment_id: @periode_treatment.id, checklist: true).count.to_f
+        @presentase = treat_dikerjakan / total_treat * 100
+
+        # TREATMENT KELOMPOK
+
+
+
+        @treat_kelompok_sekali = TreatmentKelompok.where(jenis: 1,  check_treat_kelompok_sekali: true).count
         @treat_pribadi = Treatment.where(periode_treatment_id: @periode_treatment.id)
         @hitung_presentase = @treat_pribadi.where(checklist: true).count.to_f / @treat_pribadi.count.to_f * 100
     

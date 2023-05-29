@@ -7,17 +7,28 @@ class Ditraheal::References::MasterTreatmentController < Ditraheal::ReferencesCo
     end
     
     def create
-    
-        @master_treatment = MasterTreatment.new(master_treatment_params)
-        @master_treatment.status = true
-        if @master_treatment.save
+
+        forms_data = params[:forms].map { |form| JSON.parse(form) }
+        if forms_data.present?
+            forms_data.each do |data|
+                # debugger
+                MasterTreatment.create!(
+                    deskripsi: data["master_treatment[deskripsi]"],
+                    rule_based_id: data["master_treatment[rule_based_id]"],
+                    time_duration_id: data["master_treatment[time_duration_id]"],
+                    ref_sesi: data["master_treatment[ref_sesi]"],
+                    status: true
+                )
+            end
             redirect_to ditraheal_references_master_treatment_index_path, turbo: false, notice: "master treatment berhasil ditambahkan"
         else
             render :new
         end
+      
     end
 
     def update_status
+        
         master_treatment = MasterTreatment.find_by(id: params[:master_treatment_id])
         
         if master_treatment.present?

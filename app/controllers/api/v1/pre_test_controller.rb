@@ -107,6 +107,10 @@ class Api::V1::PreTestController < WsController
     
                 if cek_pre_test.update(total_skor_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end) && cek_pre_test.update(total_level_trauma_id: @hitung_level_trauma.sum(:jawaban).to_f.round, jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end)
                     
+                    if params[:test] == "post_test"
+                        PeriodeTreatment.find_by(id: cek_pre_test.periode_treatment_id).update(status: 2)
+                    end
+
                     @generate_lvl_trauma = Resources::TreatmentGenerator.generate_level_trauma(
                         cek_pre_test.total_level_trauma_id, 
                         cek_pre_test.periode_treatment_id

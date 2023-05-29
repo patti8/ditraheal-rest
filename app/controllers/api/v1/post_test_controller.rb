@@ -55,10 +55,11 @@ class Api::V1::PostTestController < WsController
             @hitung_efikasi = SkorEfikasi.where("skor_efikasis.post_test_id = #{cek_test.id}")
             
             if @hitung_efikasi
-                
+        
                 if cek_pre_test.update(post_test_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round) 
-                    render :json => {"code": 200, success: true, "messages": "berhasil menyimpan.", data: cek_test}  
+                    render :json => {"code": 200, success: true, "messages": "berhasil menyimpannn.", data: cek_test}  
                 end
+
             end
         else
             render :json => {code: if status == 200 then 200 else 400 end, success: false, "messages": "Gagal", data: nil}, success: 401
@@ -141,5 +142,6 @@ class Api::V1::PostTestController < WsController
         def cek_periode_treatment
             @periode_treatment_id = PeriodeTreatment.find_by(id: params[:periode_treatment_id])
         end
+
 
 end

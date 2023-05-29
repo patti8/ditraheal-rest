@@ -60,7 +60,10 @@ class Api::V1::Treatments::TreatmentController < WsController
             params[:periode_treatment_id]
         )
 
+
         if @treat.present?
+
+            debugger
             
             data = @treat.map { |d|  {id: d['id'], treat_kelompok_sekali: Reference.find_by(id: d['treat_kelompok_sekali']).deskripsi, checklist: kelompok_berulang_true_false_show(d['check_treat_kelompok_sekali'])} }
 
@@ -86,6 +89,7 @@ class Api::V1::Treatments::TreatmentController < WsController
         
         array = []
 
+        
         treatment_kelompok = TreatmentKelompok.where(
             periode_treatment:  params[:periode_treatment_id],
             jenis: 2
@@ -163,6 +167,7 @@ class Api::V1::Treatments::TreatmentController < WsController
             params[:periode_treatment_id]
         )
 
+
         if  @treat.present? && !params[:all].present?
 
             @treat = @treat.first
@@ -231,6 +236,78 @@ class Api::V1::Treatments::TreatmentController < WsController
                 data
             )
 
+        elsif  @treat.present? && params[:all].present?
+            data = []
+
+            @treat.each do |treat|
+                @treat = treat
+                treat_data = [
+                    {
+                        id: @treat.id,
+                        title: "bercerita tentang hal-hal berhubungan dengan hobi",
+                        treatment_kelompok_berulang: "bercerita_tentang_hal_hal_berhubungan_dengan_hobi",
+                        checklist:  kelompok_berulang_true_false_show(@treat.bercerita_tentang_hal_hal_berhubungan_dengan_hobi),
+                        created_at: @treat.created_at,
+                        updated_at: @treat.updated_at
+                    },
+                    {
+                        id: @treat.id,
+                        title: "bercerita aktifitas sehari hari berhubungan dengan hobi",
+                        treatment_kelompok_berulang: "bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi",
+                        checklist:  kelompok_berulang_true_false_show(@treat.bercerita_aktifitas_sehari_hari_berhubungan_dengan_hobi )  
+                    },
+                    {
+                        id: @treat.id,
+                        title: "saran untuk meningkatkan kecintaan keseruan pada hobi",
+                        treatment_kelompok_berulang: "saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi",
+                        checklist:  kelompok_berulang_true_false_show( @treat.saran_untuk_meningkatkan_kecintaan_keseruan_pada_hobi  ),
+                        created_at: @treat.created_at,
+                        updated_at: @treat.updated_at
+                    },
+                    {
+                        id: @treat.id,
+                        title: "saran untuk meningkatkan kecintaan keseruan pada hobi",
+                        treatment_kelompok_berulang: "saling_memotivasi_sesama_anggota_kelompok",
+                        checklist:  kelompok_berulang_true_false_show( @treat.saling_memotivasi_sesama_anggota_kelompok ),
+                        created_at: @treat.created_at,
+                        updated_at: @treat.updated_at
+                    },
+                    {
+                        id: @treat.id,
+                        title: "saling mendoakan sesama anggota kelompok menurut",
+                        treatment_kelompok_berulang: "saling_mendoakan_sesama_anggota_kelompok_menurut",
+                        checklist: kelompok_berulang_true_false_show( @treat.saling_mendoakan_sesama_anggota_kelompok_menurut ),
+                        created_at: @treat.created_at,
+                        updated_at: @treat.updated_at
+                    },
+                    {
+                        id: @treat.id,
+                        title:  "keyakinan masing-masing",
+                        treatment_kelompok_berulang:  "keyakinan_masing_masing",
+                        checklist: kelompok_berulang_true_false_show( @treat.keyakinan_masing_masing ),
+                        created_at: @treat.created_at,
+                        updated_at: @treat.updated_at
+                        
+                    },
+                    {
+                        id: @treat.id,
+                        title: "melakukan percakapan pribadi dengan topik ringan lainnya dengan sesama anggota kelompok",
+                        treatment_kelompok_berulang: "melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok",
+                        checklist: kelompok_berulang_true_false_show( @treat.melakukan_percakapan_pribadi_dengan_topik_ringan_lainnya_dengan_sesama_anggota_kelompok  ),
+                        created_at: @treat.created_at,
+                        updated_at: @treat.updated_at
+                    },
+    
+                ]
+                data << treat_data
+            end
+            
+                        
+            tanggapan(
+                200,
+                "data ditemukan",
+                data
+            )
         else
             
             tanggapan(
