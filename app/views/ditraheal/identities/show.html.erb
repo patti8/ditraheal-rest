@@ -51,7 +51,7 @@
                         <td><%= level_trauma(@test.total_level_trauma_id) %></td>
                         <td><%= @test.total_skor_efikasi %></td>
                         <td><%= @test.post_test_efikasi %></td>
-                        <td><span class="badge <%= periode.status == 2 ? "bg-info" : "bg-warning" %>"><%= periode.status == 2 ? "Selesai" : "Belum Selesai" %></span></td>
+                        <td><span class="badge <%= periode.status == 2 || @test.post_test_efikasi.present? ? "bg-info" : "bg-warning" %>"><%= periode.status == 2 || @test.post_test_efikasi.present? ? "Selesai" : "Belum Selesai" %></span></td>
 
                     </tr>
                     <% end %>
