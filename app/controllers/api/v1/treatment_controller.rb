@@ -4,7 +4,7 @@ class Api::V1::TreatmentController < WsController
     before_action :cek_periode_treatment_selesai, only: :periode
 
     def periode
-  
+        
         @periode = PeriodeTreatment.new(periode_params)
         @periode.tanggal_akhir = "0000-00-00"
         
@@ -15,6 +15,7 @@ class Api::V1::TreatmentController < WsController
         else
 
             if @periode.save
+                
                 Test.create!(periode_treatment_id: @periode.id)
                 render :json => {
                     "code": 200, 
@@ -38,13 +39,18 @@ class Api::V1::TreatmentController < WsController
             
             # debugger
             periode = @periode.last
-            treatment = Treatment.where(periode_treatment_id: periode.id) 
+            
+            testt = Test.where(periode_treatment_id: periode.id)
           
       
             # treat.tanggal_awal_treatment = @treatment.first.created_at
             # treat.tanggal_akhir_treatment = @treatment.last.created_at
             # treat.tanggal_sedang_treatment = @treatment.where(checklist: true).last.created_at
+
+            treatment = Treatment.where(periode_treatment_id: @periode.first.id)
             
+           
+
             # if treatment.present?
                 render :json => {
                     "code": 200, 
@@ -62,7 +68,11 @@ class Api::V1::TreatmentController < WsController
                         treatment_kelompok: 0,
                         tanggal_awal_treatment:  if treatment.present? then treatment.first.tanggal.strftime("%Y-%m-%d") else "silahkan generate treatment terlebih dahulu" end,
                         tanggal_akhir_treatment: if treatment.present? then  treatment.last.tanggal.strftime("%Y-%m-%d") else "silahkan generate treatment terlebih dahulu" end,
-                        tanggal_sedang_treatment:   if treatment.present? then if treatment.where(checklist: true).order(updated_at: :desc).present? then treatment.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d") else "-" end else "silahkan generate treatment terlebih dahulu" end,
+                        tanggal_sedang_treatment: if treatment.present? then if treatment.where(checklist: true).order(updated_at: :desc).present? then treatment.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d") else "anda belum memulai treat" end else "silahkan generate treatment terlebih dahulu" end,
+            
+                        # tanggal_awal_treatment:  if periode.present? then periode.tanggal_awal.strftime("%Y-%m-%d") else "silahkan generate treatment terlebih dahulu" end,
+                        # tanggal_akhir_treatment: if periode.tanggal_akhir.present? then  periode.tanggal_akhir.strftime("%Y-%m-%d") else "-" end,
+                        # tanggal_sedang_treatment:   if testt.present? then if testt.where(checklist: true).order(updated_at: :desc).present? then testt.where(checklist: true).order(updated_at: :desc).first.tanggal.strftime("%Y-%m-%d") else "-" end else "silahkan generate treatment terlebih dahulu" end,
                     } 
         
                 }  

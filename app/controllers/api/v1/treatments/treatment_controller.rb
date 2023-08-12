@@ -29,6 +29,7 @@ class Api::V1::Treatments::TreatmentController < WsController
                     cek_test.periode_treatment_id,
                     Identy.find_by(id: PeriodeTreatment.find_by(id: cek_test.periode_treatment_id).identitas_id).hobi
                 )
+
                 
                 render :json => {
                     code: if status == 200 then 200 else 400 end,
