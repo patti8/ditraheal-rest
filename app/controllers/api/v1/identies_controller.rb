@@ -7,15 +7,15 @@ class Api::V1::IdentiesController < WsController
   def index
       @identies = Identy.all
 
-      render json:{code: 200, success: true, "messages": "data berhasil diambil.", data: @identies}, success: true 
+      render json:{code: 200, success: true, "messages": "data berhasil diambil.", data: @identies}, success: true
   end
 
   # GET /identies/1
   def show
     if @identy.present?
-      render json: {code: 200, success: true, "messages": "data berhasil diambil.", data: @identy}, success: true 
+      render json: {code: 200, success: true, "messages": "data berhasil diambil.", data: @identy}, success: true
     else
-      render json:{code: 400, success: false, "messages": "identy not found", data: @identy}, success: true 
+      render json:{code: 400, success: false, "messages": "identy not found", data: @identy}, success: true
     end
   end
 
@@ -25,21 +25,21 @@ class Api::V1::IdentiesController < WsController
 
     if @identy.save
 
-      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy} 
-      
+      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy}
+
     else
-    
-      render :json => {"code": 204, success: false, "messages": "#{@identy.errors.full_messages}", data: nil} 
-    
+
+      render :json => {"code": 204, success: false, "messages": "#{@identy.errors.full_messages}", data: nil}
+
     end
   end
 
   # PATCH/PUT /identies/1
   def update
     if @identy.update(identy_params)
-      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy} 
-    else      
-      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy} 
+      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy}
+    else
+      render :json => {"code": 200, success: true, "messages": "identy create success", data: @identy}
     end
   end
 
@@ -55,7 +55,12 @@ class Api::V1::IdentiesController < WsController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_identy
-      @identy = Identy.find(params[:id])
+      if Identy.where(id: params[:id]).count == 0
+          render json: {code: 200, success: false, messages: "data tidak ditemukan"}
+      else
+        @identy = Identy.find(params[:id])
+      end
+
     end
 
     # Only allow a list of trusted parameters through.

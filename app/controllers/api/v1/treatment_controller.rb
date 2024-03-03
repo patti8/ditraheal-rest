@@ -47,9 +47,7 @@ class Api::V1::TreatmentController < WsController
             # treat.tanggal_akhir_treatment = @treatment.last.created_at
             # treat.tanggal_sedang_treatment = @treatment.where(checklist: true).last.created_at
 
-            treatment = Treatment.where(periode_treatment_id: @periode.first.id)
-
-
+            treatment = Treatment.where(periode_treatment_id: periode.id)
 
             # if treatment.present?
                 render :json => {

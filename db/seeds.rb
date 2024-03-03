@@ -57,31 +57,31 @@ Reference.create(id:180,jenis: 11, deskripsi: 'Menceritakan pengalaman pribadi k
 Reference.create(id:181,jenis: 11, deskripsi: 'Yang diharapkan dari komunitas penyintas trauma', ref_code: '-' )
 
 # Reference.create(
-#     jenis: 14, 
+#     jenis: 14,
 #     deskripsi: "https://fb.me/g/p_1Gpv18gNSAA4iw9y/kJjddWxB",
 #     ref_code: 1 #art
 # )
 # Reference.create(
-#     jenis: 14, 
+#     jenis: 14,
 #     deskripsi: "https://fb.me/g/p_mSLkEVd5Hmr4WC2R/GxNzt3Lk",
 #     ref_code: 2 #musik
 # )
 # Reference.create(
-#     jenis: 14, 
+#     jenis: 14,
 #     deskripsi: "https://fb.me/g/p_VdwTwWx6koK1yFq6/Cn3lRlRx",
 #     ref_code: 3 #membaca/menonton
 # )
 # Reference.create(
-#     jenis: 14, 
+#     jenis: 14,
 #     deskripsi: "https://fb.me/g/p_bpyEAqB4obxMTT3k/WXNAHVne",
 #     ref_code: 4 #olahraga
 # )
 
 
 # Admin.create(email: "admin@ditraheal.com", password: "qwe123", password_confirmation: "qwe123")
-    
 
-# MASTER TREATMENT 
+
+# MASTER TREATMENT
 # MasterTreatment.create(
 #     relaksasi: "Menghirup aroma udara pagi",
 #     ketrampilan: "Pelatihan ulang napas, Bangun pagi pada waktu yang teratur

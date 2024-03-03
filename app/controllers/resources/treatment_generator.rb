@@ -54,6 +54,7 @@ class Resources::TreatmentGenerator
 
         user_hobi = Reference.find_by(jenis: 1, id: Identy.find_by(id: periode_treatment.identitas_id).hobi).deskripsi
 
+
         if periode_treatment.level_trauma== "rendah" && user_hobi == "Olahraga"
 
             if periode_treatment.update(rule: 9)
@@ -126,7 +127,7 @@ class Resources::TreatmentGenerator
                 response(400, nil)
             end
 
-        elsif periode_treatment.level_trauma== "rendah" && user_hobi == "Membaca dan atau Menonton"
+        elsif periode_treatment.level_trauma== "rendah" && user_hobi == "Membaca/Menonton"
 
             if periode_treatment.update(rule: 11)
                 response(200, periode_treatment)
@@ -134,7 +135,7 @@ class Resources::TreatmentGenerator
                 response(400, nil)
             end
 
-        elsif periode_treatment.level_trauma== "sedang" && user_hobi == "Membaca dan atau Menonton"
+        elsif periode_treatment.level_trauma== "sedang" && user_hobi == "Membaca/Menonton"
 
             if periode_treatment.update(rule: 7)
                 response(200, periode_treatment)
@@ -142,7 +143,7 @@ class Resources::TreatmentGenerator
                 response(400, nil)
             end
 
-        elsif periode_treatment.level_trauma== "tinggi" && user_hobi == "Membaca dan atau Menonton"
+        elsif periode_treatment.level_trauma== "tinggi" && user_hobi == "Membaca/Menonton"
 
             if periode_treatment.update(rule: 3)
                 response(200, periode_treatment)
