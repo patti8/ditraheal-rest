@@ -1,29 +1,33 @@
 {
-  "actioncable.js": "/packs/js/actioncable-3bc48e8785ba66525e37.chunk.js",
-  "actioncable.js.map": "/packs/js/actioncable-3bc48e8785ba66525e37.chunk.js.map",
-  "application.js": "/packs/js/application-fd98a395640b93916937.js",
-  "application.js.map": "/packs/js/application-fd98a395640b93916937.js.map",
+  "actioncable.js": "/packs/js/actioncable-bb97729e49d1e93b9e54.chunk.js",
+  "actioncable.js.map": "/packs/js/actioncable-bb97729e49d1e93b9e54.chunk.js.map",
+  "application.css": "/packs/css/application-4fe6f30c.css",
+  "application.js": "/packs/js/application-af1905ae8c1c4797b05b.js",
+  "application.js.map": "/packs/js/application-af1905ae8c1c4797b05b.js.map",
   "entrypoints": {
     "application": {
+      "css": [
+        "/packs/css/application-4fe6f30c.css"
+      ],
       "js": [
-        "/packs/js/application-fd98a395640b93916937.js"
+        "/packs/js/application-af1905ae8c1c4797b05b.js"
       ],
       "js.map": [
-        "/packs/js/application-fd98a395640b93916937.js.map"
+        "/packs/js/application-af1905ae8c1c4797b05b.js.map"
       ]
     },
     "referensi": {
       "js": [
-        "/packs/js/referensi-2d16e111c117fef59272.js"
+        "/packs/js/referensi-a2092b6001d0ef8e28bb.js"
       ],
       "js.map": [
-        "/packs/js/referensi-2d16e111c117fef59272.js.map"
+        "/packs/js/referensi-a2092b6001d0ef8e28bb.js.map"
       ]
     }
   },
   "media/images/img1.jpg": "/packs/media/images/img1-17fd9b8bebbfb880aafd8f7e1b1823d3.jpg",
   "media/images/logo-dark.svg": "/packs/media/images/logo-dark-63167c8c707a6369071fb5d10f8cd304.svg",
   "media/images/logo-light.svg": "/packs/media/images/logo-light-3cbbacbf4606325f0f1ea2d10fa0d783.svg",
-  "referensi.js": "/packs/js/referensi-2d16e111c117fef59272.js",
-  "referensi.js.map": "/packs/js/referensi-2d16e111c117fef59272.js.map"
+  "referensi.js": "/packs/js/referensi-a2092b6001d0ef8e28bb.js",
+  "referensi.js.map": "/packs/js/referensi-a2092b6001d0ef8e28bb.js.map"
 }

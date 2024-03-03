@@ -19,7 +19,8 @@ default: &default
 
 development:
   <<: *default
-  database: /home/patti8/DEVELOPER/ditraheal/mei 2023/ditraheal-development.sqlite3
+  # database: /home/patti8/DEVELOPER/ditraheal/mei 2023/ditraheal-development.sqlite3
+  database: db/ditraheal-02022023.sqlite
   adapter: sqlite3
   # adapter: mysql2
   # hostname: localhost
