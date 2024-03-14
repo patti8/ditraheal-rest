@@ -1,34 +1,34 @@
 
-# JENIS 1 => PRE TEST 
+# JENIS 1 => PRE TEST
 # JENIS 2 => POST TEST
 
 class Api::V1::PostTestController < WsController
-    
+
     before_action :cek_test
     before_action :cek_periode_treatment, only: %i[effication_pre_test, level_trauma_pre_test]
 
-    # post efficacious_test 
+    # post efficacious_test
     def effication_test
-                
+
         data = Resources::TestGenerator.effication(
             cek_test,
             2,
             params,
             test_params
         )
-        
+
         respon = data[0]
         status = data[1]
         skor_efikasis = data[2]
-        
-        
+
+
         render :json => {
-            code: if status == 200 then 200 else 400 end, 
-            success: if status == 200 then true else false end, 
-            "messages": "#{if status == 200 then response else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.", 
+            code: if status == 200 then 200 else 400 end,
+            success: if status == 200 then true else false end,
+            "messages": "#{if status == 200 then response else "Gagal menyimpan. Cek kembali data yang dimasukan. #{skor_efikasis.errors.full_messages}" end}.",
             data: skor_efikasis
         }, success: status
-        
+
     end
 
     def skor
@@ -42,22 +42,22 @@ class Api::V1::PostTestController < WsController
     end
 
     def update_skor
-        
-        
+
+
         cek_pre_test = Test.find_by(
             periode_treatment_id: params[:periode_treatment_id],
             # jenis: if params[:test] == "pre_test" then 1 elsif params[:test] == "post_test" then 2 end
         )
 
-        
+
         if cek_test.present?
-            
+
             @hitung_efikasi = SkorEfikasi.where("skor_efikasis.post_test_id = #{cek_test.id}")
-            
+
             if @hitung_efikasi
-        
-                if cek_pre_test.update(post_test_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round) 
-                    render :json => {"code": 200, success: true, "messages": "berhasil menyimpannn.", data: cek_test}  
+
+                if cek_pre_test.update(post_test_efikasi: @hitung_efikasi.sum(:jawaban).to_f.round)
+                    render :json => {"code": 200, success: true, "messages": "berhasil menyimpannn.", data: cek_test}
                 end
 
             end
@@ -69,13 +69,13 @@ class Api::V1::PostTestController < WsController
 
 
     def validasi
-        
+
         if params[:periode_treatment_id].present?
-            # check treatment kelompok 
-        
+            # check treatment kelompok
+
             # treatment kelompok berulang sudah lebih dari 8
             treat_kelompok_berulang = TreatmentKelompok.where(
-                
+
                 jenis: 2,
                 periode_treatment: params[:periode_treatment_id],
                 bercerita_tentang_hal_hal_berhubungan_dengan_hobi: true,
@@ -96,12 +96,12 @@ class Api::V1::PostTestController < WsController
 
             messages = {}
 
-            
-            if !treat_kelompok_berulang == 10 || treat_kelompok_berulang <= 2
-                messages[:treat_kelompok_message] = "treatment berulang kurang dari 8 kali"
-            elsif treat_kelompok_sekali < 3
+
+            # if !treat_kelompok_berulang == 10 || treat_kelompok_berulang <= 2
+                # messages[:treat_kelompok_message] = "treatment berulang kurang dari 8 kali"
+            if treat_kelompok_sekali < 3
                 messages[:treat_kelompok_message] = "treatment kelompok sekali belum selesai"
-            
+
             elsif hitung_presentase < 50
                 messages[:treat_kelompok_message] = "treatment personal anda belum mencapai target 50%"
             end
@@ -128,12 +128,12 @@ class Api::V1::PostTestController < WsController
                 nil
             )
         end
-        
+
 
     end
 
 
-    private 
+    private
 
         def test_params
             params.permit(:referensi_soal, :jawaban, :pre_test_id, :jenis)

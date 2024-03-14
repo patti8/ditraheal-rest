@@ -9,3 +9,6 @@ yarn-debug.log*
 .yarn-integrity
 node_modules
 
+log/development.log
+log/*
+tmp/*

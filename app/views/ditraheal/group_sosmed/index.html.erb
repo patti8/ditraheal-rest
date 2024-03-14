@@ -1,6 +1,6 @@
 <table class="table">
     <thead>
-        <th>link</th>
+        <th>Nama</th>
         <th>Link</th>
         <th>Action</th>
     </thead>
@@ -8,7 +8,7 @@
         <% @link_medsos.each do |link| %>
             <tr>
              
-                <td><%= Reference.find_by(ref_code: link.ref_code).deskripsi%></td>
+                <td><%=  Reference.find_by(id: link.ref_code).deskripsi %></td>
                 <td><%= link_to link.deskripsi, "#{link.deskripsi}" %></td>
                 <td>
                     <%= turbo_frame_tag "link-update-#{link.id}" do %>
