@@ -99,11 +99,12 @@ class Api::V1::PostTestController < WsController
 
             # if !treat_kelompok_berulang == 10 || treat_kelompok_berulang <= 2
                 # messages[:treat_kelompok_message] = "treatment berulang kurang dari 8 kali"
-            if treat_kelompok_sekali < 3
-                messages[:treat_kelompok_message] = "treatment kelompok sekali belum selesai"
+            # if treat_kelompok_sekali < 3
+            if treat_kelompok_berulang < 3
+                messages[:treat_kelompok_message] = "treatment kelompok sekali belum selesai "
 
             elsif hitung_presentase < 50
-                messages[:treat_kelompok_message] = "treatment personal anda belum mencapai target 50%"
+                messages[:treat_kelompok_message] = "treatment personal anda belum mencapai target 50%. "
             end
 
 
