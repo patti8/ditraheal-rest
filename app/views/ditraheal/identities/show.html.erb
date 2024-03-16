@@ -2,19 +2,18 @@
     <div class="col">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Identy</h5>
+                <h5 class="card-title text-primary">Identy</h5>
                 <p class="card-text"><b>Name</b> : <%= @identy.name %></p>
-                <p ><b><b>Tanggal Lahir</b> : <%= @identy.tanggal_lahir %></b></p>
+                <p ><b>Tanggal Lahir</b> : <%= @identy.tanggal_lahir %></p>
             </div>
         </div>
     </div>
     <div class="col">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Treatment</h5>
-                <p class="card-text"><b>Periode Treatment</b> : <%= @periode_treatment.tanggal_awal %> - <% if @periode_treatment.tanggal_akhir.present? then %><%= @periode_treatment.tanggal_akhir %><%else%> belum selesai<% end %></p>
+                <h5 class="card-title text-primary">Treatment</h5>
+                <p class="card-text"><b>Periode Treatment</b> : <%= @periode_treatment.tanggal_awal %> - <%= Treatment.where(periode_treatment_id: @periode_treatment.id).last.tanggal %></p>
                
-                <p ><b>Tanggal Lahir</b> : <%= @identy.tanggal_lahir %></p>
                 <p><b>Progress Treatment Pribadi</b> : 
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: <%= @presentase.nan? ? "0" : @presentase.to_i %>%;" aria-valuenow="<%= @presentase.nan? ? "0" : @presentase.to_i %>" aria-valuemin="0" aria-valuemax="100"><%= @presentase.nan? ? "0" : @presentase.to_i %>%</div>
@@ -30,7 +29,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mt-2">
     <div class="col">
         <div class="card card-body">
             <table class="table">
@@ -46,10 +45,10 @@
                 <tbody>
                     <% PeriodeTreatment.where(identitas_id: params[:id]).each do |periode| %>
                     <tr>
-                        <td><%= periode.tanggal_awal%> - <%= periode.tanggal_akhir %></td>
+                        <td><%= periode.tanggal_awal%> - <%= Treatment.where(periode_treatment_id: periode.id).last.tanggal %></td>
                         <% @test = Test.find_by(periode_treatment_id: periode.id)%>
                         <td><%= level_trauma(@test.total_level_trauma_id) %></td>
-                        <td><%= @test.total_skor_efikasiadmin =30 %></td>
+                        <td><%= @test.total_skor_efikasi = 30 %></td>
                         <td><%= @test.post_test_efikasi = 50 %></td>
                         <td><span class="badge <%= periode.status == 2 || @test.post_test_efikasi.present? ? "bg-info" : "bg-warning" %>"><%= periode.status == 2 || @test.post_test_efikasi.present? ? "Selesai" : "Belum Selesai" %></span></td>
 

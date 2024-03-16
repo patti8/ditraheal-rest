@@ -38,12 +38,12 @@
                                 <td><%= @hoby.present? ? @hoby.deskripsi : "-" %></td>
                                 
                                 <td>
-                                    <%= link_to  "Show", ditraheal_identity_path(identy.id), data: {turbo: false} %>
+                                    <%= link_to  "Show", ditraheal_identity_path(identy.id), data: {turbo: false}, class: "btn-sm btn-primary" %>
                                     <%#= link_to "Show", "#", class: "btn-sm btn-primary", data: { 'bs-toggle' => "modal", 'bs-target' => "#showModal#{identy.id}" } %>
                                     <% @identy = identy %>
                                     <%= render "show", locals: { identy: @hoby, tes: @identy } %>
                                     
-                                    <%= link_to "edit", edit_ditraheal_identity_path(identy.id), class: "btn-sm btn-success" %>
+                                    <%= link_to "edit", edit_ditraheal_identity_path(identy.id), class: "btn-sm btn-warning" %>
                                     <%= link_to "delete", ditraheal_identity_path(identy.id), data: {turbo_method: :delete, turbo_confrim: "Apakah anda yakin?"}, class: "btn-sm btn-danger" %>
                                 </td>
                             </tr>
